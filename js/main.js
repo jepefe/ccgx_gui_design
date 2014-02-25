@@ -55,7 +55,8 @@ jQuery(document).ready(function(){
 				}
 
 				if($(this).children('richcontent[TYPE="NOTE"]').length > 0) {
-					$(li).attr('data-description', $(this).find('richcontent[TYPE="NOTE"] body').html());
+					var innerHTML = $(this).find('richcontent[TYPE="NOTE"] body').text();
+					$(li).attr('data-description', innerHTML);
 				}
 
 				$(ul).append(li);
@@ -586,7 +587,7 @@ function initManual() {
 	var javascriptElement = $(selected)[0];
 	var trimmedTitle = $.trim(javascriptElement.childNodes[0].textContent);
 	/* Append Item Description to doc container */
-	var trimmedItemDesc = $.trim($(itemDescription).text());
+	var trimmedItemDesc = $.trim(itemDescription);
 	$('.doc-description-text').text(trimmedItemDesc);
 	$('.doc-description-title').text(trimmedTitle);
 }
