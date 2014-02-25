@@ -121,7 +121,7 @@ jQuery(document).ready(function(){
 			$(initContainer).children('ul').addClass('main-ul');
 
 			/* Add classes for parent-1 menu break and toggles and selects */
-			$(initContainer).find('ul li:contains("Notifications and settings")').addClass('menu-break no-menu-item');
+			$(initContainer).find('ul li:contains("Notifications and configuration")').addClass('menu-break no-menu-item');
 			$(initContainer).find('ul li:contains("(Toggle)")').addClass('menu-toggle-item');
 			$(initContainer).find('ul li:contains("(Select)")').addClass('menu-select-item');
 		}
