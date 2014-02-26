@@ -256,6 +256,7 @@ jQuery(document).ready(function(){
 				var selectedId = allIds.selected;
 				var cleanParent = $(initContainer).find('[data-id="' + parentId + '"]');
 				$(cleanParent).clone().fadeIn().appendTo(interfaceContainer);
+				clearSelected();
 				var interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
 				initSelectedSpecific(interfaceSelected);
 				initSelects();
@@ -389,6 +390,11 @@ jQuery(document).ready(function(){
 			firstListItem.addClass('selected');
 			var firstUlItem = $(interfaceContainer).children().first();
 			firstUlItem.addClass('main-ul');
+		}
+
+		function clearSelected() {
+			var allSelectedItems = $(interfaceContainer).find('li.selected');
+			$(allSelectedItems).removeClass('selected');
 		}
 
 /* Documentation Manual */
