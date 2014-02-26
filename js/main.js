@@ -259,6 +259,7 @@ jQuery(document).ready(function(){
 				clearSelected();
 				var interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
 				initSelectedSpecific(interfaceSelected);
+				includeSpans();
 				initSelects();
 				emptyToolTips();
 				tellTheUserWhatToDo();
@@ -371,6 +372,7 @@ jQuery(document).ready(function(){
 		function initSelects() {
 			$('.select-span').each(function() {
 				var nextListItem = $(this).parent().next().children().eq(0).text();
+				console.log($(this));
 				$(this).text(nextListItem);
 				$(this).parent().next().children().each(function() {
 					$(this).addClass('select-option');
