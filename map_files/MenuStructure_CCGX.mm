@@ -14,8 +14,7 @@
       <font color="rgb(0, 0, 0)" face="Lucida Grande, Geneva, Arial, Verdana, sans-serif">The BMV-700 and BMV-702 are our newest high precision battery monitors. The essential function of a battery monitor is to calculate ampere-hours consumed and the state of charge of a battery. Ampere-hours consumed are calculated by integrating the current flowing in or out of the battery.</font>&#160;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="full-1"/>
 <node CREATED="1392621752848" ID="ID_714218617" MODIFIED="1392621764361" TEXT="General Information">
@@ -176,7 +175,7 @@
 </html></richcontent>
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="full-1"/>
-<node CREATED="1392628557440" ID="ID_1841828893" MODIFIED="1392628602204" TEXT="Product Information">
+<node CREATED="1392628557440" ID="ID_1841828893" MODIFIED="1393417154529" TEXT="General Information">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="full-2"/>
 <node CREATED="1392211293269" ID="ID_311812867" MODIFIED="1392283718454" TEXT="Switch (On)"/>
