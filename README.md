@@ -1,6 +1,10 @@
 ccgx_gui_design
 ==============
 
+Demo can be found at 
+
+http://victronenergy.github.io/ccgx_gui_design/
+
 This library contains files to visualize the GUI (Graphical User Interface) from the Color Control CCGX. 
 
 With FreeMind (http://freemind.sourceforge.net/) you can edit the XML file (MenuStructure_CCGX.mm) which is located in the map_files. This XML file contains all the information which is needed to build the GUI. 
@@ -8,8 +12,8 @@ When loading the website, JavaScript/jQuery will parse the XML into a readable f
 
 Two types of interfaces
 --------------
-- index.html (This contains the interface)
-- manual.html (This contains the interface, plus an ability to search trough it and see descriptions of menu items)
+- http://victronenergy.github.io/ccgx_gui_design/ (This contains the interface)
+- http://victronenergy.github.io/ccgx_gui_design/manual.html (This contains the interface, plus an ability to search trough it and see descriptions of menu items)
 
 Important things to note when editing the XML file
 --------------

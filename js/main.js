@@ -258,6 +258,7 @@ jQuery(document).ready(function(){
 				$(cleanParent).clone().fadeIn().appendTo(interfaceContainer);
 				var interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
 				initSelectedSpecific(interfaceSelected);
+				initSelects();
 				emptyToolTips();
 				tellTheUserWhatToDo();
 			}
