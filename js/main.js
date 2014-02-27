@@ -46,13 +46,35 @@ jQuery(document).ready(function(){
 			
 			element.children('node').each( function() {
 				var li = $('<li>');
+				var menuLabel = $(this).attr('TEXT');
 
-				if($(this).children('font[BOLD="true"]').length > 0) {
-					$('<span>').text($(this).attr('TEXT')).appendTo(li);
+				if (menuLabel.indexOf("Notifications and configuration") > -1 ) {
+   					li.addClass('menu-break no-menu-item');
 				}
+
+				if (menuLabel.indexOf("(Toggle)") > -1 ) {
+   					li.addClass('menu-toggle-item');
+				}
+
+				if (menuLabel.indexOf("(Select)") > -1 ) {
+   					menuLabel = menuLabel.replace('(Select)', '');
+   					li.addClass('menu-select-item');
+   					li.append('<p class="select-span"></p>');
+
+   					// $('.interface-container ul:first > li').not(".interface-container ul li ul").each(function(){
+						//$(this).html($(this).html().replace('(Select)', '<p class="select-span"></p>'));
+					// });
+				}
+
+				if ($(this).children('font[BOLD="true"]').length > 0) {
+					$('<span>').text(menuLabel).appendTo(li);
+				}
+
 				else {
-					$(li).text($(this).attr('TEXT'));
+					$(li).text(menuLabel);
 				}
+
+				$(li).attr('data-text', menuLabel);
 
 				if($(this).children('richcontent[TYPE="NOTE"]').length > 0) {
 					var innerHTML = $(this).find('richcontent[TYPE="NOTE"] body').text();
@@ -72,10 +94,6 @@ jQuery(document).ready(function(){
 			addLevelClass($('.main-ul'), 1);
 			/* Convert Toggles to real Toggles */
 			initToggles();
-			/* Convert Selects to real Selects */
-			initSelects();
-			/* Include span elements to Select items */
-			includeSpans();
 			/* Give data attributes to the elements */
 			setDataAttributes();
 			/* Load the documentation options, so users can find elements */
@@ -120,11 +138,6 @@ jQuery(document).ready(function(){
 
 		function addClasses() {
 			$(initContainer).children('ul').addClass('main-ul');
-
-			/* Add classes for parent-1 menu break and toggles and selects */
-			$(initContainer).find('ul li:contains("Notifications and configuration")').addClass('menu-break no-menu-item');
-			$(initContainer).find('ul li:contains("(Toggle)")').addClass('menu-toggle-item');
-			$(initContainer).find('ul li:contains("(Select)")').addClass('menu-select-item');
 		}
 
 		function includeSpans() {
@@ -134,12 +147,6 @@ jQuery(document).ready(function(){
 					$(this).addClass('special-span');
 				}
 			});
-
-			$('.interface-container ul:first > li').not(".interface-container ul li ul").each(function(){
-				$(this).html($(this).html().replace('(Select)', '<p class="select-span"></p>'));
-			});
-
-
 		}
 
 		function initScrollMore(ul) {
@@ -156,25 +163,9 @@ jQuery(document).ready(function(){
 			// if last child of ul is there, hide the view more
 		}
 
-		/* Go back to the previous container */
-		$('.color-control-buttons').on('click', '.color-control-button-nav-left', function() {
-			$(interfaceContainer).empty();
-			$(old_fill_container).fadeIn().appendTo(interfaceContainer);
-		});
-
-		/* Go to the main menu */
-		$('.color-control-buttons').on('click', '.color-control-button-right', function() {
-			reloadEntireMenu();
-		});
-
-		/* Go to overview */
-		$('.color-control-buttons').on('click', '.color-control-button-left', function() {
-			goOverview();
-		});
-
 		/* Remove current tooltip */
 		$(interfaceContainer).on('click', 'div.doc-tooltip .icon-close', function() {
-			$(this).parent().fadeOut(500);
+			emptyToolTips();
 			allParents = new Array();
 		});
 
@@ -234,18 +225,62 @@ jQuery(document).ready(function(){
 
 		$('.color-control-buttons').on('click', '.color-control-button-nav-bottom', function() {
 			goDown();
+			/* Clear existing description */
+			clearDocumentation();
+			/* Check where we are right now and show the manual */
+			if($('.latest-documentation').length > 0) {
+				initManual();
+			}
 		});
 
 		$('.color-control-buttons').on('click', '.color-control-button-nav-top', function() {
 			goUp();
+			/* Clear existing description */
+			clearDocumentation();
+			/* Check where we are right now and show the manual */
+			if($('.latest-documentation').length > 0) {
+				initManual();
+			}
 		});
 
 		$('.color-control-buttons').on('click', '.color-control-button-nav-left', function() {
 			goBack();
+			/* Clear existing description */
+			clearDocumentation();
+			/* Check where we are right now and show the manual */
+			if($('.latest-documentation').length > 0) {
+				initManual();
+			}
 		});
 
 		$('.color-control-buttons').on('click', '.color-control-button-nav-right', function() {
 			goRight();
+			/* Clear existing description */
+			clearDocumentation();
+			/* Check where we are right now and show the manual */
+			if($('.latest-documentation').length > 0) {
+				initManual();
+			}
+		});
+
+		$('.color-control-buttons').on('click', '.color-control-button-nav-middle', function() {
+			goRight();
+			/* Clear existing description */
+			clearDocumentation();
+			/* Check where we are right now and show the manual */
+			if($('.latest-documentation').length > 0) {
+				initManual();
+			}
+		});
+
+		/* Go to the main menu */
+		$('.color-control-buttons').on('click', '.color-control-button-right', function() {
+			reloadEntireMenu();
+		});
+
+		/* Go to overview */
+		$('.color-control-buttons').on('click', '.color-control-button-left', function() {
+			goOverview();
 		});
 
 		function goBack() {
@@ -256,6 +291,8 @@ jQuery(document).ready(function(){
 				var selectedId = allIds.selected;
 				var cleanParent = $(initContainer).find('[data-id="' + parentId + '"]');
 				$(cleanParent).clone().fadeIn().appendTo(interfaceContainer);
+				var breadcrumbText = $(cleanParent).attr('data-breadcrumb');
+				$('.color-control-top-bar-title').text(breadcrumbText);
 				clearSelected();
 				var interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
 				initSelectedSpecific(interfaceSelected);
@@ -272,12 +309,11 @@ jQuery(document).ready(function(){
 					/* Get the id of the selected item */
 					var parentId = $(this).parent().attr('data-id');
 					var selectedId = $(this).attr('data-id');
+					var breadcrumbText = $(this).children('ul').attr('data-breadcrumb');
 					/* Push the id to the parent */
 					backContainers.push({parent: parentId, selected: selectedId});
-
-					var breadcrumb = $(this).find('span').first().text();
-					$('.color-control-top-bar-title').text(breadcrumb);
-
+					/* Set the breadcrumb */
+					$('.color-control-top-bar-title').text(breadcrumbText);
 					var ul = $(this).children('ul');
 					old_fill_container = $('.interface-container').html();
 					$(interfaceContainer).empty();
@@ -371,9 +407,10 @@ jQuery(document).ready(function(){
 
 		function initSelects() {
 			$('.select-span').each(function() {
-				var nextListItem = $(this).parent().next().children().eq(0).text();
+				var nextListItem = $(this).next().next().children().eq(0).text();
+				console.log(nextListItem);
 				$(this).text(nextListItem);
-				$(this).parent().next().children().each(function() {
+				$(this).next().next().children().each(function() {
 					$(this).addClass('select-option');
 				});
 			});
@@ -456,6 +493,13 @@ function setDataAttributes() {
 		$(this).attr('data-id', i);
 	});
 
+	$(initContainer).find('ul').each(function(i, ele) {
+		var liText = $(this).parent().attr('data-text');
+		$(this).attr('data-breadcrumb', liText);
+	});
+
+	$('ul.main-ul').attr('data-breadcrumb', 'Products');
+
 }
 
 function docGetListItems(currentUl) {
@@ -512,7 +556,9 @@ function getParents(item) {
 
 function emptyToolTips() {
 	$(interfaceContainer).find('div.doc-tooltip').each(function() {
-		$(this).fadeOut(500);
+		$(this).parent()
+			.removeClass('breadcrumb-path-child')
+			.removeClass('last-breadcrumb-path-child');
 		$(this).remove();
 	});
 }

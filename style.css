@@ -1,7 +1,43 @@
 body {
   -webkit-font-smoothing: antialiased;
-  padding: 40px;
   background-color: #f5f5f5; }
+  body header {
+    padding: 30px 0;
+    background-color: #4790d0;
+    height: 100px;
+    width: 100%;
+    display: block;
+    margin: 0 0 40px 0; }
+    body header a.logo {
+      background: url("img/victron-energy-logo.png") no-repeat top left;
+      width: 221px;
+      height: 42px;
+      background-size: 221px 42px;
+      position: relative;
+      display: block; }
+    body header nav {
+      text-align: right; }
+      body header nav ul {
+        margin: 0;
+        padding: 0; }
+        body header nav ul li {
+          list-style-type: none;
+          display: inline-block;
+          margin: 10px 20px 0 0; }
+          body header nav ul li a {
+            font-weight: bold;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px; }
+            body header nav ul li a:hover {
+              text-decoration: none;
+              transition: 0.3s all;
+              color: #fff;
+              background-color: rgba(255, 255, 255, 0.2); }
+          body header nav ul li:last-child {
+            margin: 0; }
   body .color-control-background {
     background: url("img/color-control-bg.jpg") no-repeat top left;
     width: 603px;
@@ -126,8 +162,8 @@ body {
             padding: 8px 0 0 20px;
             position: relative; }
             body .color-control-background .color-control-interface .interface-container ul li.selected {
-              background-color: #35a0cf;
-              border-bottom-color: #35a0cf;
+              background-color: #4790d0;
+              border-bottom-color: #4790d0;
               color: #fff;
               transition: 0.5s all; }
               body .color-control-background .color-control-interface .interface-container ul li.selected.special-span b {
@@ -173,7 +209,7 @@ body {
               font-size: 20px;
               color: #777; }
             body .color-control-background .color-control-interface .interface-container ul li:hover {
-              color: #35a0cf;
+              color: #4790d0;
               transition: 0.3s all; }
             body .color-control-background .color-control-interface .interface-container ul li ul {
               display: none; }
@@ -363,7 +399,7 @@ body {
       body .interface-toggle .interface-toggle-inner:before {
         content: "ON";
         padding-left: 10px;
-        background-color: #35a0cf;
+        background-color: #4790d0;
         color: #fff; }
       body .interface-toggle .interface-toggle-inner:after {
         content: "OFF";
@@ -424,7 +460,7 @@ body {
         color: #444; }
         body .ui-autocomplete li a:hover {
           text-decoration: none;
-          background-color: #35a0cf;
+          background-color: #4790d0;
           color: #fff;
           transition: all 0.3s;
           cursor: pointer; }
@@ -437,7 +473,7 @@ body {
         color: #777;
         font-size: 12px; }
         body .ui-autocomplete li span.autocomplete-breadcrumbs span.breadcrumb-arrow {
-          color: #35a0cf; }
+          color: #4790d0; }
           body .ui-autocomplete li span.autocomplete-breadcrumbs span.breadcrumb-arrow:last-child {
             display: none; }
       body .ui-autocomplete li span.autocomplete-label {

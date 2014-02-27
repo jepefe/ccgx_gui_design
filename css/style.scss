@@ -1,7 +1,61 @@
+$main_color: #4790d0;
+
 body {
 	-webkit-font-smoothing: antialiased;
-	padding: 40px;
 	background-color: #f5f5f5;
+
+	header {
+		padding: 30px 0;
+		background-color: $main_color;
+		height: 100px;
+		width: 100%;
+		display: block;
+		margin: 0 0 40px 0;
+
+		a.logo {
+			background: url('img/victron-energy-logo.png') no-repeat top left;
+			width: 221px;
+			height: 42px;
+			background-size: 221px 42px;
+			position: relative;
+			display: block;
+		}
+
+		nav {
+			text-align: right;
+			
+			ul {
+				margin: 0;
+				padding: 0;
+
+				li {
+					list-style-type: none;
+					display: inline-block;
+					margin: 10px 20px 0 0;
+
+					a {
+						font-weight: bold;
+						color: #fff;
+						padding: 10px 20px;
+						background-color: transparent;
+						border: 2px solid rgba(255, 255, 255, 0.4);
+						border-radius: 10px;
+
+						&:hover {
+							text-decoration: none;
+							transition: 0.3s all;
+							color: #fff;
+							background-color: rgba(255,255,255, 0.2);
+						}
+					}
+
+					&:last-child {
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
 
 	.color-control-background {
 		background: url('img/color-control-bg.jpg') no-repeat top left;
@@ -177,8 +231,8 @@ body {
 						position: relative;
 
 						&.selected {
-							background-color: #35a0cf;
-							border-bottom-color: #35a0cf;
+							background-color: $main_color;
+							border-bottom-color: $main_color;
 							color: #fff;
 							transition: 0.5s all;
 							&.special-span {
@@ -248,7 +302,7 @@ body {
 							}
 						}
 						&:hover {
-							color: #35a0cf;
+							color: $main_color;
 							transition: 0.3s all;
 						}
 						ul {
@@ -526,7 +580,7 @@ body {
 			&:before {
 				content: "ON";
 	    		padding-left: 10px;
-	    		background-color: #35a0cf; 
+	    		background-color: $main_color;
 	    		color: #fff;
 			}
 
@@ -613,7 +667,7 @@ body {
 
 				&:hover {
 					text-decoration: none;
-					background-color: #35a0cf;
+					background-color: $main_color;
 					color: #fff;
 					transition: all 0.3s;
 					cursor: pointer;
@@ -639,7 +693,7 @@ body {
 
 				span {
 					&.breadcrumb-arrow {
-						color: #35a0cf;
+						color: $main_color;
 
 						&:last-child {
 							display: none;
