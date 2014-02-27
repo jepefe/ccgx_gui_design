@@ -1,3 +1,4 @@
+/*global $, jQuery,browser: true, document:false */
 var backContainers = [];
 var container_list_item = '.interface-container ul li';
 var initContainer = '.all-html-content';
@@ -200,7 +201,7 @@ jQuery(document).ready(function () {
         }
 
         function getParents(item) {
-            var getParents = [],
+            var theParents = [],
                 datahtml = item.datahtml,
                 myListItem = $(initContainer).find('li[data-html="' + datahtml + '"]');
             breadcrumbParents = myListItem.parentsUntil('.main-ul');
@@ -208,15 +209,13 @@ jQuery(document).ready(function () {
                 if ($(this).is('li')) {
                     var domel = $(this)[0],
                         text = domel.childNodes[0].textContent;
-                    getParents.push({'label': text});
+                    theParents.push({'label': text});
                 }
             });
-            return getParents;
+            return theParents;
         }
 
-        function docGetListItems(currentUl) {
-            /* Specify the documentation container */
-            var docContainer = 'ul.documentation-list';
+        function docGetListItems() {
             /* Initialize the autocomplete */
             $('.documentation-search').autocomplete({
                 source: autoCompleteSources,
@@ -227,26 +226,46 @@ jQuery(document).ready(function () {
             }).data('ui-autocomplete')
                 ._renderItem = function (ul, item) {
                     var breadcrumbs = [],
-                        visible_breadcrumbs = '';
+                        visible_breadcrumbs = '',
+                        i = '';
                     breadcrumbs = getParents(item);
 
-                    for (var i = 0; i < breadcrumbs.length; i++) {
+                    for (i = 0; i < breadcrumbs.length; i += 1) {
                         visible_breadcrumbs = breadcrumbs[i].label + " <span class='breadcrumb-arrow'>&raquo;</span> " + visible_breadcrumbs;
                     }
-                    return $( "<li>" )
-                    .data( "ui-autocomplete-item", item )
-                    .append( "<a data-html=" + item.datahtml + "><span class='autocomplete-label'>" + item.label + "</span><span class='autocomplete-breadcrumbs'>" + visible_breadcrumbs + "</span></a>" )
-                    .appendTo( ul );
-            };
+                    return $('<li>')
+                        .data('ui-autocomplete-item', item)
+                        .append("<a data-html=" + item.datahtml + "><span class='autocomplete-label'>" + item.label + "</span><span class='autocomplete-breadcrumbs'>" + visible_breadcrumbs + "</span></a>")
+                        .appendTo(ul);
+                };
 
+        }
+
+        function setAutoCompleteWidth() {
+            var inputWidth = $('.documentation-search').width();
+            $('.ui-autocomplete').css('width', inputWidth);
+        }
+
+        function clearDocumentation() {
+            $('.doc-description-text').empty();
+            $('.doc-description-title').empty();
+        }
+
+        function initManual() {
+            var selected = $(interfaceContainer).find('li.selected'),
+                itemDescription = $(selected).attr('data-description'),
+                javascriptElement = $(selected)[0],
+                trimmedTitle = $.trim(javascriptElement.childNodes[0].textContent),
+                trimmedItemDesc = $.trim(itemDescription);
+            $('.doc-description-text').text(trimmedItemDesc);
+            $('.doc-description-title').text(trimmedTitle);
         }
 
         /* Documentation Manual */
         function initToolTips() {
             if ($('.latest-documentation').length > 0) {
-                var currentUl = $('.main-ul');
                 /* Get all list items from the interface and fill them in the doc div */
-                docGetListItems(currentUl);
+                docGetListItems();
                 /* Set autocomplete width */
                 setAutoCompleteWidth();
             }
@@ -321,7 +340,7 @@ jQuery(document).ready(function () {
             /* After that, remove the "all-html-content" class */
             $(interfaceContainer).find('.all-html-content').removeClass('all-html-content');
             /* Load where we are right now and show manual */
-            if($('.latest-documentation').length > 0) {
+            if ($('.latest-documentation').length > 0) {
                 initManual();
             }
         }
@@ -345,326 +364,294 @@ jQuery(document).ready(function () {
             });
         });
 
-		
+        function includeSpans() {
+            $('.interface-container ul:first > li').not(".interface-container ul li ul").each(function () {
+                if (!$(this).hasClass('has-children')) {
+                    $(this).html($(this).html().replace('(', '<b>').replace(')', '</b>'));
+                    $(this).addClass('special-span');
+                }
+            });
+        }
 
-		function includeSpans() {
-			$('.interface-container ul:first > li').not(".interface-container ul li ul").each(function(){
-				if(!$(this).hasClass('has-children')) {
-					$(this).html($(this).html().replace('(', '<b>').replace(')', '</b>'));
-					$(this).addClass('special-span');
-				}
-			});
-		}
+        function initScrollMore(ul) {
+            /* Total amount of children */
+            var childrenAmount = $(ul).children().length;
+            //scrollToLast = childrenAmount - 6;
+            if (childrenAmount >= 6) {
+                $('.scroll-down-for-more').fadeIn(500);
+            }
+            // if ul has more then 6 children, then add something
 
-		function initScrollMore(ul) {
-			/* Total amount of children */
-			var childrenAmount = $(ul).children().length;
-			/* Amount of times to scroll untill the end */
-			var scrollToLast = childrenAmount - 6;
-			
-			if(childrenAmount >= 6) {
-				$('.scroll-down-for-more').fadeIn(500);
-			}
-			// if ul has more then 6 children, then add something
+            // if last child of ul is there, hide the view more
+        }
 
-			// if last child of ul is there, hide the view more
-		}
+        /* Remove current tooltip */
+        $(interfaceContainer).on('click', 'div.doc-tooltip .icon-close', function () {
+            emptyToolTips();
+            allParents = [];
+        });
 
-		/* Remove current tooltip */
-		$(interfaceContainer).on('click', 'div.doc-tooltip .icon-close', function() {
-			emptyToolTips();
-			allParents = [];
-		});
+        function initSelectedSpecific(element) {
+            var firstListItem = $(element),
+                firstUlItem = $(interfaceContainer).children().first();
+            firstListItem.addClass('selected');
+            firstUlItem.addClass('main-ul');
+        }
 
-		/* Key Functions */
+        function initSelected() {
+            var firstListItem = $(interfaceContainer).children().first().children().first(),
+                firstUlItem = $(interfaceContainer).children().first();
+            firstListItem.addClass('selected');
+            firstUlItem.addClass('main-ul');
+        }
 
-		$(document).keydown(function(e) {
-			/*
-			// Enter
-			if(e.which == 13) {
-				reloadEntireMenu();
-			}
+        function initSelects() {
+            $('.select-span').each(function () {
+                var nextListItem = $(this).next().next().children().eq(0).text();
+                $(this).text(nextListItem);
+                $(this).next().next().children().each(function () {
+                    $(this).addClass('select-option');
+                });
+            });
+        }
 
-			// Shift
-			if(e.which == 16) {
-				goOverview();
-				e.preventDefault();
-			}
-			*/
-			// Left arrow
-			if(e.which == 37) {
-				goBack();
-				e.preventDefault();
-			}
-			
-			// Up arrow
-			if(e.which == 38) {
-				goUp();
-				e.preventDefault();
-			}
-			
-			// Right arrow
-			if(e.which == 39) {
-				goRight();
-				e.preventDefault();
-			}
-			
-			// Down arrow
-			if(e.which == 40) {
-				goDown();
-				e.preventDefault();
-			}
-			
-			/* Space
-			if(e.which == 32) {
-				goRight();
-				e.preventDefault();
-			}
-			*/
-			/* Clear existing description */
-			clearDocumentation();
-			/* Check where we are right now and show the manual */
-			if($('.latest-documentation').length > 0) {
-				initManual();
-			}
+        function goBack() {
+            if (backContainers.length > 0) {
+                $(interfaceContainer).empty();
+                var allIds = backContainers.pop(),
+                    parentId = allIds.parent,
+                    selectedId = allIds.selected,
+                    cleanParent = $(initContainer).find('[data-id="' + parentId + '"]'),
+                    breadcrumbText = $(cleanParent).attr('data-breadcrumb'),
+                    interfaceSelected = '';
+                $(cleanParent).clone().fadeIn().appendTo(interfaceContainer);
+                $('.color-control-top-bar-title').text(breadcrumbText);
+                clearSelected();
+                interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
+                initSelectedSpecific(interfaceSelected);
+                includeSpans();
+                initSelects();
+                emptyToolTips();
+                tellTheUserWhatToDo();
+            }
+        }
 
-		});
+        function goRight() {
+            $('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function () {
+                if ($(this).hasClass('has-children')) {
+                    /* Get the id of the selected item */
+                    var parentId = $(this).parent().attr('data-id'),
+                        selectedId = $(this).attr('data-id'),
+                        breadcrumbText = $(this).children('ul').attr('data-breadcrumb'),
+                        ul = $(this).children('ul');
+                    /* Push the id to the parent */
+                    backContainers.push({parent: parentId, selected: selectedId});
+                    /* Set the breadcrumb */
+                    $('.color-control-top-bar-title').text(breadcrumbText);
+                    old_fill_container = $('.interface-container').html();
+                    $(interfaceContainer).empty();
+                    $(ul).clone().fadeIn().appendTo(interfaceContainer);
+                    /* Convert Toggles to real Toggles */
+                    includeSpans();
+                    /* Convert Selects to real Selects */
+                    initSelects();
+                    initSelected();
+                    initScrollMore(ul);
+                    emptyToolTips();
+                    tellTheUserWhatToDo();
+                }
+            });
+        }
 
-		$('.color-control-buttons').on('click', '.color-control-button-nav-bottom', function() {
-			goDown();
-			/* Clear existing description */
-			clearDocumentation();
-			/* Check where we are right now and show the manual */
-			if($('.latest-documentation').length > 0) {
-				initManual();
-			}
-		});
+        function goDown() {
+            $('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function () {
+                var parent = $(this).parent(),
+                    scrollTo = $(this).next();
 
-		$('.color-control-buttons').on('click', '.color-control-button-nav-top', function() {
-			goUp();
-			/* Clear existing description */
-			clearDocumentation();
-			/* Check where we are right now and show the manual */
-			if($('.latest-documentation').length > 0) {
-				initManual();
-			}
-		});
-
-		$('.color-control-buttons').on('click', '.color-control-button-nav-left', function() {
-			goBack();
-			/* Clear existing description */
-			clearDocumentation();
-			/* Check where we are right now and show the manual */
-			if($('.latest-documentation').length > 0) {
-				initManual();
-			}
-		});
-
-		$('.color-control-buttons').on('click', '.color-control-button-nav-right', function() {
-			goRight();
-			/* Clear existing description */
-			clearDocumentation();
-			/* Check where we are right now and show the manual */
-			if($('.latest-documentation').length > 0) {
-				initManual();
-			}
-		});
-
-		$('.color-control-buttons').on('click', '.color-control-button-nav-middle', function() {
-			goRight();
-			/* Clear existing description */
-			clearDocumentation();
-			/* Check where we are right now and show the manual */
-			if($('.latest-documentation').length > 0) {
-				initManual();
-			}
-		});
-
-		/* Go to the main menu */
-		$('.color-control-buttons').on('click', '.color-control-button-right', function() {
-			reloadEntireMenu();
-		});
-
-		/* Go to overview */
-		$('.color-control-buttons').on('click', '.color-control-button-left', function() {
-			goOverview();
-		});
-
-		function goBack() {
-			if(backContainers.length > 0) {
-				$(interfaceContainer).empty();
-				var allIds = backContainers.pop();
-				var parentId = allIds.parent;
-				var selectedId = allIds.selected;
-				var cleanParent = $(initContainer).find('[data-id="' + parentId + '"]');
-				$(cleanParent).clone().fadeIn().appendTo(interfaceContainer);
-				var breadcrumbText = $(cleanParent).attr('data-breadcrumb');
-				$('.color-control-top-bar-title').text(breadcrumbText);
-				clearSelected();
-				var interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
-				initSelectedSpecific(interfaceSelected);
-				includeSpans();
-				initSelects();
-				emptyToolTips();
-				tellTheUserWhatToDo();
-			}
-		}
-
-		function goRight() {
-			$('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function(){
-				if ($(this).hasClass( "has-children" ) ) {
-					/* Get the id of the selected item */
-					var parentId = $(this).parent().attr('data-id');
-					var selectedId = $(this).attr('data-id');
-					var breadcrumbText = $(this).children('ul').attr('data-breadcrumb');
-					/* Push the id to the parent */
-					backContainers.push({parent: parentId, selected: selectedId});
-					/* Set the breadcrumb */
-					$('.color-control-top-bar-title').text(breadcrumbText);
-					var ul = $(this).children('ul');
-					old_fill_container = $('.interface-container').html();
-					$(interfaceContainer).empty();
-					$(ul).clone().fadeIn().appendTo(interfaceContainer);
-					/* Convert Toggles to real Toggles */
-					includeSpans();
-					/* Convert Selects to real Selects */
-					initSelects();
-					initSelected();
-					initScrollMore(ul);
-					emptyToolTips();
-					tellTheUserWhatToDo();
-				}
-			});
-		}
-
-		function goDown() {
-			$('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function(){
-				var parent = $(this).parent();
-				var scrollTo = $(this).next();
-
-				if (!$( this ).is( ":last-child" ) ) {
-					if(!$(this).next().hasClass('no-menu-item')) {
-						$(this).next().addClass('selected');
-						$(this).removeClass('selected');
-						parent.scrollTo(scrollTo , 100, {margin:true} );
-					}
-					else {
-						$(this).next().next().addClass('selected');
-						$(this).removeClass('selected');
-						parent.scrollTo(scrollTo , 100, {margin:true} );
-					}
-				}
+                if (!$(this).is(':last-child')) {
+                    if (!$(this).next().hasClass('no-menu-item')) {
+                        $(this).next().addClass('selected');
+                        $(this).removeClass('selected');
+                        parent.scrollTo(scrollTo, 100, {margin: true});
+                    } else {
+                        $(this).next().next().addClass('selected');
+                        $(this).removeClass('selected');
+                        parent.scrollTo(scrollTo, 100, {margin: true});
+                    }
+                }
 
 
-			});
-		}
+            });
+        }
 
-		function goUp() {
-			$('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function(){
-				var parent = $(this).parent();
-				var scrollTo = $(this).prev();
+        function goUp() {
+            $('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function () {
+                var parent = $(this).parent(),
+                    scrollTo = $(this).prev();
 
-				if (!$( this ).is( ":first-child" ) ) {
-					if(!$(this).prev().hasClass('no-menu-item')) {
-						$(this).prev().addClass('selected');
-						$(this).removeClass('selected');
-						parent.scrollTo(scrollTo , 100, {margin:true} );
-					}
-					else {
-						$(this).prev().prev().addClass('selected');
-						$(this).removeClass('selected');
-						parent.scrollTo(scrollTo , 100, {margin:true} );
-					}
-				}
-			});
-		}
+                if (!$(this).is(':first-child')) {
+                    if (!$(this).prev().hasClass('no-menu-item')) {
+                        $(this).prev().addClass('selected');
+                        $(this).removeClass('selected');
+                        parent.scrollTo(scrollTo, 100, {margin: true});
+                    } else {
+                        $(this).prev().prev().addClass('selected');
+                        $(this).removeClass('selected');
+                        parent.scrollTo(scrollTo, 100, {margin: true});
+                    }
+                }
+            });
+        }
 
-		function reloadEntireMenu() {
-			/* Empty the container */
-			$(interfaceContainer).empty();
-			/* Clone the html-content into the container */
-			$(initContainer).clone().fadeIn().appendTo(interfaceContainer);
-			/* Set the top bar title to Products */
-			$('.color-control-top-bar-title').text('Products');
-		}
+        /* Key Functions */
 
-		function goOverview() {
-			/* Empty the container */
-			$(interfaceContainer).empty();
-			/* Clone the html-content into the container */
-			$(initOverview).clone().fadeIn().appendTo(interfaceContainer);
-			/* Set the top bar title to Overview */
-			$('.color-control-top-bar-title').text('Overview');
-			/* Run navigateOverview */
-			navigateOverview();
-		}
+        $(document).keydown(function (e) {
+            /*
+            // Enter
+            if(e.which == 13) {
+                reloadEntireMenu();
+            }
 
-		function initSelects() {
-			$('.select-span').each(function() {
-				var nextListItem = $(this).next().next().children().eq(0).text();
-				$(this).text(nextListItem);
-				$(this).next().next().children().each(function() {
-					$(this).addClass('select-option');
-				});
-			});
-		}
+            // Shift
+            if(e.which == 16) {
+                goOverview();
+                e.preventDefault();
+            }
+            */
+            // Left arrow
+            if (e.which === 37) {
+                goBack();
+                e.preventDefault();
+            }
+            // Up arrow
+            if (e.which === 38) {
+                goUp();
+                e.preventDefault();
+            }
+            // Right arrow
+            if (e.which === 39) {
+                goRight();
+                e.preventDefault();
+            }
+            // Down arrow
+            if (e.which === 40) {
+                goDown();
+                e.preventDefault();
+            }
+            /* Space
+            if(e.which == 32) {
+                goRight();
+                e.preventDefault();
+            }
+            */
+            /* Clear existing description */
+            clearDocumentation();
+            /* Check where we are right now and show the manual */
+            if ($('.latest-documentation').length > 0) {
+                initManual();
+            }
 
-		function initSelectedSpecific(element) {
-			var firstListItem = $(element);
-			firstListItem.addClass('selected');
-			var firstUlItem = $(interfaceContainer).children().first();
-			firstUlItem.addClass('main-ul');
-		}
+        });
 
-		function initSelected() {
-			var firstListItem = $(interfaceContainer).children().first().children().first();
-			firstListItem.addClass('selected');
-			var firstUlItem = $(interfaceContainer).children().first();
-			firstUlItem.addClass('main-ul');
-		}
+        $('.color-control-buttons').on('click', '.color-control-button-nav-bottom', function () {
+            goDown();
+            /* Clear existing description */
+            clearDocumentation();
+            /* Check where we are right now and show the manual */
+            if ($('.latest-documentation').length > 0) {
+                initManual();
+            }
+        });
 
+        $('.color-control-buttons').on('click', '.color-control-button-nav-top', function () {
+            goUp();
+            /* Clear existing description */
+            clearDocumentation();
+            /* Check where we are right now and show the manual */
+            if ($('.latest-documentation').length > 0) {
+                initManual();
+            }
+        });
 
-function setAutoCompleteWidth() {
-	var inputWidth = $('.documentation-search').width();
-	$('.ui-autocomplete').css('width', inputWidth);
-}
+        $('.color-control-buttons').on('click', '.color-control-button-nav-left', function () {
+            goBack();
+            /* Clear existing description */
+            clearDocumentation();
+            /* Check where we are right now and show the manual */
+            if ($('.latest-documentation').length > 0) {
+                initManual();
+            }
+        });
 
-function initManual() {
-	var selected = $(interfaceContainer).find('li.selected');
-	var itemDescription = $(selected).attr('data-description');
-	var javascriptElement = $(selected)[0];
-	var trimmedTitle = $.trim(javascriptElement.childNodes[0].textContent);
-	/* Append Item Description to doc container */
-	var trimmedItemDesc = $.trim(itemDescription);
-	$('.doc-description-text').text(trimmedItemDesc);
-	$('.doc-description-title').text(trimmedTitle);
-}
+        $('.color-control-buttons').on('click', '.color-control-button-nav-right', function () {
+            goRight();
+            /* Clear existing description */
+            clearDocumentation();
+            /* Check where we are right now and show the manual */
+            if ($('.latest-documentation').length > 0) {
+                initManual();
+            }
+        });
 
-function clearDocumentation () {
-	$('.doc-description-text').empty();
-	$('.doc-description-title').empty();
-}
+        $('.color-control-buttons').on('click', '.color-control-button-nav-middle', function () {
+            goRight();
+            /* Clear existing description */
+            clearDocumentation();
+            /* Check where we are right now and show the manual */
+            if ($('.latest-documentation').length > 0) {
+                initManual();
+            }
+        });
 
-function navigateOverview() {
-	
-	$('div.overview-content').on('click', 'button.overview-next', function() {
-		$('.current').removeClass('current').hide()
-	        .next().show().addClass('current');
-	    if ($('.current').hasClass('last')) {
-	        $('button.overview-next').attr('disabled', true);
-	    }
-	    $('button.overview-previous').attr('disabled', null); 
-	});
+        function reloadEntireMenu() {
+            /* Empty the container */
+            $(interfaceContainer).empty();
+            /* Clone the html-content into the container */
+            $(initContainer).clone().fadeIn().appendTo(interfaceContainer);
+            /* Set the top bar title to Products */
+            $('.color-control-top-bar-title').text('Products');
+        }
 
-	$('div.overview-content').on('click', 'button.overview-previous', function() {
-	    $('.current').removeClass('current').hide()
-	        .prev().show().addClass('current');
-	    if ($('.current').hasClass('first')) {
-	        $('button.overview-previous').attr('disabled', true);
-	    }
-	    $('button.overview-next').attr('disabled', null);
-	}); 
+        /* Go to the main menu */
+        $('.color-control-buttons').on('click', '.color-control-button-right', function () {
+            reloadEntireMenu();
+        });
 
-}
-	})( jQuery, window, document );
+        function navigateOverview() {
+            $('div.overview-content').on('click', 'button.overview-next', function () {
+                $('.current').removeClass('current').hide()
+                    .next().show().addClass('current');
+                if ($('.current').hasClass('last')) {
+                    $('button.overview-next').attr('disabled', true);
+                }
+                $('button.overview-previous').attr('disabled', null);
+            });
+
+            $('div.overview-content').on('click', 'button.overview-previous', function () {
+                $('.current').removeClass('current').hide()
+                    .prev().show().addClass('current');
+                if ($('.current').hasClass('first')) {
+                    $('button.overview-previous').attr('disabled', true);
+                }
+                $('button.overview-next').attr('disabled', null);
+            });
+        }
+
+        function goOverview() {
+            /* Empty the container */
+            $(interfaceContainer).empty();
+            /* Clone the html-content into the container */
+            $(initOverview).clone().fadeIn().appendTo(interfaceContainer);
+            /* Set the top bar title to Overview */
+            $('.color-control-top-bar-title').text('Overview');
+            /* Run navigateOverview */
+            navigateOverview();
+        }
+
+        /* Go to overview */
+        $('.color-control-buttons').on('click', '.color-control-button-left', function () {
+            goOverview();
+        });
+
+    }(jQuery, document));
 });
