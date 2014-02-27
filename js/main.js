@@ -372,7 +372,6 @@ jQuery(document).ready(function(){
 		function initSelects() {
 			$('.select-span').each(function() {
 				var nextListItem = $(this).parent().next().children().eq(0).text();
-				console.log($(this));
 				$(this).text(nextListItem);
 				$(this).parent().next().children().each(function() {
 					$(this).addClass('select-option');
@@ -463,7 +462,7 @@ function docGetListItems(currentUl) {
 	/* Specify the documentation container */
 	var docContainer = 'ul.documentation-list';
 	
-	/* Finally, initialize the autocomplete */
+	/* Initialize the autocomplete */
 	$( ".documentation-search" ).autocomplete({
 		source: autoCompleteSources,
 		select: function(event, ui) {
@@ -512,16 +511,33 @@ function getParents(item) {
 }
 
 function emptyToolTips() {
-	$('div.doc-tooltip').each(function() {
+	$(interfaceContainer).find('div.doc-tooltip').each(function() {
 		$(this).fadeOut(500);
+		$(this).remove();
 	});
 }
+
 function generateTopLevelToolTip(ListItem) {
-	$('<div class="doc-tooltip"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+	if($(ListItem).is(':last-child')) {
+		$('<div class="doc-tooltip tooltip-last"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+	}
+	else {
+		$('<div class="doc-tooltip"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+	}
 }
 
 function generateEndToolTip(ListItem) {
-	$('<div class="doc-tooltip"><span>This is the item.<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+	var parent = ListItem.parent();
+	clearSelected();
+	parent.scrollTo(ListItem , 500, {margin:true} );
+	$(ListItem).addClass('selected');
+	if($(ListItem).is(':last-child')) {
+	    $('<div class="doc-tooltip tooltip-last"><span>This is the item.<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+	}
+	else {
+		$('<div class="doc-tooltip"><span>This is the item.<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+	}
+	
 }
 
 function generateBackToolTip() {

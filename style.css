@@ -22,7 +22,7 @@ body {
         height: 12.5%;
         display: inline-block;
         width: 100%;
-        background-color: #35a0cf;
+        background-color: #444;
         border-radius: 10px 10px 0 0;
         padding: 0 20px; }
         body .color-control-background .color-control-interface .color-control-top-bar.color-control-bottom-bar, body .color-control-background .color-control-interface .color-control-bottom-bar.color-control-bottom-bar {
@@ -126,19 +126,22 @@ body {
             padding: 8px 0 0 20px;
             position: relative; }
             body .color-control-background .color-control-interface .interface-container ul li.selected {
-              background-color: #ddd;
-              color: #000;
+              background-color: #35a0cf;
+              border-bottom-color: #35a0cf;
+              color: #fff;
               transition: 0.5s all; }
               body .color-control-background .color-control-interface .interface-container ul li.selected.special-span b {
-                background-color: #35a0cf;
+                background-color: rgba(255, 255, 255, 0.2);
                 color: #fff; }
               body .color-control-background .color-control-interface .interface-container ul li.selected .select-span {
-                background-color: #35a0cf;
+                background-color: rgba(255, 255, 255, 0.2);
                 color: #fff; }
               body .color-control-background .color-control-interface .interface-container ul li.selected.select-option:before {
                 font-family: 'icomoon';
                 content: "\e73b";
-                color: #35a0cf; }
+                color: #fff; }
+              body .color-control-background .color-control-interface .interface-container ul li.selected:hover {
+                color: #fff; }
             body .color-control-background .color-control-interface .interface-container ul li.list-item-hidden {
               display: none; }
             body .color-control-background .color-control-interface .interface-container ul li.special-span b {
@@ -202,8 +205,8 @@ body {
               line-height: 1;
               -webkit-font-smoothing: antialiased; }
             body .color-control-background .color-control-interface .interface-container ul li.menu-break {
-              background-color: #35a0cf;
-              color: #fff;
+              background-color: #ddd;
+              color: #000;
               padding: 8px 20px;
               font-weight: 700; }
     body .color-control-background .color-control-buttons {
@@ -335,7 +338,7 @@ body {
       display: block;
       overflow: hidden;
       cursor: pointer;
-      border: 2px solid #ddd;
+      border: 2px solid #fff;
       border-radius: 20px; }
     body .interface-toggle .interface-toggle-inner {
       width: 200%;
@@ -449,7 +452,7 @@ body {
     z-index: 999; }
     body .doc-tooltip span, body .back-tooltip span {
       z-index: 999;
-      background: #444;
+      background-color: #444;
       color: #fff;
       padding: 8px 15px;
       font-weight: 700;
@@ -479,6 +482,13 @@ body {
         border-bottom-color: #444;
         border-width: 4px;
         margin-left: -4px; }
+    body .doc-tooltip.tooltip-last, body .back-tooltip.tooltip-last {
+      top: -36.16px; }
+      body .doc-tooltip.tooltip-last span:after, body .doc-tooltip.tooltip-last span:before, body .back-tooltip.tooltip-last span:after, body .back-tooltip.tooltip-last span:before {
+        top: 100%;
+        left: 50%;
+        border-top-color: #444;
+        border-bottom-color: rgba(136, 183, 213, 0); }
     body .doc-tooltip.back-tooltip, body .back-tooltip.back-tooltip {
       top: 70%;
       right: 16%;

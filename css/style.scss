@@ -25,7 +25,7 @@ body {
 				height: 12.5%;
 				display: inline-block;
 				width: 100%;
-				background-color: #35a0cf;
+				background-color: #444;
 				border-radius: 10px 10px 0 0;
 				padding: 0 20px;
 
@@ -177,17 +177,18 @@ body {
 						position: relative;
 
 						&.selected {
-							background-color: #ddd;
-							color: #000;
+							background-color: #35a0cf;
+							border-bottom-color: #35a0cf;
+							color: #fff;
 							transition: 0.5s all;
 							&.special-span {
 								b {
-									background-color: #35a0cf;
+									background-color: rgba(255,255,255, 0.2);
 									color: #fff;
 								}
 							}
 							.select-span {
-								background-color: #35a0cf;
+								background-color: rgba(255,255,255, 0.2);
 								color: #fff;
 							}
 
@@ -195,8 +196,12 @@ body {
 								&:before {
 									font-family: 'icomoon';
 									content: "\e73b";
-									color: #35a0cf;
+									color: #fff;
 								}
+							}
+
+							&:hover {
+								color: #fff;
 							}
 						}
 
@@ -290,8 +295,8 @@ body {
 						}
 
 						&.menu-break {
-							background-color: #35a0cf;
-							color: #fff;
+							background-color: #ddd;
+							color: #000;
 							padding: 8px 20px;
 							font-weight: 700;
 						}
@@ -491,7 +496,7 @@ body {
 	    	display: block; 
 	    	overflow: hidden; 
 	    	cursor: pointer;
-	   		border: 2px solid #ddd; 
+	   		border: 2px solid #fff;
 	   		border-radius: 20px;
 		}
 
@@ -670,7 +675,7 @@ body {
 					cursor: pointer;
 				}
 			}
-			background: #444;
+			background-color: #444;
 			color: #fff;
 			padding: 8px 15px;
 			font-weight: 700;
@@ -700,6 +705,19 @@ body {
 				margin-left: -4px;
 			}
 
+		}
+
+		&.tooltip-last {
+			top: -36.16px;
+
+			span {
+				&:after, &:before {
+					top: 100%;
+					left: 50%;
+					border-top-color: #444;
+					border-bottom-color: rgba(136, 183, 213, 0);
+				}
+			}
 		}
 
 		&.back-tooltip {
