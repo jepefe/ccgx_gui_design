@@ -1,144 +1,351 @@
-var backContainers = new Array();
+var backContainers = [];
 var container_list_item = '.interface-container ul li';
 var initContainer = '.all-html-content';
 var initOverview = '.overview-content';
 var interfaceContainer = '.interface-container';
 var old_fill_container = '';
-var allParents = new Array();
+var allParents = [];
 var myListItem = '';
+var innerHTML = '';
 var breadcrumbParents = '';
 var autoCompleteSources = [];
 
 /* Initialize the DOM ready function */
-jQuery(document).ready(function(){
-	(function( $ ) {
-		"use strict";
+jQuery(document).ready(function () {
+    "use strict";
+    (function ($) {
 
-		/* Load the HTML from the map_files folder  */
-		$("[data-xml]").each(function() {
-			var src = $(this).attr("data-xml");
-			var container = $(this);
-		  	$.ajax({
-			        type: "GET",
-					url: src,
-					dataType: "xml",
-					success: function(xml) {
-			 			initConstruct(xml, container);
-			 			init();
-					}
-			});
-		});
+        function addClasses() {
+            $(initContainer).children('ul').addClass('main-ul');
+        }
 
-		function initConstruct(xml, container) {
-			constructDOM($(xml).children().children().first(), container);
-		}
+        function addLevelClass($parent, level) {
+            // add a parent class to the ul
+            $parent.addClass('parent-' + level);
+            // fetch all the li's that are direct children of the ul
+            var $children = $parent.children('li');
+            // add a child class to the li
+            $children.addClass('child-' + level);
+            // loop trough each li
+            $children.each(function () {
+                // get the ul that is a direct child of the li
+                var $sublist = $(this).children('ul');
+                // if an ul was found
+                if ($sublist.length > 0) {
+                    // add a class to the current li indicating there is a sub list
+                    $(this).addClass('has-children');
+                    // repeat the process for the sublist, but with the level one higher
+                    // = recursive function call
+                    addLevelClass($sublist, level + 1);
+                }
+            });
+            /* Add specific "selected" class when initialized */
+            $('ul.main-ul').children().first().addClass('selected');
+        }
 
-		function constructDOM(element, container) {
-			var children = element.children('node');
-			
-			if(children.length == 0) {
-				return;
-			}
+        function initToggles() {
+            $('.menu-toggle-item').each(function () {
+                if (!$(this).hasClass('has-children')) {
+                    var itemToggle = $(this).find('span');
+                    $('.proto-toggle')
+                        .clone()
+                        .removeClass('proto-toggle')
+                        .appendTo(itemToggle);
+                    $('b').remove();
+                }
+            });
+        }
 
-			var ul = $('<ul>');
-			
-			$(container).append(ul);
-			
-			element.children('node').each( function() {
-				var li = $('<li>');
-				var menuLabel = $(this).attr('TEXT');
+        function string_to_slug(str) {
+            str = str.replace(/^\s+|\s+$/g, ''); // trim
+            str = str.toLowerCase();
 
-				if (menuLabel.indexOf("Notifications and configuration") > -1 ) {
-   					li.addClass('menu-break no-menu-item');
-				}
+            var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;",
+                to   = "aaaaeeeeiiiioooouuuunc------",
+                i    = 0,
+                l    = '';
+            for (l = from.length; i < l; i += 1) {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
 
-				if (menuLabel.indexOf("(Toggle)") > -1 ) {
-   					li.addClass('menu-toggle-item');
-				}
+            str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                  .replace(/\s+/g, '-') // collapse whitespace and replace by -
+                  .replace(/-+/g, '-'); // collapse dashes
 
-				if (menuLabel.indexOf("(Select)") > -1 ) {
-   					menuLabel = menuLabel.replace('(Select)', '');
-   					li.addClass('menu-select-item');
-   					li.append('<p class="select-span"></p>');
+            return str;
+        }
 
-   					// $('.interface-container ul:first > li').not(".interface-container ul li ul").each(function(){
-						//$(this).html($(this).html().replace('(Select)', '<p class="select-span"></p>'));
-					// });
-				}
+        function clearSelected() {
+            var allSelectedItems = $(interfaceContainer).find('li.selected');
+            $(allSelectedItems).removeClass('selected');
+        }
 
-				if ($(this).children('font[BOLD="true"]').length > 0) {
-					$('<span>').text(menuLabel).appendTo(li);
-				}
+        function setDataAttributes() {
+            /* For each child, push it to autoCompleteSources */
+            $(initContainer).find('li').each(function (i) {
+                var domel = $(this)[0],
+                    text = domel.childNodes[0].textContent,
+                    slug = string_to_slug(text),
+                    numberslug = i + '-' + slug,
+                    cutIndex = text.indexOf('('),
+                    cutText = '';
+                domel.setAttribute("data-html", numberslug);
+                if (cutIndex >= 0) {
+                    cutText = text.substr(0, cutIndex);
+                } else {
+                    cutText = text;
+                }
+                autoCompleteSources.push({'label': cutText, 'datahtml': numberslug});
+            });
+            /* Give all the children from the initContainer specific data-id's */
+            $(initContainer).find('*').each(function (i) {
+                $(this).attr('data-id', i);
+            });
 
-				else {
-					$(li).text(menuLabel);
-				}
+            $(initContainer).find('ul').each(function () {
+                var liText = $(this).parent().attr('data-text');
+                $(this).attr('data-breadcrumb', liText);
+            });
 
-				$(li).attr('data-text', menuLabel);
+            $('ul.main-ul').attr('data-breadcrumb', 'Products');
 
-				if($(this).children('richcontent[TYPE="NOTE"]').length > 0) {
-					var innerHTML = $(this).find('richcontent[TYPE="NOTE"] body').text();
-					$(li).attr('data-description', innerHTML);
-				}
+        }
 
-				$(ul).append(li);
-				constructDOM($(this), li);
-			});
+        function emptyToolTips() {
+            $(interfaceContainer).find('div.doc-tooltip').each(function () {
+                $(this).parent()
+                    .removeClass('breadcrumb-path-child')
+                    .removeClass('last-breadcrumb-path-child');
+                $(this).remove();
+            });
+        }
 
-		}
+        function generateTopLevelToolTip(ListItem) {
+            if ($(ListItem).is(':last-child')) {
+                $('<div class="doc-tooltip tooltip-last"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+            } else {
+                $('<div class="doc-tooltip"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+            }
+        }
 
-		function init() {
-			/* Add the Toggle and Select classes to the initContainer and add a main-ul class to the first ul */
-			addClasses();
-			/* Add parent and children classes to <li's> and <ul's> */
-			addLevelClass($('.main-ul'), 1);
-			/* Convert Toggles to real Toggles */
-			initToggles();
-			/* Give data attributes to the elements */
-			setDataAttributes();
-			/* Load the documentation options, so users can find elements */
-			initToolTips();
-			/* When all the classes and the datahtml is added clone the initContainer in the interfaceContainer */
-			$(initContainer).clone().fadeIn().appendTo(interfaceContainer);
-			/* Grab the first ul, and not the rest of the HTML */
-			var ulContainer = $(initContainer).find('ul').first().detach();
-			/* Then clear the initContainer and append the ulContainer */
-			$(initContainer).empty().append(ulContainer);
-			/* After that, remove the "all-html-content" class */
-			$(interfaceContainer).find('.all-html-content').removeClass('all-html-content');
-			/* Load where we are right now and show manual */
-			if($('.latest-documentation').length > 0) {
-				initManual();
-			}
-		}
+        function generateEndToolTip(ListItem) {
+            var parent = ListItem.parent();
+            clearSelected();
+            parent.scrollTo(ListItem, 500, {margin: true});
+            $(ListItem).addClass('selected');
+            if ($(ListItem).is(':last-child')) {
+                $('<div class="doc-tooltip tooltip-last"><span>This is the item.<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+            } else {
+                $('<div class="doc-tooltip"><span>This is the item.<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
+            }
+        }
 
-		function addLevelClass($parent, level) {
-		    // add a parent class to the ul
-		    $parent.addClass('parent-'+level);
-		    // fetch all the li's that are direct children of the ul
-		    var $children = $parent.children('li');
-		    // add a child class to the li
-		    $children.addClass('child-'+level);
-		    // loop trough each li
-		    $children.each(function() {
-		        // get the ul that is a direct child of the li
-		        var $sublist = $(this).children('ul');
-		        // if an ul was found
-		        if ($sublist.length > 0) {
-		            // add a class to the current li indicating there is a sub list
-		            $(this).addClass('has-children');
-		            // repeat the process for the sublist, but with the level one higher
-		            // = recursive function call
-		            addLevelClass($sublist, level+1);
-		        }
-		    });
-		    /* Add specific "selected" class when initialized */
-		    $('ul.main-ul').children().first().addClass('selected');
-		}
+        function generateBackToolTip() {
+            $('<div class="back-tooltip"><span>Please return to the main menu<i class="icon-close"></i></span></div>').hide().appendTo('.interface-container').fadeIn(500);
+        }
 
-		function addClasses() {
-			$(initContainer).children('ul').addClass('main-ul');
-		}
+        function tellTheUserWhatToDo() {
+
+            if (allParents.length === 0) {
+                // Nothing happens
+            } else {
+
+                /* Check in the allParents if the user is currently in a specific item in the path */
+                allParents.each(function () {
+                    $(this).addClass('breadcrumb-path-child');
+                });
+                /* Get the current list item which is selected */
+                var selectedListItem = $(interfaceContainer).find('li.selected'),
+                    parentListItem = selectedListItem.parent(),
+                    addedToolTip = false;
+
+                $(parentListItem).each(function () {
+                    if ($(this).children().hasClass('breadcrumb-path-child')) {
+                        var breadcrumbChild = $(this).children('li.breadcrumb-path-child');
+
+                        if (breadcrumbChild.hasClass('last-breadcrumb-path-child')) {
+                            generateEndToolTip(breadcrumbChild);
+                            allParents = [];
+                        } else {
+                            generateTopLevelToolTip(breadcrumbChild);
+                        }
+                        /* Set added ToolTip to true */
+                        addedToolTip = true;
+                    }
+                });
+
+                /* If no ToolTip is added */
+                if (addedToolTip === false) {
+                    generateBackToolTip();
+                }
+            }
+        }
+
+        function findToolTips(ui) {
+            /* Set the Data HTML */
+            var datahtml = ui.item.datahtml,
+                parent = '';
+            /* Set the Data List Item */
+            myListItem = $('li[data-html="' + datahtml + '"]');
+            /* add Specific Class to myListItem */
+            myListItem.addClass('last-breadcrumb-path-child');
+            /* Get the parent of the List Item */
+            parent = myListItem.parent();
+            /* Get all the parents */
+            allParents = $.merge(myListItem, myListItem.parentsUntil('.main-ul'));
+            /* Remove the focus from the search input field */
+            $('.documentation-search').blur();
+            /* Call a function to tell the users to go back if he's not in the right menu */
+            tellTheUserWhatToDo(myListItem);
+        }
+
+        function getParents(item) {
+            var getParents = [],
+                datahtml = item.datahtml,
+                myListItem = $(initContainer).find('li[data-html="' + datahtml + '"]');
+            breadcrumbParents = myListItem.parentsUntil('.main-ul');
+            breadcrumbParents.each(function () {
+                if ($(this).is('li')) {
+                    var domel = $(this)[0],
+                        text = domel.childNodes[0].textContent;
+                    getParents.push({'label': text});
+                }
+            });
+            return getParents;
+        }
+
+        function docGetListItems(currentUl) {
+            /* Specify the documentation container */
+            var docContainer = 'ul.documentation-list';
+            /* Initialize the autocomplete */
+            $('.documentation-search').autocomplete({
+                source: autoCompleteSources,
+                select: function (event, ui) {
+                    emptyToolTips();
+                    findToolTips(ui);
+                }
+            }).data('ui-autocomplete')
+                ._renderItem = function (ul, item) {
+                    var breadcrumbs = [],
+                        visible_breadcrumbs = '';
+                    breadcrumbs = getParents(item);
+
+                    for (var i = 0; i < breadcrumbs.length; i++) {
+                        visible_breadcrumbs = breadcrumbs[i].label + " <span class='breadcrumb-arrow'>&raquo;</span> " + visible_breadcrumbs;
+                    }
+                    return $( "<li>" )
+                    .data( "ui-autocomplete-item", item )
+                    .append( "<a data-html=" + item.datahtml + "><span class='autocomplete-label'>" + item.label + "</span><span class='autocomplete-breadcrumbs'>" + visible_breadcrumbs + "</span></a>" )
+                    .appendTo( ul );
+            };
+
+        }
+
+        /* Documentation Manual */
+        function initToolTips() {
+            if ($('.latest-documentation').length > 0) {
+                var currentUl = $('.main-ul');
+                /* Get all list items from the interface and fill them in the doc div */
+                docGetListItems(currentUl);
+                /* Set autocomplete width */
+                setAutoCompleteWidth();
+            }
+        }
+
+        function constructDOM(element, container) {
+            var children = element.children('node'),
+                ul = $('<ul>');
+
+            if (children.length === 0) {
+                return;
+            }
+
+            $(container).append(ul);
+            element.children('node').each(function () {
+                var li = $('<li>'),
+                    menuLabel = $(this).attr('TEXT');
+
+                if (menuLabel.indexOf("Notifications and configuration") > -1) {
+                    li.addClass('menu-break no-menu-item');
+                }
+
+                if (menuLabel.indexOf("(Toggle)") > -1) {
+                    li.addClass('menu-toggle-item');
+                }
+
+                if (menuLabel.indexOf("(Select)") > -1) {
+                    menuLabel = menuLabel.replace('(Select)', '');
+                    li.addClass('menu-select-item');
+                    li.append('<p class="select-span"></p>');
+
+                    // $('.interface-container ul:first > li').not(".interface-container ul li ul").each(function(){
+                        //$(this).html($(this).html().replace('(Select)', '<p class="select-span"></p>'));
+                    // });
+                }
+
+                if ($(this).children('font[BOLD="true"]').length > 0) {
+                    $('<span>').text(menuLabel).appendTo(li);
+                } else {
+                    $(li).text(menuLabel);
+                }
+
+                $(li).attr('data-text', menuLabel);
+
+                if ($(this).children('richcontent[TYPE="NOTE"]').length > 0) {
+                    innerHTML = $(this).find('richcontent[TYPE="NOTE"] body').text();
+                    $(li).attr('data-description', innerHTML);
+                }
+
+                $(ul).append(li);
+                constructDOM($(this), li);
+            });
+        }
+
+        function init() {
+            /* Add the Toggle and Select classes to the initContainer and add a main-ul class to the first ul */
+            addClasses();
+            /* Add parent and children classes to <li's> and <ul's> */
+            addLevelClass($('.main-ul'), 1);
+            /* Convert Toggles to real Toggles */
+            initToggles();
+            /* Give data attributes to the elements */
+            setDataAttributes();
+            /* Load the documentation options, so users can find elements */
+            initToolTips();
+            /* When all the classes and the datahtml is added clone the initContainer in the interfaceContainer */
+            $(initContainer).clone().fadeIn().appendTo(interfaceContainer);
+            /* Grab the first ul, and not the rest of the HTML */
+            var ulContainer = $(initContainer).find('ul').first().detach();
+            /* Then clear the initContainer and append the ulContainer */
+            $(initContainer).empty().append(ulContainer);
+            /* After that, remove the "all-html-content" class */
+            $(interfaceContainer).find('.all-html-content').removeClass('all-html-content');
+            /* Load where we are right now and show manual */
+            if($('.latest-documentation').length > 0) {
+                initManual();
+            }
+        }
+
+        function initConstruct(xml, container) {
+            constructDOM($(xml).children().children().first(), container);
+        }
+
+        /* Load the HTML from the map_files folder  */
+        $("[data-xml]").each(function () {
+            var src = $(this).attr("data-xml"),
+                container = $(this);
+            $.ajax({
+                type: "GET",
+                url: src,
+                dataType: "xml",
+                success: function (xml) {
+                    initConstruct(xml, container);
+                    init();
+                }
+            });
+        });
+
+		
 
 		function includeSpans() {
 			$('.interface-container ul:first > li').not(".interface-container ul li ul").each(function(){
@@ -166,7 +373,7 @@ jQuery(document).ready(function(){
 		/* Remove current tooltip */
 		$(interfaceContainer).on('click', 'div.doc-tooltip .icon-close', function() {
 			emptyToolTips();
-			allParents = new Array();
+			allParents = [];
 		});
 
 		/* Key Functions */
@@ -392,23 +599,9 @@ jQuery(document).ready(function(){
 			navigateOverview();
 		}
 
-		function initToggles() {
-			$('.menu-toggle-item').each(function() {
-				if(!$(this).hasClass('has-children')) {
-					var itemToggle = $(this).find('span');
-					$('.proto-toggle')
-						.clone()
-						.removeClass('proto-toggle')
-						.appendTo(itemToggle);
-					$('b').remove();
-				}
-			});
-		}
-
 		function initSelects() {
 			$('.select-span').each(function() {
 				var nextListItem = $(this).next().next().children().eq(0).text();
-				console.log(nextListItem);
 				$(this).text(nextListItem);
 				$(this).next().next().children().each(function() {
 					$(this).addClass('select-option');
@@ -430,226 +623,10 @@ jQuery(document).ready(function(){
 			firstUlItem.addClass('main-ul');
 		}
 
-		function clearSelected() {
-			var allSelectedItems = $(interfaceContainer).find('li.selected');
-			$(allSelectedItems).removeClass('selected');
-		}
-
-/* Documentation Manual */
-function initToolTips() {
-	if($('.latest-documentation').length > 0) {
-		var currentUl = $('.main-ul');
-		
-		/* Get all list items from the interface and fill them in the doc div */
-		docGetListItems(currentUl);
-
-		/* Set autocomplete width */
-		setAutoCompleteWidth();
-	}
-}
 
 function setAutoCompleteWidth() {
 	var inputWidth = $('.documentation-search').width();
 	$('.ui-autocomplete').css('width', inputWidth);
-}
-
-function string_to_slug(str) {
-  str = str.replace(/^\s+|\s+$/g, ''); // trim
-  str = str.toLowerCase();
-  
-  // remove accents, swap ñ for n, etc
-  var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-  var to   = "aaaaeeeeiiiioooouuuunc------";
-  for (var i=0, l=from.length ; i<l ; i++) {
-    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-  }
-
-  str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-    .replace(/\s+/g, '-') // collapse whitespace and replace by -
-    .replace(/-+/g, '-'); // collapse dashes
-
-  return str;
-}
-
-function setDataAttributes() {
-	/* For each child, push it to autoCompleteSources */
-	$(initContainer).find('li').each(function(i, ele) {
-		var domel = $(this)[0];
-		var text = domel.childNodes[0].textContent;
-		var slug = string_to_slug(text);
-		var numberslug = i + '-' + slug;
-		domel.setAttribute("data-html", numberslug);
-		var cutIndex = text.indexOf('(');
-		if(cutIndex >= 0) {
-			var cutText = text.substr(0, cutIndex);	
-		}
-		else {
-			var cutText = text;
-		}
-		autoCompleteSources.push({'label': cutText, 'datahtml': numberslug});
-	});
-	/* Give all the children from the initContainer specific data-id's */
-	$(initContainer).find('*').each(function(i, ele) {
-		$(this).attr('data-id', i);
-	});
-
-	$(initContainer).find('ul').each(function(i, ele) {
-		var liText = $(this).parent().attr('data-text');
-		$(this).attr('data-breadcrumb', liText);
-	});
-
-	$('ul.main-ul').attr('data-breadcrumb', 'Products');
-
-}
-
-function docGetListItems(currentUl) {
-	/* Specify the documentation container */
-	var docContainer = 'ul.documentation-list';
-	
-	/* Initialize the autocomplete */
-	$( ".documentation-search" ).autocomplete({
-		source: autoCompleteSources,
-		select: function(event, ui) {
-			emptyToolTips();
-			findToolTips(event, ui);
-		}
-    })
-    .data( "ui-autocomplete" )
-    	._renderItem = function( ul, item ) {
-    		var breadcrumbs = [];
-    		var breadcrumbs = getParents(item);
-
-			var visible_breadcrumbs = '';
-			for (var i = 0; i < breadcrumbs.length; i++) {
-			    visible_breadcrumbs = breadcrumbs[i].label + " <span class='breadcrumb-arrow'>&raquo;</span> " + visible_breadcrumbs;
-			}
-  			return $( "<li>" )
-   			.data( "ui-autocomplete-item", item )
-    		.append( "<a data-html=" + item.datahtml + "><span class='autocomplete-label'>" + item.label + "</span><span class='autocomplete-breadcrumbs'>" + visible_breadcrumbs + "</span></a>" )
-    		.appendTo( ul );
-	};
-
-}
-
-function getParents(item) {
-	var getParents = [];
-	/* Set the Data HTML */
-	var datahtml = item.datahtml;
-	/* Set the Data Slug */
-	var datalabel = item.label;
-	/* Set the Data List Item */
-	var myListItem = $(initContainer).find('li[data-html="' + datahtml + '"]');
-	/* Get all the Parents */
-	breadcrumbParents = myListItem.parentsUntil('.main-ul');
-
-	breadcrumbParents.each(function(i, ele) {
-		if($(this).is('li')) {
-			var domel = $(this)[0];
-			var text = domel.childNodes[0].textContent;
-			getParents.push({'label': text});
-		}
-	});
-	
-	return getParents;
-
-}
-
-function emptyToolTips() {
-	$(interfaceContainer).find('div.doc-tooltip').each(function() {
-		$(this).parent()
-			.removeClass('breadcrumb-path-child')
-			.removeClass('last-breadcrumb-path-child');
-		$(this).remove();
-	});
-}
-
-function generateTopLevelToolTip(ListItem) {
-	if($(ListItem).is(':last-child')) {
-		$('<div class="doc-tooltip tooltip-last"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
-	}
-	else {
-		$('<div class="doc-tooltip"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
-	}
-}
-
-function generateEndToolTip(ListItem) {
-	var parent = ListItem.parent();
-	clearSelected();
-	parent.scrollTo(ListItem , 500, {margin:true} );
-	$(ListItem).addClass('selected');
-	if($(ListItem).is(':last-child')) {
-	    $('<div class="doc-tooltip tooltip-last"><span>This is the item.<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
-	}
-	else {
-		$('<div class="doc-tooltip"><span>This is the item.<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
-	}
-	
-}
-
-function generateBackToolTip() {
-	$('<div class="back-tooltip"><span>Please return to the main menu<i class="icon-close"></i></span></div>').hide().appendTo('.interface-container').fadeIn(500);
-}
-
-function findToolTips(event, ui) {
-	/* Set the Data HTML */
-	var datahtml = ui.item.datahtml;
-	/* Set the Data Slug */
-	var datalabel = ui.item.label;
-	/* Set the Data List Item */
-	myListItem = $('li[data-html="' + datahtml + '"]');
-	/* add Specific Class to myListItem */
-	myListItem.addClass('last-breadcrumb-path-child');
-	/* Get the parent of the List Item */
-	var parent = myListItem.parent();
-	/* Get all the parents */
-	allParents = $.merge(myListItem, myListItem.parentsUntil('.main-ul'));
-	/* Remove the focus from the search input field */
-	$('.documentation-search').blur(); 
-	/* Call a function to tell the users to go back if he's not in the right menu */
-	tellTheUserWhatToDo(myListItem);
-}
-
-function tellTheUserWhatToDo() {
-
-	if(allParents.length == 0) {
-		// Nothing happens
-	}
-	
-	else {
-
-		/* Check in the allParents if the user is currently in a specific item in the path */
-		allParents.each(function() {
-			$(this).addClass('breadcrumb-path-child');
-		});
-		/* Get the current list item which is selected */
-		var selectedListItem = $(interfaceContainer).find('li.selected');
-
-		var parentListItem = selectedListItem.parent();
-		var addedToolTip = false;
-
-		$(parentListItem).each(function() {
-			if($(this).children().hasClass('breadcrumb-path-child')) {
-				var breadcrumbChild = $(this).children('li.breadcrumb-path-child');
-
-				if(breadcrumbChild.hasClass('last-breadcrumb-path-child')) {
-					generateEndToolTip(breadcrumbChild);
-					allParents = new Array();
-				}
-
-				else {
-					generateTopLevelToolTip(breadcrumbChild);
-				}
-				
-				/* Set added ToolTip to true */
-				addedToolTip = true;
-			}
-		});
-
-		/* If no ToolTip is added */
-		if(addedToolTip == false) {
-			generateBackToolTip();
-		}
-	}
 }
 
 function initManual() {
