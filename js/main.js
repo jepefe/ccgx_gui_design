@@ -374,8 +374,12 @@ jQuery(document).ready(function () {
         }
 
         function scrollMoreCheck(item) {
-            if (item.hasClass('last-scroll-item')) {
-                $('.scroll-down-for-more').fadeOut(500);
+            var itemIndex = item.index(),
+                lastScrollItemIndex = $(interfaceContainer).find('li.last-scroll-item').index();
+            if (itemIndex < lastScrollItemIndex) {
+                $('.scroll-down-for-more').stop().fadeIn(500);
+            } else {
+                $('.scroll-down-for-more').stop().fadeOut(500);
             }
         }
 
@@ -508,6 +512,8 @@ jQuery(document).ready(function () {
                         parent.scrollTo(scrollTo, 100, {margin: true});
                     }
                 }
+
+                scrollMoreCheck(scrollTo);
             });
         }
 
