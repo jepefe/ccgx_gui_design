@@ -374,12 +374,16 @@ jQuery(document).ready(function () {
         }
 
         function scrollMoreCheck(item) {
-            var itemIndex = item.index(),
+            var topUl = $(interfaceContainer).find('ul').first(),
+                childrenAmount = $(topUl).children().length,
+                itemIndex = item.index(),
                 lastScrollItemIndex = $(interfaceContainer).find('li.last-scroll-item').index();
-            if (itemIndex < lastScrollItemIndex) {
-                $('.scroll-down-for-more').stop().fadeIn(500);
-            } else {
-                $('.scroll-down-for-more').stop().fadeOut(500);
+            if (childrenAmount >= 6) {
+                if (itemIndex < lastScrollItemIndex) {
+                    $('.scroll-down-for-more').stop().fadeIn(500);
+                } else {
+                    $('.scroll-down-for-more').stop().fadeOut(500);
+                }
             }
         }
 
@@ -393,6 +397,8 @@ jQuery(document).ready(function () {
 
             if (childrenAmount >= 6) {
                 $('.scroll-down-for-more').fadeIn(500);
+            } else {
+                $('.scroll-down-for-more').fadeOut(500);
             }
         }
 
@@ -442,6 +448,7 @@ jQuery(document).ready(function () {
                 initSelectedSpecific(interfaceSelected);
                 includeSpans();
                 initSelects();
+                initScrollMore();
                 emptyToolTips();
                 tellTheUserWhatToDo();
             }
