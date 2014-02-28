@@ -69,7 +69,7 @@ jQuery(document).ready(function () {
                 str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
             }
 
-            str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            str = str.replace(/[^a-z0-9 \-]/g, '') // remove invalid chars
                   .replace(/\s+/g, '-') // collapse whitespace and replace by -
                   .replace(/-+/g, '-'); // collapse dashes
 
@@ -147,10 +147,7 @@ jQuery(document).ready(function () {
 
         function tellTheUserWhatToDo() {
 
-            if (allParents.length === 0) {
-                // Nothing happens
-            } else {
-
+            if (allParents.length !== 0) {
                 /* Check in the allParents if the user is currently in a specific item in the path */
                 allParents.each(function () {
                     $(this).addClass('breadcrumb-path-child');
@@ -185,7 +182,7 @@ jQuery(document).ready(function () {
         function findToolTips(ui) {
             /* Set the Data HTML */
             var datahtml = ui.item.datahtml,
-                parent = '';
+                parent;
             /* Set the Data List Item */
             myListItem = $('li[data-html="' + datahtml + '"]');
             /* add Specific Class to myListItem */
@@ -216,6 +213,7 @@ jQuery(document).ready(function () {
         }
 
         function docGetListItems() {
+            /*jslint nomen: true */
             /* Initialize the autocomplete */
             $('.documentation-search').autocomplete({
                 source: autoCompleteSources,
@@ -443,6 +441,7 @@ jQuery(document).ready(function () {
                     interfaceSelected = '';
                 $(cleanParent).clone().fadeIn().appendTo(interfaceContainer);
                 $('.color-control-top-bar-title').text(breadcrumbText);
+                $('.color-control-top-bar-title').prepend('<i class="icon-chevron-left"></i>');
                 clearSelected();
                 interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
                 initSelectedSpecific(interfaceSelected);
@@ -466,6 +465,7 @@ jQuery(document).ready(function () {
                     backContainers.push({parent: parentId, selected: selectedId});
                     /* Set the breadcrumb */
                     $('.color-control-top-bar-title').text(breadcrumbText);
+                    $('.color-control-top-bar-title').prepend('<i class="icon-chevron-left"></i>');
                     old_fill_container = $('.interface-container').html();
                     $(interfaceContainer).empty();
                     $(ul).clone().fadeIn().appendTo(interfaceContainer);
