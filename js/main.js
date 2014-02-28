@@ -373,16 +373,23 @@ jQuery(document).ready(function () {
             });
         }
 
-        function initScrollMore(ul) {
-            /* Total amount of children */
-            var childrenAmount = $(ul).children().length;
-            //scrollToLast = childrenAmount - 6;
+        function scrollMoreCheck(item) {
+            if (item.hasClass('last-scroll-item')) {
+                $('.scroll-down-for-more').fadeOut(500);
+            }
+        }
+
+        function initScrollMore() {
+            var topUl = $(interfaceContainer).find('ul').first(),
+                childrenAmount = $(topUl).children().length,
+                scrollAmount = childrenAmount - 6,
+                lastScrollItem = $(topUl).find('li:eq(' + scrollAmount + ')');
+
+            lastScrollItem.addClass('last-scroll-item');
+
             if (childrenAmount >= 6) {
                 $('.scroll-down-for-more').fadeIn(500);
             }
-            // if ul has more then 6 children, then add something
-
-            // if last child of ul is there, hide the view more
         }
 
         /* Remove current tooltip */
@@ -456,7 +463,7 @@ jQuery(document).ready(function () {
                     /* Convert Selects to real Selects */
                     initSelects();
                     initSelected();
-                    initScrollMore(ul);
+                    initScrollMore();
                     emptyToolTips();
                     tellTheUserWhatToDo();
                 }
@@ -480,6 +487,7 @@ jQuery(document).ready(function () {
                     }
                 }
 
+                scrollMoreCheck(scrollTo);
 
             });
         }
