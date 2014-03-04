@@ -109,8 +109,9 @@ body {
         font-weight: 700;
         font-size: 14px;
         margin-top: 8px;
-        margin-left: 5px;
         display: inline-block; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar .color-control-top-bar-title.title-has-chevron, body .color-control-interface .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title.title-has-chevron {
+          margin-left: 5px; }
         body .color-control-interface .color-control-top-bar.color-control-top-bar .color-control-top-bar-title i, body .color-control-interface .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title i {
           position: absolute;
           left: -15px;

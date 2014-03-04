@@ -149,9 +149,12 @@ body {
 					font-weight: 700;
 					font-size: 14px;
 					margin-top: 8px;
-					margin-left: 5px;
 					display: inline-block;
 
+					&.title-has-chevron {
+						margin-left: 5px;
+					}
+					
 					i {
 						position: absolute;
 						left: -15px;

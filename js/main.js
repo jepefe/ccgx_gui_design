@@ -294,10 +294,6 @@ jQuery(document).ready(function () {
                     menuLabel = menuLabel.replace('(Select)', '');
                     li.addClass('menu-select-item');
                     li.append('<p class="select-span"></p>');
-
-                    // $('.interface-container ul:first > li').not(".interface-container ul li ul").each(function(){
-                        //$(this).html($(this).html().replace('(Select)', '<p class="select-span"></p>'));
-                    // });
                 }
 
                 if ($(this).children('font[BOLD="true"]').length > 0) {
@@ -441,7 +437,12 @@ jQuery(document).ready(function () {
                     interfaceSelected = '';
                 $(cleanParent).clone().fadeIn().appendTo(interfaceContainer);
                 $('.color-control-top-bar-title').text(breadcrumbText);
-                $('.color-control-top-bar-title').prepend('<i class="icon-chevron-left"></i>');
+                if (breadcrumbText !== 'Products') {
+                    $('.color-control-top-bar-title').prepend('<i class="icon-chevron-left"></i>');
+                    $('.color-control-top-bar-title').addClass('title-has-chevron');
+                } else {
+                    $('.color-control-top-bar-title').removeClass('title-has-chevron');
+                }
                 clearSelected();
                 interfaceSelected = $(interfaceContainer).find('[data-id="' + selectedId + '"]');
                 initSelectedSpecific(interfaceSelected);
@@ -465,7 +466,10 @@ jQuery(document).ready(function () {
                     backContainers.push({parent: parentId, selected: selectedId});
                     /* Set the breadcrumb */
                     $('.color-control-top-bar-title').text(breadcrumbText);
-                    $('.color-control-top-bar-title').prepend('<i class="icon-chevron-left"></i>');
+                    if (breadcrumbText !== 'Products') {
+                        $('.color-control-top-bar-title').prepend('<i class="icon-chevron-left"></i>');
+                        $('.color-control-top-bar-title').addClass('title-has-chevron');
+                    }
                     old_fill_container = $('.interface-container').html();
                     $(interfaceContainer).empty();
                     $(ul).clone().fadeIn().appendTo(interfaceContainer);
