@@ -10,6 +10,7 @@ var myListItem = '';
 var innerHTML = '';
 var breadcrumbParents = '';
 var autoCompleteSources = [];
+var overviewSlider = '';
 
 /* Initialize the DOM ready function */
 jQuery(document).ready(function () {
@@ -426,7 +427,7 @@ jQuery(document).ready(function () {
             });
         }
 
-        function goBack() {
+        function goBackInTree() {
             if (backContainers.length > 0) {
                 $(interfaceContainer).empty();
                 var allIds = backContainers.pop(),
@@ -454,7 +455,31 @@ jQuery(document).ready(function () {
             }
         }
 
-        function goRight() {
+        function goBackInOverview() {
+            var ulContainer = $(interfaceContainer).find('ul.slides'),
+                currentActiveSlide = ulContainer.find('li.flex-active-slide'),
+                currentActiveItem = currentActiveSlide.find('.scroll-active'),
+                currentActiveItemParent = currentActiveItem.parent(),
+                nextActiveItem = currentActiveItem.prev('.overview-scrollable'),
+                currentActiveMeta = currentActiveSlide.find('.active-meta'),
+                nextActiveMeta = currentActiveMeta.prev('.overview-meta'),
+                currentActiveMetaParent = currentActiveMeta.parent();
+
+            if (nextActiveItem.length > 0) {
+                nextActiveItem.addClass('scroll-active');
+                currentActiveItem.removeClass('scroll-active');
+                nextActiveMeta.addClass('active-meta');
+                currentActiveMeta.removeClass('active-meta');
+            } else {
+                currentActiveItem.removeClass('scroll-active');
+                currentActiveItemParent.children().last().addClass('scroll-active');
+                currentActiveMeta.removeClass('active-meta');
+                currentActiveMetaParent.children().last().addClass('active-meta');
+
+            }
+        }
+
+        function goRightInTree() {
             $('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function () {
                 if ($(this).hasClass('has-children')) {
                     /* Get the id of the selected item */
@@ -485,7 +510,31 @@ jQuery(document).ready(function () {
             });
         }
 
-        function goDown() {
+        function goRightInOverview() {
+            var ulContainer = $(interfaceContainer).find('ul.slides'),
+                currentActiveSlide = ulContainer.find('li.flex-active-slide'),
+                currentActiveItem = currentActiveSlide.find('.scroll-active'),
+                currentActiveItemParent = currentActiveItem.parent(),
+                nextActiveItem = currentActiveItem.next('.overview-scrollable'),
+                currentActiveMeta = currentActiveSlide.find('.active-meta'),
+                nextActiveMeta = currentActiveMeta.next('.overview-meta'),
+                currentActiveMetaParent = currentActiveMeta.parent();
+
+            if (nextActiveItem.length > 0) {
+                nextActiveItem.addClass('scroll-active');
+                currentActiveItem.removeClass('scroll-active');
+                nextActiveMeta.addClass('active-meta');
+                currentActiveMeta.removeClass('active-meta');
+            } else {
+                currentActiveItem.removeClass('scroll-active');
+                currentActiveItemParent.children().first().addClass('scroll-active');
+                currentActiveMeta.removeClass('active-meta');
+                currentActiveMetaParent.children().first().addClass('active-meta');
+
+            }
+        }
+
+        function goDownInTree() {
             $('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function () {
                 var parent = $(this).parent(),
                     scrollTo = $(this).next();
@@ -507,7 +556,7 @@ jQuery(document).ready(function () {
             });
         }
 
-        function goUp() {
+        function goUpInTree() {
             $('.interface-container ul:first > li.selected').not(".interface-container ul li ul li.selected").each(function () {
                 var parent = $(this).parent(),
                     scrollTo = $(this).prev();
@@ -528,6 +577,49 @@ jQuery(document).ready(function () {
             });
         }
 
+        function goUp() {
+            var checkStatus = $(interfaceContainer).children().first();
+            if (checkStatus.hasClass('overview-content')) {
+                 /* If in overview then go to the next slide */
+                goRightInOverview();
+            } else {
+                /* If in tree mode, go to the next tab */
+                goUpInTree();
+            }
+        }
+
+        function goDown() {
+            var checkStatus = $(interfaceContainer).children().first();
+            if (checkStatus.hasClass('overview-content')) {
+                 /* If in overview then go to the next slide */
+                goBackInOverview();
+            } else {
+                /* If in tree mode, go to the next tab */
+                goDownInTree();
+            }
+        }
+
+        function goRight() {
+            var checkStatus = $(interfaceContainer).children().first();
+            if (checkStatus.hasClass('overview-content')) {
+                 /* If in overview then go to the next slide */
+                goRightInOverview();
+            } else {
+                /* If in tree mode, go to the next tab */
+                goRightInTree();
+            }
+        }
+
+        function goBack() {
+            var checkStatus = $(interfaceContainer).children().first();
+            if (checkStatus.hasClass('overview-content')) {
+                 /* If in overview then go to the next slide */
+                goBackInOverview();
+            } else {
+                /* If in tree mode, go to the next tab */
+                goBackInTree();
+            }
+        }
         /* Key Functions */
 
         $(document).keydown(function (e) {
@@ -619,7 +711,7 @@ jQuery(document).ready(function () {
         });
 
         $('.color-control-buttons').on('click', '.color-control-button-nav-middle', function () {
-            goRight();
+            goRightInTree();
             /* Clear existing description */
             clearDocumentation();
             /* Check where we are right now and show the manual */
@@ -634,7 +726,10 @@ jQuery(document).ready(function () {
             /* Clone the html-content into the container */
             $(initContainer).clone().fadeIn().appendTo(interfaceContainer);
             /* Set the top bar title to Products */
+            $(interfaceContainer).removeClass('in-overview');
             $('.color-control-top-bar-title').text('Products');
+            $('.color-control-bottom-bar').show();
+            $('.color-control-top-bar').removeClass('overview-title');
         }
 
         /* Go to the main menu */
@@ -642,24 +737,16 @@ jQuery(document).ready(function () {
             reloadEntireMenu();
         });
 
-        function navigateOverview() {
-            $('div.overview-content').on('click', 'button.overview-next', function () {
-                $('.current').removeClass('current').hide()
-                    .next().show().addClass('current');
-                if ($('.current').hasClass('last')) {
-                    $('button.overview-next').attr('disabled', true);
-                }
-                $('button.overview-previous').attr('disabled', null);
+        function initSlider() {
+            overviewSlider = $(interfaceContainer).find('.flexslider');
+            overviewSlider.flexslider({
+                slideshow: false,
+                directionNav: false
             });
-
-            $('div.overview-content').on('click', 'button.overview-previous', function () {
-                $('.current').removeClass('current').hide()
-                    .prev().show().addClass('current');
-                if ($('.current').hasClass('first')) {
-                    $('button.overview-previous').attr('disabled', true);
-                }
-                $('button.overview-next').attr('disabled', null);
-            });
+            var ulContainer = $(interfaceContainer).find('ul.slides'),
+                currentActiveSlide = ulContainer.find('li.flex-active-slide'),
+                titleText = currentActiveSlide.attr('data-title');
+            $('.color-control-top-bar-title').text(titleText);
         }
 
         function goOverview() {
@@ -667,15 +754,29 @@ jQuery(document).ready(function () {
             $(interfaceContainer).empty();
             /* Clone the html-content into the container */
             $(initOverview).clone().fadeIn().appendTo(interfaceContainer);
+            /* Add class to interfaceContainer */
+            $(interfaceContainer).addClass('in-overview');
             /* Set the top bar title to Overview */
-            $('.color-control-top-bar-title').text('Overview');
-            /* Run navigateOverview */
-            navigateOverview();
+            $('.color-control-bottom-bar').hide();
+            $('.color-control-top-bar').addClass('overview-title');
+            /* Initialize the FlexSlider */
+            initSlider();
         }
 
         /* Go to overview */
         $('.color-control-buttons').on('click', '.color-control-button-left', function () {
-            goOverview();
+            var checkStatus = $(interfaceContainer).children().first();
+            if (checkStatus.hasClass('overview-content')) {
+                 /* If in overview then go to the next slide */
+                overviewSlider.flexslider('next');
+                var ulContainer = $(interfaceContainer).find('ul.slides'),
+                    currentActiveSlide = ulContainer.find('li.flex-active-slide'),
+                    titleText = currentActiveSlide.attr('data-title');
+                    $('.color-control-top-bar-title').text(titleText);
+            } else {
+                /* If in tree mode, go to the next tab */
+                goOverview();
+            }
         });
 
     }(jQuery, document));

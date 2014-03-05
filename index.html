@@ -6,6 +6,7 @@
 		<title>Color Control GX</title>
 		<link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
 		<link href='fonts/icomoon.css' rel='stylesheet' type='text/css'>
+		<link href='css/flexslider.css' rel='stylesheet' type='text/css'>
 		<link href='style.css' rel='stylesheet' type='text/css'>
 	</head>
 <body>
@@ -53,26 +54,303 @@
 						    </label>
 						</div>
 						<div class="overview-content">
-							<div class="overview-1 single-overview current first">DC Power. Shore Power Voltage Display.</div>
-							<div class="overview-2 single-overview">Overview 2 here</div>
-							<div class="overview-3 single-overview last">Overview 3 here</div>
-							<div class="overview-navigation">
-								<button class="overview-next">
-									<i class="icon-arrow-right2"></i>
-								</button>
-								<button disabled="disabled" class="overview-previous">
-									<i class="icon-arrow-left2"></i>
-								</button>
+							<div class="flexslider">
+							  <ul class="slides">
+<!-- 
+	Overview 
+	|| MultiPlus
+	|| BMV 
+	|| MPPT 
+-->
+							    <li class="overview-multiplus" data-title="MultiPlus / BMV / MPPT">
+									<div class="scrollable-items">
+										<div class="image-meta image-multiplus overview-scrollable scroll-active">
+											<div class="image"></div>
+										</div>
+										<div class="image-meta image-mppt overview-scrollable">
+											<div class="image"></div>
+										  </div>
+										<div class="image-meta image-battery overview-scrollable">
+											<div class="image"></div>
+										</div>
+									</div>
+							      <div class="ac-in">
+							      	<span class="sub-title">AC input</span>
+							      	<span class="sub-desc">230V</span>
+							      	<span class="sub-desc">6.1A</span>
+							      	<span class="sub-desc">1403W</span>
+							      </div>
+							      <div class="ac-out">
+							      	<span class="sub-title">AC output</span>
+							      	<span class="sub-desc">230V</span>
+							      	<span class="sub-desc">6.1A</span>
+							      	<span class="sub-desc">1403W</span>
+							      </div>
+							      <div class="dc-system">
+							      	<span class="sub-title">DC System</span>
+							      	<span class="sub-desc">4.15A</span>
+							      </div>
+							      <div class="overview-icon icon-ac-in-multiplus">
+							      	<div class="arrow-inactive"></div>
+							      </div>
+							      <div class="overview-icon icon-ac-out-multiplus">
+							      	<div class="arrow-inactive"></div>
+							      </div>
+							      <div class="overview-icon icon-battery-multiplus">
+							      	<div class="gif-arrow-up"></div>
+							      </div>
+							      <div class="overview-icon icon-dc-system-battery">
+							      	<div class="gif-arrow-left"></div>
+							      </div>
+							      <div class="overview-icon icon-solar-battery">
+							      	<div class="gif-arrow-right"></div>
+							      </div>
+							      <div class="overview-icon-info info-solar-battery">
+							      	4.9A
+							      </div>
+							      <div class="overview-icon-info info-multiplus-battery">
+							      	15.1A
+							      </div>
+							      <div class="meta-data">
+							      		<div class="multiplus-meta overview-meta active-meta">
+									      <span class="battery-title main-title">MultiPlus</span>
+									  	</div>
+									  	<div class="mppt overview-meta">
+									      <span class="battery-title main-title">BlueSolar</span>
+									      <span class="voltage-title sub-title">Solar Watts</span>
+									      <span class="battery-voltage sub-desc">2340W</span>
+									  </div>
+								      <div class="battery-meta overview-meta">
+									      <span class="battery-title main-title">Battery</span>
+									      <span class="voltage-title sub-title">Voltage</span>
+									      <span class="battery-voltage sub-desc">24.47V</span>
+									      <span class="battery-voltage sub-title">Total Ah drawn</span>
+									      <span class="battery-drawn sub-desc">-119.67Ah</span>
+									      <span class="battery-voltage sub-title">State of charge</span>
+									      <span class="battery-percentage sub-desc">95.8%</span>
+									      <span class="battery-voltage sub-title">Time left</span>
+									      <span class="battery-time sub-desc">15h 48m</span>
+									  </div>
+								  </div>
+							    </li>
+<!-- 
+	Overview 
+	|| MultiPlus
+	|| BMV 
+	|| Inverter 
+-->
+							    <li class="overview-inverter" data-title="MultiPlus / BMV / Inverter">
+									<div class="scrollable-items">
+										<div class="image-meta image-multiplus overview-scrollable scroll-active">
+											<div class="image"></div>
+										</div>
+										<div class="image-meta image-inverter overview-scrollable">
+											<div class="image"></div>
+										  </div>
+										<div class="image-meta image-battery overview-scrollable">
+											<div class="image"></div>
+										</div>
+									</div>
+							      <div class="ac-in">
+							      	<span class="sub-title">AC input</span>
+							      	<span class="sub-desc">230V</span>
+							      </div>
+							      <div class="ac-out">
+							      	<span class="sub-title">AC system</span>
+							      	<span class="sub-desc">230V</span>
+							      </div>
+							      <div class="dc-system">
+							      	<span class="sub-title">DC System</span>
+							      	<span class="sub-desc">4.15A</span>
+							      </div>
+							      <div class="overview-icon icon-ac-in-multiplus">
+							      	<div class="gif-arrow-right"></div>
+							      </div>
+							      <div class="overview-icon icon-ac-out-multiplus">
+							      	<div class="gif-arrow-right"></div>
+							      </div>
+							      <div class="overview-icon icon-inverter-multiplus">
+							      	<div class="gif-arrow-left"></div>
+							      </div>
+							      <div class="overview-icon icon-battery-multiplus">
+							      	<div class="gif-arrow-up"></div>
+							      </div>
+							      <div class="overview-icon icon-dc-system-battery">
+							      	<div class="arrow-inactive"></div>
+							      </div>
+							      <div class="overview-icon-info info-multiplus-battery">
+							      	15.1A
+							      </div>
+							      <div class="overview-icon-info info-multiplus-inverter">
+							      	15.1A
+							      </div>
+							      <div class="meta-data">
+							      		<div class="multiplus-meta overview-meta active-meta">
+									      <span class="battery-title main-title">MultiPlus</span>
+									  	</div>
+									  	<div class="inverter-meta overview-meta">
+									      <span class="battery-title main-title">Inverter</span>
+									  	</div>
+								      <div class="battery-meta overview-meta">
+									      <span class="battery-title main-title">Battery</span>
+									      <span class="voltage-title sub-title">Voltage</span>
+									      <span class="battery-voltage sub-desc">24.47V</span>
+									      <span class="battery-voltage sub-title">Total Ah drawn</span>
+									      <span class="battery-drawn sub-desc">-119.67Ah</span>
+									      <span class="battery-voltage sub-title">State of charge</span>
+									      <span class="battery-percentage sub-desc">95.8%</span>
+									      <span class="battery-voltage sub-title">Time left</span>
+									      <span class="battery-time sub-desc">15h 48m</span>
+									  </div>
+								  </div>
+							    </li>
+<!-- 
+	Overview 
+	|| MultiPlus
+	|| BMV 
+-->
+							    <li data-title="MultiPlus / BMV">
+							      <div class="scrollable-items">
+										<div class="image-meta image-multiplus overview-scrollable scroll-active">
+											<div class="image"></div>
+										</div>
+										<div class="image-meta image-battery overview-scrollable">
+											<div class="image"></div>
+										</div>
+									</div>
+							      <div class="ac-in">
+							      	<span class="sub-title">AC input</span>
+							      	<span class="sub-desc">230V</span>
+							      	<span class="sub-desc">6.1A</span>
+							      	<span class="sub-desc">1403W</span>
+							      </div>
+							      <div class="ac-out">
+							      	<span class="sub-title">AC output</span>
+							      	<span class="sub-desc">230V</span>
+							      	<span class="sub-desc">6.1A</span>
+							      	<span class="sub-desc">1403W</span>
+							      </div>
+							      <div class="dc-system">
+							      	<span class="sub-title">DC System</span>
+							      	<span class="sub-desc">4.15A</span>
+							      </div>
+							      <div class="overview-icon icon-ac-in-multiplus">
+							      	<div class="arrow-inactive"></div>
+							      </div>
+							      <div class="overview-icon icon-ac-out-multiplus">
+							      	<div class="arrow-inactive"></div>
+							      </div>
+							      <div class="overview-icon icon-battery-multiplus">
+							      	<div class="gif-arrow-up"></div>
+							      </div>
+							      <div class="overview-icon icon-dc-system-battery">
+							      	<div class="gif-arrow-left"></div>
+							      </div>
+							      <div class="overview-icon-info info-multiplus-battery">
+							      	15.1A
+							      </div>
+							      <div class="meta-data">
+							      		<div class="multiplus-meta overview-meta active-meta">
+									      <span class="battery-title main-title">MultiPlus</span>
+									  	</div>
+								      <div class="battery-meta overview-meta">
+									      <span class="battery-title main-title">Battery</span>
+									      <span class="voltage-title sub-title">Voltage</span>
+									      <span class="battery-voltage sub-desc">24.47V</span>
+									      <span class="battery-voltage sub-title">Total Ah drawn</span>
+									      <span class="battery-drawn sub-desc">-119.67Ah</span>
+									      <span class="battery-voltage sub-title">State of charge</span>
+									      <span class="battery-percentage sub-desc">95.8%</span>
+									      <span class="battery-voltage sub-title">Time left</span>
+									      <span class="battery-time sub-desc">15h 48m</span>
+									  </div>
+								  </div>
+							    </li>
+<!-- 
+	Overview 
+	|| MultiPlus 
+-->
+							    <li data-title="MultiPlus">
+							      <div class="scrollable-items">
+										<div class="image-meta image-multiplus overview-scrollable scroll-active">
+											<div class="image"></div>
+										</div>
+										<div class="image-meta image-battery overview-scrollable">
+											<div class="image"></div>
+										</div>
+									</div>
+							      <div class="ac-in">
+							      	<span class="sub-title">AC input</span>
+							      	<span class="sub-desc">230V</span>
+							      	<span class="sub-desc">6.1A</span>
+							      	<span class="sub-desc">1403W</span>
+							      </div>
+							      <div class="ac-out">
+							      	<span class="sub-title">AC output</span>
+							      	<span class="sub-desc">230V</span>
+							      	<span class="sub-desc">6.1A</span>
+							      	<span class="sub-desc">1403W</span>
+							      </div>
+							      <div class="overview-icon icon-ac-in-multiplus">
+							      	<div class="gif-arrow-right"></div>
+							      </div>
+							      <div class="overview-icon icon-ac-out-multiplus">
+							      	<div class="gif-arrow-right"></div>
+							      </div>
+							      <div class="overview-icon icon-battery-multiplus">
+							      	<div class="gif-arrow-up"></div>
+							      </div>
+							      <div class="overview-icon-info info-multiplus-battery">
+							      	15.1A
+							      </div>
+							      <div class="meta-data">
+							      		<div class="multiplus-meta overview-meta active-meta">
+									      <span class="battery-title main-title">MultiPlus</span>
+									  	</div>
+								      <div class="battery-meta overview-meta">
+									      <span class="battery-title main-title">Battery</span>
+									      <span class="voltage-title sub-title">Voltage</span>
+									      <span class="battery-voltage sub-desc">24.47V</span>
+									      <span class="battery-voltage sub-title">State of charge</span>
+									      <span class="battery-percentage sub-desc">95.8%</span>
+									  </div>
+								  </div>
+							    </li>
+<!-- 
+	Overview 
+	|| BMV 
+-->
+							    <li class="overview-bmv" data-title="BMV">
+							      <div class="scrollable-items">
+										<div class="image-meta image-battery overview-scrollable scroll-active">
+											<div class="image"></div>
+										</div>
+									</div>
+							      <div class="dc-system">
+							      	<span class="sub-title">DC System</span>
+							      	<span class="sub-desc">4.15A</span>
+							      </div>
+							      <div class="overview-icon icon-dc-system-battery">
+							      	<div class="gif-arrow-right"></div>
+							      </div>
+							      <div class="meta-data">
+								      <div class="battery-meta overview-meta active-meta">
+									      <span class="battery-title main-title">Battery</span>
+									      <span class="voltage-title sub-title">Voltage</span>
+									      <span class="battery-voltage sub-desc">24.47V</span>
+									      <span class="battery-voltage sub-title">Total Ah drawn</span>
+									      <span class="battery-drawn sub-desc">-119.67Ah</span>
+									      <span class="battery-voltage sub-title">State of charge</span>
+									      <span class="battery-percentage sub-desc">95.8%</span>
+									      <span class="battery-voltage sub-title">Time left</span>
+									      <span class="battery-time sub-desc">15h 48m</span>
+									  </div>
+								  </div>
+							    </li>
+							  </ul>
 							</div>
 						</div>
 						<section class="all-html-content" data-xml="map_files/MenuStructure_CCGX.mm">
-<!-- End Victron Energy Specific Style Top Here -->
-
-
-
-<!-- End pasting FreeMind here -->
-<!-- Begin Victron Energy Bottom Style Here -->
-
 </section>
 
 <div class="color-control-bottom-bar no-menu-item">
@@ -96,6 +374,10 @@
 <div class="col-lg-4 col-md-4 latest-changes">
 	<h3>Latest changes</h3>
 	<ul>
+		<li>
+			<h5>Added arrow to breadcrumb.</h5>
+			<span>This way users can see if there is a higher layer of navigation.</span>
+		</li>
 		<li>
 			<h5>Added icons.</h5>
 			<span>Users can now easily see the time, the GPS connectivity, alert status and VRM Portal Status</span>
@@ -146,6 +428,7 @@
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-ui-scrollto.js"></script>
+	<script src="js/jquery.flexslider-min.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>
