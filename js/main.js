@@ -5,8 +5,7 @@ var initContainer = '.all-html-content';
 var initOverview = '.overview-content';
 var interfaceContainer = '.interface-container';
 var old_fill_container = '';
-var allParents = [];
-var myListItem = '';
+var allInitParents = [];
 var innerHTML = '';
 var breadcrumbParents = '';
 var autoCompleteSources = [];
@@ -147,10 +146,17 @@ jQuery(document).ready(function () {
         }
 
         function tellTheUserWhatToDo() {
+            /* Constructing breadcrumb path in the dirty tree based on the clean tree */
+            var allParents = [];
+            $(allInitParents).each(function() {
+                allParents.push($(interfaceContainer).find('[data-id="' + $(this).data('id') + '"]')[0]);
+            });
 
             if (allParents.length !== 0) {
+                $(allParents[0]).addClass('last-breadcrumb-path-child');
+
                 /* Check in the allParents if the user is currently in a specific item in the path */
-                allParents.each(function () {
+                $.each(allParents, function () {
                     $(this).addClass('breadcrumb-path-child');
                 });
                 /* Get the current list item which is selected */
@@ -158,13 +164,13 @@ jQuery(document).ready(function () {
                     parentListItem = selectedListItem.parent(),
                     addedToolTip = false;
 
-                $(parentListItem).each(function () {
+                $.each(parentListItem, function () {
                     if ($(this).children().hasClass('breadcrumb-path-child')) {
                         var breadcrumbChild = $(this).children('li.breadcrumb-path-child');
 
                         if (breadcrumbChild.hasClass('last-breadcrumb-path-child')) {
                             generateEndToolTip(breadcrumbChild);
-                            allParents = [];
+                            allInitParents = [];
                         } else {
                             generateTopLevelToolTip(breadcrumbChild);
                         }
@@ -183,15 +189,15 @@ jQuery(document).ready(function () {
         function findToolTips(ui) {
             /* Set the Data HTML */
             var datahtml = ui.item.datahtml,
-                parent;
+                parent,
+                myListItem;
             /* Set the Data List Item */
-            myListItem = $('li[data-html="' + datahtml + '"]');
+            myListItem = $(initContainer).find('li[data-html="' + datahtml + '"]');
             /* add Specific Class to myListItem */
-            myListItem.addClass('last-breadcrumb-path-child');
             /* Get the parent of the List Item */
             parent = myListItem.parent();
             /* Get all the parents */
-            allParents = $.merge(myListItem, myListItem.parentsUntil('.main-ul'));
+            allInitParents = $.merge(myListItem, myListItem.parentsUntil('.main-ul'));
             /* Remove the focus from the search input field */
             $('.documentation-search').blur();
             /* Call a function to tell the users to go back if he's not in the right menu */
@@ -400,7 +406,7 @@ jQuery(document).ready(function () {
         /* Remove current tooltip */
         $(interfaceContainer).on('click', 'div.doc-tooltip .icon-close', function () {
             emptyToolTips();
-            allParents = [];
+            allInitParents = [];
         });
 
         function initSelectedSpecific(element) {
