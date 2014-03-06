@@ -119,6 +119,7 @@ jQuery(document).ready(function () {
                     .removeClass('last-breadcrumb-path-child');
                 $(this).remove();
             });
+            $(interfaceContainer).find('div.back-tooltip').remove();
         }
 
         function generateTopLevelToolTip(ListItem) {
@@ -404,7 +405,7 @@ jQuery(document).ready(function () {
         }
 
         /* Remove current tooltip */
-        $(interfaceContainer).on('click', 'div.doc-tooltip .icon-close', function () {
+        $(interfaceContainer).on('click', 'div.doc-tooltip .icon-close, div.back-tooltip .icon-close', function () {
             emptyToolTips();
             allInitParents = [];
         });
