@@ -123,6 +123,10 @@ jQuery(document).ready(function () {
         }
 
         function generateTopLevelToolTip(ListItem) {
+            var parent = ListItem.parent();
+            clearSelected();
+            parent.scrollTo(ListItem, 500, {margin: true});
+            $(ListItem).addClass('selected');
             if ($(ListItem).is(':last-child') && !$(ListItem).is(':first-child')) {
                 $('<div class="doc-tooltip tooltip-last"><span>Go here<i class="icon-close"></i></span></div>').hide().appendTo(ListItem).fadeIn(500);
             } else {
