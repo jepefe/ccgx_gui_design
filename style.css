@@ -80,10 +80,10 @@ body {
             margin-right: 10px; }
           body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.overview-button, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.overview-button {
             float: left;
-            margin: 9px 0 0 48px; }
+            margin: 9px 0 0 50px; }
           body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.mainmenu-button, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.mainmenu-button {
             float: right;
-            margin: 9px 26px 0 0; }
+            margin: 9px 48px 0 0; }
             body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.mainmenu-button i, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.mainmenu-button i {
               display: block;
               float: left;
@@ -112,7 +112,7 @@ body {
           body .color-control-interface .color-control-top-bar.color-control-top-bar.overview-title span.top-bar-time, body .color-control-interface .color-control-bottom-bar.color-control-top-bar.overview-title span.top-bar-time {
             color: #444; }
           body .color-control-interface .color-control-top-bar.color-control-top-bar.overview-title .color-control-top-bar-title, body .color-control-interface .color-control-bottom-bar.color-control-top-bar.overview-title .color-control-top-bar-title {
-            color: #444; }
+            color: #f1f1f1; }
         body .color-control-interface .color-control-top-bar.color-control-top-bar .color-control-top-bar-title, body .color-control-interface .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title {
           position: relative;
           color: #fff;
@@ -174,93 +174,32 @@ body {
           overflow: hidden; }
           body .color-control-interface .interface-container .overview-content .flexslider ul li {
             padding: 10px;
-            margin: 0;
+            margin: 0 0 0 27px;
             width: 100%;
             height: 100%;
             border-bottom: 0; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .image-meta.image-battery {
-              top: 70px;
-              bottom: auto;
-              left: 140px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .image-meta.image-battery .image {
-                background: url("img/battery-160.png") no-repeat top left;
-                width: 80px;
-                height: 80px;
-                background-size: 80px 80px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-icon.icon-dc-system-battery {
-              top: 80px;
-              left: 237px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .ac-in.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .ac-out.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .dc-system.dc-system {
-              left: 272px;
-              top: 77px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .image-meta.image-inverter {
-              top: 100px;
-              left: 257px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .image-meta.image-inverter .image {
-                background: url("img/phoenix-160.png") no-repeat top left;
-                width: 80px;
-                height: 80px;
-                background-size: 80px 80px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .image-meta.image-multiplus {
-              top: 50px;
-              left: 120px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .image-meta.image-multiplus .image {
-                background: url("img/multiplus-160.png") no-repeat top left;
-                width: 80px;
-                height: 80px;
-                background-size: 80px 80px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .image-meta.image-battery {
-              left: 120px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .image-meta.image-battery .image {
-                background: url("img/battery-160.png") no-repeat top left;
-                width: 80px;
-                height: 80px;
-                background-size: 80px 80px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .overview-icon.icon-ac-in-multiplus {
-              top: 80px;
-              left: 84px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .overview-icon.icon-ac-out-multiplus {
-              top: 58px;
-              left: 217px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .overview-icon.icon-inverter-multiplus {
-              top: 98px;
-              left: 217px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .overview-icon.icon-battery-multiplus {
-              top: 148px;
-              left: 149px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .overview-icon.icon-dc-system-battery {
-              top: 215px;
-              left: 217px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .overview-icon-info.info-multiplus-battery {
-              top: 148px;
-              left: 100px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .overview-icon-info.info-multiplus-inverter {
-              top: 125px;
-              left: 210px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .ac-in.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .ac-out.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .dc-system.ac-out {
-              left: 257px;
-              top: 50px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .ac-in.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .ac-out.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-inverter .dc-system.dc-system {
-              left: 257px;
-              top: 212px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system {
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info {
               position: absolute;
-              top: 50px;
-              left: 20px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span {
-                font-size: 12px;
+              bottom: 60px;
+              left: 10px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span {
+                font-size: 16px;
                 display: block; }
-                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-title {
+                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span.sub-title {
                   color: #444;
                   font-weight: 700; }
-                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-desc {
-                  color: #777; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.ac-out {
-                left: 285px;
-                top: 50px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.dc-system {
-                left: 285px;
-                top: 185px; }
+                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span.sub-desc {
+                  color: #444; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.ac-out {
+                left: 10px;
+                bottom: 10px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.dc-system {
+                right: 20px;
+                top: 30px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.battery-info {
+                right: 69px;
+                left: auto;
+                top: 30px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon {
               background-color: #ddd;
               color: #444;
@@ -294,30 +233,36 @@ body {
                 height: 20px;
                 background-size: 20px 20px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-ac-in-multiplus {
-                top: 80px;
-                left: 114px; }
+                bottom: 80px;
+                left: 116px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-ac-out-multiplus {
-                top: 80px;
-                left: 247px; }
+                bottom: 30px;
+                left: 116px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-battery-multiplus {
-                top: 148px;
-                left: 178px; }
+                top: 137px;
+                left: 204px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-dc-system-battery {
-                top: 215px;
-                left: 247px; }
+                top: 35px;
+                left: 116px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-solar-battery {
-                top: 215px;
-                left: 114px; }
+                background-color: transparent;
+                top: 135px;
+                left: 280px; }
+                body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-solar-battery div {
+                  -webkit-transform: rotate(45deg);
+                  -moz-transform: rotate(45deg);
+                  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5);
+                  /*for IE*/ }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info {
               position: absolute;
               font-weight: 700;
               color: #444; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info.info-solar-battery {
-                top: 190px;
-                left: 110px; }
+                top: 133px;
+                left: 315px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info.info-multiplus-battery {
-                top: 148px;
-                left: 208px; }
+                top: 136px;
+                left: 155px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta {
               -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
               box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
@@ -326,29 +271,30 @@ body {
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.scroll-active {
                 outline: 2px solid #4790D0; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-battery {
-                bottom: 20px;
-                left: 150px; }
+                top: 35px;
+                left: 170px; }
                 body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-battery .image {
                   background: url("img/battery-160.png") no-repeat top left;
-                  width: 80px;
-                  height: 80px;
-                  background-size: 80px 80px; }
+                  width: 90px;
+                  height: 90px;
+                  background-size: 90px 90px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-multiplus {
-                top: 50px;
-                left: 150px; }
+                bottom: 10px;
+                left: 170px; }
                 body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-multiplus .image {
                   background: url("img/multiplus-160.png") no-repeat top left;
-                  width: 80px;
-                  height: 80px;
-                  background-size: 80px 80px; }
+                  width: 90px;
+                  height: 90px;
+                  background-size: 90px 90px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-mppt {
-                bottom: 20px;
-                left: 20px; }
+                top: auto;
+                bottom: 10px;
+                right: 80px; }
                 body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-mppt .image {
                   background: url("img/solar-160.png") no-repeat top left;
-                  width: 80px;
-                  height: 80px;
-                  background-size: 80px 80px; }
+                  width: 90px;
+                  height: 90px;
+                  background-size: 90px 90px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta {
               -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
               box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
@@ -361,7 +307,7 @@ body {
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta.active-meta {
                 display: block; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta span {
-                font-size: 12px;
+                font-size: 16px;
                 display: block;
                 color: #777;
                 margin: 0 0 5px 10px; }
@@ -477,8 +423,9 @@ body {
     position: absolute;
     height: 240px;
     width: 100%;
-    top: 350px; }
+    top: 340px; }
     body .color-control-buttons div {
+      background-color: transparent;
       position: absolute; }
       body .color-control-buttons div:hover {
         cursor: pointer; }
@@ -487,11 +434,11 @@ body {
         height: 73px;
         border-radius: 50%; }
         body .color-control-buttons div.color-control-button-left.color-control-button-left, body .color-control-buttons div.color-control-button-right.color-control-button-left {
-          top: 16px;
-          left: 126px; }
+          top: 2px;
+          left: 120px; }
         body .color-control-buttons div.color-control-button-left.color-control-button-right, body .color-control-buttons div.color-control-button-right.color-control-button-right {
-          right: 125px;
-          top: 16px; }
+          right: 120px;
+          top: 2px; }
       body .color-control-buttons div i, body .color-control-buttons div .space-icon {
         color: #fff;
         font-size: 24px; }
@@ -513,8 +460,8 @@ body {
       body .color-control-buttons div.color-control-button-nav-left {
         height: 100px;
         width: 55px;
-        top: 90px;
-        left: 215px;
+        top: 80px;
+        left: 200px;
         border-radius: 90px 0 0 90px;
         -moz-border-radius: 90px 0 0 90px;
         -webkit-border-radius: 90px 0 0 90px; }
@@ -523,8 +470,8 @@ body {
           top: 40%;
           left: 20px; }
       body .color-control-buttons div.color-control-button-nav-top {
-        top: 55px;
-        left: 255px;
+        top: 35px;
+        left: 240px;
         height: 55px;
         width: 100px;
         border-radius: 90px 90px 0 0;
@@ -537,8 +484,8 @@ body {
       body .color-control-buttons div.color-control-button-nav-right {
         height: 100px;
         width: 55px;
-        top: 90px;
-        right: 215px;
+        top: 80px;
+        right: 200px;
         border-radius: 0 90px 90px 0;
         -moz-border-radius: 0 90px 90px 0;
         -webkit-border-radius: 0 90px 90px 0; }
@@ -547,8 +494,8 @@ body {
           top: 40%;
           right: 20px; }
       body .color-control-buttons div.color-control-button-nav-bottom {
-        top: 180px;
-        left: 255px;
+        top: 160px;
+        left: 240px;
         height: 55px;
         width: 100px;
         border-radius: 0 0 90px 90px;
@@ -560,8 +507,8 @@ body {
           left: 34%; }
       body .color-control-buttons div.color-control-button-nav-middle {
         border-radius: 50%;
-        top: 108px;
-        left: 265px;
+        top: 85px;
+        left: 255px;
         width: 73px;
         height: 73px;
         z-index: 99; }
