@@ -408,6 +408,7 @@ jQuery(document).ready(function () {
                 firstUlItem = $(interfaceContainer).children().first();
             firstListItem.addClass('selected');
             firstUlItem.addClass('main-ul');
+            firstUlItem.scrollTo(firstListItem, 1, {margin: true});
         }
 
         function initSelected() {
@@ -460,21 +461,14 @@ jQuery(document).ready(function () {
                 currentActiveSlide = ulContainer.find('li.flex-active-slide'),
                 currentActiveItem = currentActiveSlide.find('.scroll-active'),
                 currentActiveItemParent = currentActiveItem.parent(),
-                nextActiveItem = currentActiveItem.prev('.overview-scrollable'),
-                currentActiveMeta = currentActiveSlide.find('.active-meta'),
-                nextActiveMeta = currentActiveMeta.prev('.overview-meta'),
-                currentActiveMetaParent = currentActiveMeta.parent();
+                nextActiveItem = currentActiveItem.prev('.overview-scrollable');
 
             if (nextActiveItem.length > 0) {
                 nextActiveItem.addClass('scroll-active');
                 currentActiveItem.removeClass('scroll-active');
-                nextActiveMeta.addClass('active-meta');
-                currentActiveMeta.removeClass('active-meta');
             } else {
                 currentActiveItem.removeClass('scroll-active');
                 currentActiveItemParent.children().last().addClass('scroll-active');
-                currentActiveMeta.removeClass('active-meta');
-                currentActiveMetaParent.children().last().addClass('active-meta');
 
             }
         }
@@ -515,22 +509,14 @@ jQuery(document).ready(function () {
                 currentActiveSlide = ulContainer.find('li.flex-active-slide'),
                 currentActiveItem = currentActiveSlide.find('.scroll-active'),
                 currentActiveItemParent = currentActiveItem.parent(),
-                nextActiveItem = currentActiveItem.next('.overview-scrollable'),
-                currentActiveMeta = currentActiveSlide.find('.active-meta'),
-                nextActiveMeta = currentActiveMeta.next('.overview-meta'),
-                currentActiveMetaParent = currentActiveMeta.parent();
+                nextActiveItem = currentActiveItem.next('.overview-scrollable');
 
             if (nextActiveItem.length > 0) {
                 nextActiveItem.addClass('scroll-active');
                 currentActiveItem.removeClass('scroll-active');
-                nextActiveMeta.addClass('active-meta');
-                currentActiveMeta.removeClass('active-meta');
             } else {
                 currentActiveItem.removeClass('scroll-active');
                 currentActiveItemParent.children().first().addClass('scroll-active');
-                currentActiveMeta.removeClass('active-meta');
-                currentActiveMetaParent.children().first().addClass('active-meta');
-
             }
         }
 

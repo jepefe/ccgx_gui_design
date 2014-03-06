@@ -3,6 +3,8 @@ $main_color: #4790d0;
 body {
 	-webkit-font-smoothing: antialiased;
 	background-color: #f5f5f5;
+	font-size: 16px;
+	color: #000;
 
 	header {
 		padding: 30px 0;
@@ -59,21 +61,21 @@ body {
 
 	.color-control-background {
 		background: url('img/color-control-bg.jpg') no-repeat top left;
-		width: 603px;
-		height: 655px;
-		background-size: 603px 655px;
+		width: 583px;
+		height: 616px;
+		background-size: 583px 616px;
 		position: relative;
 	}
 
 	.color-control-interface {
-		width: 494px;
-		height: 289px;
+		width: 480px;
+		height: 272px;
 		border-radius: 10px;
 		-webkit-box-shadow:inset 1px 1px 1px 0 rgba(0,0,0,0.2);
 		box-shadow:inset 1px 1px 1px 0 rgba(0,0,0,0.2);
 		position: absolute;
-		top: 38px;
-		left: 55px;
+		top: 35px;
+		left: 52px;
 		overflow: hidden;
 
 		.color-control-top-bar, .color-control-bottom-bar {
@@ -93,12 +95,9 @@ body {
 
 				span {
 					display: inline-block;
-					padding: 3px 10px;
 					color: #fff;
 					font-weight: 700;
-					font-size: 14px;
-					background: rgba(255,255,255, 0.1);
-					border-radius: 3px;
+					font-size: 16px;
 					height: 26px;
 
 					i {
@@ -107,7 +106,7 @@ body {
 					}
 					&.overview-button {
 						float: left;
-						margin: 9px 0 0 38px;
+						margin: 9px 0 0 48px;
 					}
 					&.mainmenu-button {
 						float: right;
@@ -131,7 +130,7 @@ body {
 						position: absolute;
 						width: 100%;
 						text-align: center;
-						bottom: 6px;
+						bottom: 2px;
 						left: 0;
 						background: transparent;
 						i {
@@ -165,8 +164,8 @@ body {
 					position: relative;
 					color: #fff;
 					font-weight: 700;
-					font-size: 14px;
-					margin-top: 8px;
+					font-size: 16px;
+					margin-top: 6px;
 					display: inline-block;
 
 					&.title-has-chevron {
@@ -188,17 +187,17 @@ body {
 				}
 				i.icon-warning {
 					right: 60px;
-					top: 9px;
+					top: 7px;
 				}
 
 				i.icon-exchange {
 					right: 87px;
-					top: 9px;
+					top: 7px;
 				}
 
 				i.icon-location {
 					right: 111px;
-					top: 9px;
+					top: 7px;
 				}
 
 				span.top-bar-time {
@@ -206,7 +205,7 @@ body {
 					font-weight: 700;
 					color: #fff;
 					right: 15px;
-					top: 9px;
+					top: 7px;
 				}
 
 			}	
@@ -233,9 +232,9 @@ body {
 			}
 
 			&.in-overview{
-				width: 494px;
-				height: 289px;
-				margin-top: -36.16px;
+				width: 480px;
+				height: 272px;
+				margin-top: -34px;
 				background-color: #f1f1f1;
 			}
 
@@ -247,8 +246,8 @@ body {
 
 				.flexslider {
 					ul {
-						width: 494px;
-						height: 289px;
+						width: 480px;
+						height: 272px;
 						overflow: hidden;
 						
 						li {
@@ -594,15 +593,15 @@ body {
 			ul {
 				margin: 0;
 				padding: 0;
-				width: 494px;
-				height: 217px;
+				width: 480px;
+				height: 204px;
 				overflow: auto;
 
 				li {
-					height: 36.16px;
+					height: 34px;
 					width: 100%;
 					border-bottom: 1px solid #ddd;
-					padding: 8px 0 0 20px;
+					padding: 6px 0 0 20px;
 					position: relative;
 
 					&.selected {
@@ -726,7 +725,7 @@ body {
 					&.menu-break {
 						background-color: #ddd;
 						color: #000;
-						padding: 8px 20px;
+						padding: 5px 20px;
 						font-weight: 700;
 					}
 				}
@@ -1089,7 +1088,7 @@ body {
 		text-align: center;
 		width: 100%;
 		right: 0;
-		top: 36.16px;
+		top: 34px;
 		z-index: 999;
 
 		span {
@@ -1137,7 +1136,7 @@ body {
 		}
 
 		&.tooltip-last {
-			top: -36.16px;
+			top: -34px;
 
 			span {
 				&:after, &:before {
