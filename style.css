@@ -25,11 +25,13 @@ body {
         body header nav ul li {
           list-style-type: none;
           display: inline-block;
-          margin: 10px 20px 0 0; }
+          margin: 0 20px 0 0; }
           body header nav ul li a {
             font-weight: bold;
             color: #fff;
+            display: inline-block;
             padding: 10px 20px;
+            margin: 0 0 0 0;
             background-color: transparent;
             border: 2px solid rgba(255, 255, 255, 0.4);
             border-radius: 10px; }
@@ -194,72 +196,90 @@ body {
                 left: 10px;
                 bottom: 10px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.dc-system {
-                right: 20px;
+                left: 10px;
                 top: 30px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.battery-info {
                 right: 69px;
                 left: auto;
                 top: 30px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon {
-              background-color: #ddd;
-              color: #444;
-              font-size: 14px;
-              display: inline-block;
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-horizontal, body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-vertical {
               position: absolute;
-              border-radius: 3px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon .arrow-inactive {
-                background: url("img/arrow-inactive.png") no-repeat top left;
-                width: 20px;
-                height: 20px;
-                background-size: 20px 20px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon .gif-arrow-up {
-                background: url("img/arrow-up-gif.gif") no-repeat top left;
-                width: 20px;
-                height: 20px;
-                background-size: 20px 20px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon .gif-arrow-right {
-                background: url("img/arrow-right-gif.gif") no-repeat top left;
-                width: 20px;
-                height: 20px;
-                background-size: 20px 20px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon .gif-arrow-left {
-                background: url("img/arrow-left-gif.gif") no-repeat top left;
-                width: 20px;
-                height: 20px;
-                background-size: 20px 20px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon .gif-arrow-down {
-                background: url("img/arrow-right-gif.gif") no-repeat top left;
-                width: 20px;
-                height: 20px;
-                background-size: 20px 20px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-ac-in-multiplus {
-                bottom: 80px;
-                left: 116px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-ac-out-multiplus {
-                bottom: 30px;
-                left: 116px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-battery-multiplus {
-                top: 137px;
-                left: 204px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-dc-system-battery {
-                top: 35px;
-                left: 116px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-solar-battery {
-                background-color: transparent;
-                top: 135px;
-                left: 280px; }
-                body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon.icon-solar-battery div {
-                  -webkit-transform: rotate(45deg);
-                  -moz-transform: rotate(45deg);
-                  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5);
-                  /*for IE*/ }
+              background-color: #4790d0; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-connector {
+              width: 15px;
+              height: 15px;
+              border-radius: 50%;
+              position: absolute;
+              background-color: #fff;
+              border: 4px solid #4790d0; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line i {
+              position: absolute;
+              color: #4790d0;
+              font-size: 17px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-solar-battery .line-vertical {
+              width: 4px;
+              height: 52px;
+              top: 120px;
+              right: 122px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-solar-battery .line-horizontal {
+              right: 122px;
+              top: 120px;
+              width: 98px;
+              height: 4px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-solar-battery i {
+              top: 153px;
+              right: 116px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-battery-multiplus .line-vertical {
+              width: 4px;
+              height: 47px;
+              top: 125px;
+              right: 262px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-battery-multiplus i {
+              top: 160px;
+              right: 256px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-battery-multiplus .line-connector {
+              top: 165px;
+              right: 256px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus .line-horizontal {
+              height: 4px;
+              width: 65px;
+              top: 190px;
+              right: 310px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus i {
+              top: 184px;
+              right: 353px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus .line-connector {
+              top: 184px;
+              right: 361px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-out-multiplus .line-horizontal {
+              height: 4px;
+              width: 65px;
+              top: 237px;
+              right: 310px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-out-multiplus i {
+              top: 231px;
+              right: 305px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-out-multiplus .line-connector {
+              top: 231px;
+              right: 361px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery .line-horizontal {
+              height: 4px;
+              width: 56px;
+              top: 48px;
+              right: 310px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery i {
+              top: 42px;
+              right: 352px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery .line-connector {
+              top: 43px;
+              right: 361px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info {
               position: absolute;
               font-weight: 700;
               color: #444; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info.info-solar-battery {
                 top: 133px;
-                left: 315px; }
+                left: 370px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info.info-multiplus-battery {
                 top: 136px;
                 left: 155px; }
@@ -268,8 +288,6 @@ body {
               box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
               background-color: #fff;
               position: absolute; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.scroll-active {
-                outline: 2px solid #4790D0; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-battery {
                 top: 35px;
                 left: 170px; }
@@ -295,32 +313,6 @@ body {
                   width: 90px;
                   height: 90px;
                   background-size: 90px 90px; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta {
-              -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-              box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-              background-color: #fff;
-              width: 120px;
-              position: absolute;
-              top: 50px;
-              right: 0;
-              display: none; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta.active-meta {
-                display: block; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta span {
-                font-size: 16px;
-                display: block;
-                color: #777;
-                margin: 0 0 5px 10px; }
-                body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta span.main-title {
-                  background-color: #444;
-                  color: #fff;
-                  font-weight: bold;
-                  padding: 5px 10px;
-                  margin: 0 0 5px 0; }
-                body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-meta span.sub-title {
-                  margin: 0 0 0 10px;
-                  color: #444;
-                  font-weight: bold; }
       body .color-control-interface .interface-container p {
         display: none; }
       body .color-control-interface .interface-container ul {
@@ -513,31 +505,6 @@ body {
         height: 73px;
         z-index: 99; }
 
-.latest-changes h3 {
-  font-size: 18px; }
-.latest-changes ul {
-  margin: 0;
-  padding: 0;
-  height: 600px;
-  overflow: scroll; }
-  .latest-changes ul li {
-    font-size: 12px;
-    background-color: #fff;
-    list-style-type: none;
-    padding: 15px 20px;
-    margin: 10px 0 0 0;
-    -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1); }
-    .latest-changes ul li:first-child {
-      margin: 0; }
-    .latest-changes ul li h5 {
-      line-height: 1.5;
-      margin-top: 0;
-      color: #444;
-      font-size: 12px; }
-    .latest-changes ul li span {
-      color: #777; }
-
 .interface-toggle {
   display: none;
   position: relative;
@@ -614,7 +581,28 @@ body {
 
 .latest-documentation input[type="text"] {
   width: 100%;
-  padding: 10px; }
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  border-bottom: 2px solid #fff;
+  color: #fff; }
+  .latest-documentation input[type="text"].placeholder {
+    color: rgba(255, 255, 255, 0.8); }
+  .latest-documentation input[type="text"].placeholder-off {
+    color: #fff; }
+  .latest-documentation input[type="text"]::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8); }
+  .latest-documentation input[type="text"]:-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1; }
+  .latest-documentation input[type="text"]::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1; }
+  .latest-documentation input[type="text"]:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.8); }
 
 .ui-helper-hidden-accessible {
   display: none !important; }
@@ -623,6 +611,7 @@ body {
   position: absolute;
   top: 50px;
   min-height: 50px;
+  z-index: 999;
   left: 0;
   cursor: default;
   background-color: #fff;
@@ -722,9 +711,74 @@ body {
       border-bottom-color: rgba(136, 183, 213, 0);
       border-top-color: #444; }
 
+.welcome-text {
+  font-size: 14px;
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  color: #777; }
+  .welcome-text h1, .welcome-text h2, .welcome-text h3, .welcome-text h4, .welcome-text h5, .welcome-text h6 {
+    color: #444; }
+  .welcome-text .keyboard-icons {
+    margin: 15px 0 0 0; }
+    .welcome-text .keyboard-icons span {
+      display: inline-block;
+      color: #777;
+      font-weight: bold;
+      margin: 0 10px 15px 0; }
+      .welcome-text .keyboard-icons span i {
+        padding: 5px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        color: #777;
+        margin: 0 5px 0 0; }
+      .welcome-text .keyboard-icons span span {
+        padding: 5px 8px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        color: #777; }
+        .welcome-text .keyboard-icons span span.icon-number {
+          margin: 0 5px 0 0;
+          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+      .welcome-text .keyboard-icons span:last-child {
+        margin: 0 10px 0 0; }
+
+.latest-changes {
+  margin: 20px 0 0 0;
+  font-size: 14px;
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  color: #777; }
+  .latest-changes h1, .latest-changes h2, .latest-changes h3, .latest-changes h4, .latest-changes h5, .latest-changes h6 {
+    color: #444; }
+  .latest-changes ul {
+    margin: 0;
+    padding: 0;
+    height: 300px;
+    overflow: scroll; }
+    .latest-changes ul li {
+      background-color: #fff;
+      list-style-type: none;
+      padding: 15px 20px;
+      margin: 10px 0 0 0;
+      border-bottom: 1px solid #ddd; }
+      .latest-changes ul li:first-child {
+        margin: 0; }
+      .latest-changes ul li h5 {
+        line-height: 1.5;
+        margin-top: 0;
+        color: #444; }
+      .latest-changes ul li span {
+        color: #777; }
+
 .doc-description {
   position: relative;
-  display: inline-block;
+  display: none;
   -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
   background-color: #fff;

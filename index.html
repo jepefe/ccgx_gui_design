@@ -13,18 +13,22 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-9">
+				<div class="col-lg-3 col-md-3">
 					<a class="logo" alt="Victron Energy - Color Control GX" title="Victron Energy - Color Control GX"></a>
 				</div>
-				<div class="col-lg-9 col-md-9">
+				<div class="col-lg-7 col-md-7 latest-documentation">
+					<input type="text" placeholder="Search within the menu structure of the Color Control GX" class="documentation-search" />
+					<div class="doc-description">
+						<div class="doc-description-title">
+						</div>
+						<div class="doc-description-text">
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-2">
 					<nav>
 						<ul>
-							<li>
-								<a href="index.html">Interface Prototype</a>
-							</li>
-							<li>
-								<a href="manual.html">Documentation Prototype</a>
-							</li>
 							<li>
 								<a href="https://github.com/victronenergy/ccgx_gui_design/"><i class="icon-github"></i></a>
 							</li>
@@ -36,7 +40,7 @@
 	</header>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-8 col-md-8">
+			<div class="col-lg-7 col-md-7">
 				<div class="color-control-background">
 					<div class="color-control-interface">
 						<div class="color-control-top-bar no-menu-item">
@@ -94,20 +98,29 @@
 							      	<span class="sub-desc">50.91V / 4.15Ah</span>
 							      	<span class="sub-desc">98.95% / 15h 16m</span>
 							      </div>
-							      <div class="overview-icon icon-ac-in-multiplus">
-							      	<div class="gif-arrow-right"></div>
+							      <div class="overview-line line-ac-in-multiplus" data-path-horz="310" data-path="horz" data-path-start-horz="352">
+							      	<div class="line-horizontal"></div>
+							      	<i class="icon-chevron-right"></i>
+							      	<div class="line-connector"></div>
 							      </div>
-							      <div class="overview-icon icon-ac-out-multiplus">
-							      	<div class="gif-arrow-left"></div>
+							      <div class="overview-line line-ac-out-multiplus" data-path-horz="352" data-path="horz" data-path-start-horz="310">
+							      	<div class="line-horizontal"></div>
+							      	<i class="icon-chevron-left"></i>
+							      	<div class="line-connector"></div>
 							      </div>
-							      <div class="overview-icon icon-battery-multiplus">
-							      	<div class="gif-arrow-up"></div>
+							      <div class="overview-line line-battery-multiplus" data-path-vert="120" data-path="vert" data-path-start-vert="160">
+							      	<div class="line-vertical"></div>
+							      	<i class="icon-chevron-up"></i>
 							      </div>
-							      <div class="overview-icon icon-dc-system-battery">
-							      	<div class="gif-arrow-left"></div>
+							      <div class="overview-line line-dc-system-battery" data-path-horz="310" data-path="horz" data-path-start-horz="365">
+							      	<div class="line-horizontal"></div>
+							      	<i class="icon-chevron-right"></i>
+							      	<div class="line-connector"></div>
 							      </div>
-							      <div class="overview-icon icon-solar-battery">
-							      	<div class="gif-arrow-left"></div>
+							      <div class="overview-line line-solar-battery" data-path-horz="211" data-path-vert="114" data-path="vert-horz" data-path-start-horz="116" data-path-start-vert="153">
+							      	<div class="line-vertical"></div>
+							      	<div class="line-horizontal"></div>
+							      	<i class="icon-chevron-up"></i>
 							      </div>
 							      <div class="overview-icon-info info-solar-battery">
 							      	4.9A
@@ -140,8 +153,25 @@
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-4 latest-changes">
-	<h3>Latest changes</h3>
+<div class="col-lg-5 col-md-5 welcome-text">
+	<h4>CCGX GUI Prototype</h4>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+	<h4>Controls</h4>
+	<p>You can navigate trough the prototype with the keyboard or by clicking on the buttons in the prototype.</p>
+	<h5>Navigating with keyboard</h5>
+	<div class="keyboard-icons">
+		<span><i class="icon-arrow-left2"></i>Left</span>
+		<span><i class="icon-arrow-right2"></i>Right</span>
+		<span><i class="icon-arrow-up2"></i>Up</span>
+		<span><i class="icon-arrow-down2"></i>Down</span>
+		<span><span class="icon-number">1</span>Pages</span>
+		<span><span class="icon-number">2</span>Menu</span>
+	</div>
+
+</div>
+
+<div class="col-lg-5 col-md-5 latest-changes">
+	<h4>Latest changes</h4>
 	<ul>
 		<li>
 			<h5>Renamed "Overview" to "Pages".</h5>

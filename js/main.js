@@ -10,6 +10,7 @@ var innerHTML = '';
 var breadcrumbParents = '';
 var autoCompleteSources = [];
 var overviewSlider = '';
+var intervalId = '';
 
 /* Initialize the DOM ready function */
 jQuery(document).ready(function () {
@@ -620,18 +621,18 @@ jQuery(document).ready(function () {
         /* Key Functions */
 
         $(document).keydown(function (e) {
-            /*
-            // Enter
-            if(e.which == 13) {
-                reloadEntireMenu();
-            }
 
-            // Shift
-            if(e.which == 16) {
+            // Number 1
+            if(e.which === 49) {
                 goOverview();
                 e.preventDefault();
             }
-            */
+
+            // Number 2
+            if(e.which === 50) {
+                reloadEntireMenu();
+            }
+
             // Left arrow
             if (e.which === 37) {
                 goBack();
@@ -727,6 +728,7 @@ jQuery(document).ready(function () {
             $('.color-control-top-bar-title').text('Products');
             $('.color-control-bottom-bar').show();
             $('.color-control-top-bar').removeClass('overview-title');
+            clearInterval(intervalId);
         }
 
         /* Go to the main menu */
@@ -758,6 +760,11 @@ jQuery(document).ready(function () {
             $('.color-control-top-bar').addClass('overview-title');
             /* Initialize the FlexSlider */
             initSlider();
+            /* Initialize arrow movements */
+            moveArrow();
+            /* Keep the arrow looping */
+            intervalId = window.setInterval(moveArrow, 3500);
+
         }
 
         /* Go to overview */
@@ -774,6 +781,71 @@ jQuery(document).ready(function () {
                 /* If in tree mode, go to the next tab */
                 goOverview();
             }
+        });
+
+        function moveArrow() {
+            $('.overview-line').each(function () {
+                var horizontalPath = $(this).attr('data-path-horz'),
+                    verticalPath = $(this).attr('data-path-vert'),
+                    horizontalStartingPath = $(this).attr('data-path-start-horz'),
+                    verticalStartingPath = $(this).attr('data-path-start-vert'),
+                    dataPath = $(this).attr('data-path'),
+                    arrowIcon = $(this).children('i');
+                
+                if (dataPath === 'vert-horz') {
+                    
+                    arrowIcon.css('top', verticalStartingPath);
+                    arrowIcon.css('right', horizontalStartingPath);
+                    arrowIcon.removeClass('icon-chevron-left').addClass('icon-chevron-up');
+                    arrowIcon.animate({
+                        top : verticalPath,
+                    }, 1500, 'linear' , function() {
+                        arrowIcon.removeClass('icon-chevron-up').addClass('icon-chevron-left');
+                        arrowIcon.animate({
+                            right: horizontalPath,  
+                        }, 1500, 'linear');
+                    });
+
+                }
+
+                if (dataPath === 'vert') {
+                    arrowIcon.css('top', verticalStartingPath);
+
+                    arrowIcon.animate({
+                        top : verticalPath,
+                    }, 3000);
+                }
+
+                if (dataPath === 'horz') {
+                    arrowIcon.css('right', horizontalStartingPath);
+
+                    arrowIcon.animate({
+                        right : horizontalPath,
+                    }, 3000);
+                }
+            });
+        }
+
+        $('[placeholder]').focus(function() {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+            input.val('');
+            input.removeClass('placeholder');
+            input.addClass('placeholder-off');
+        }
+        }).blur(function() {
+            var input = $(this);
+            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+            input.addClass('placeholder');
+            input.val(input.attr('placeholder'));
+        }
+        }).blur().parents('form').submit(function() {
+            $(this).find('[placeholder]').each(function() {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+              input.val('');
+            }
+        })
         });
 
     }(jQuery, document));

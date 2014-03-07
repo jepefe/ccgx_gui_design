@@ -33,12 +33,14 @@ body {
 				li {
 					list-style-type: none;
 					display: inline-block;
-					margin: 10px 20px 0 0;
+					margin: 0 20px 0 0;
 
 					a {
 						font-weight: bold;
 						color: #fff;
+						display: inline-block;
 						padding: 10px 20px;
+						margin: 0 0 0 0;
 						background-color: transparent;
 						border: 2px solid rgba(255, 255, 255, 0.4);
 						border-radius: 10px;
@@ -282,7 +284,7 @@ body {
 								}
 
 								&.dc-system {
-									right: 20px;
+									left: 10px;
 									top: 30px;
 								}
 
@@ -293,77 +295,123 @@ body {
 								}
 							}
 
-							.overview-icon {
-								background-color: #ddd;
-								color: #444;
-								font-size: 14px;
-								display: inline-block;
-								position: absolute;
-								border-radius: 3px;
+							.overview-line {
 
-								.arrow-inactive {
-									background: url('img/arrow-inactive.png') no-repeat top left;
-									width: 20px;
-									height: 20px;
-									background-size: 20px 20px;
+								.line-horizontal, .line-vertical {
+									position: absolute;
+									background-color: #4790d0;
 								}
 
-								.gif-arrow-up {
-									background: url('img/arrow-up-gif.gif') no-repeat top left;
-									width: 20px;
-									height: 20px;
-									background-size: 20px 20px;
+								.line-connector {
+									width: 15px;
+									height: 15px;
+									border-radius: 50%;
+									position: absolute;
+									background-color: #fff;
+									border: 4px solid #4790d0;
 								}
 
-								.gif-arrow-right {
-									background: url('img/arrow-right-gif.gif') no-repeat top left;
-									width: 20px;
-									height: 20px;
-									background-size: 20px 20px;
+								i {
+									position: absolute;
+									color: #4790d0;
+									font-size: 17px;
 								}
 
-								.gif-arrow-left {
-									background: url('img/arrow-left-gif.gif') no-repeat top left;
-									width: 20px;
-									height: 20px;
-									background-size: 20px 20px;
+								&.line-solar-battery {
+
+									.line-vertical {
+										width: 4px;
+										height: 52px;
+										top: 120px;
+										right: 122px;
+									}
+
+									.line-horizontal {
+										right: 122px;
+										top: 120px;
+										width: 98px;
+										height: 4px;
+									}
+
+									i {
+										top: 153px;
+										right: 116px;
+									}
 								}
 
-								.gif-arrow-down {
-									background: url('img/arrow-right-gif.gif') no-repeat top left;
-									width: 20px;
-									height: 20px;
-									background-size: 20px 20px;
+								&.line-battery-multiplus {
+									.line-vertical {
+										width: 4px;
+										height: 47px;
+										top: 125px;
+										right: 262px;
+									}
+
+									i {
+										top: 160px;
+										right: 256px;
+									}
+
+									.line-connector {
+										top: 165px;
+										right: 256px;
+									}
 								}
 
-								&.icon-ac-in-multiplus {
-									bottom: 80px;
-									left: 116px;
+								&.line-ac-in-multiplus {
+									.line-horizontal {
+										height: 4px;
+										width: 65px;
+										top: 190px;
+										right: 310px;
+									}
+
+									i {
+										top: 184px;
+										right: 353px;
+									}
+
+									.line-connector {
+										top: 184px;
+										right: 361px;
+									}
 								}
 
-								&.icon-ac-out-multiplus {
-									bottom: 30px;
-									left: 116px;
+								&.line-ac-out-multiplus {
+									.line-horizontal {
+										height: 4px;
+										width: 65px;
+										top: 237px;
+										right: 310px;
+									}
+
+									i {
+										top: 231px;
+										right: 305px;
+									}
+
+									.line-connector {
+										top: 231px;
+										right: 361px;
+									}
 								}
 
-								&.icon-battery-multiplus {
-									top: 137px;
-									left: 204px;
-								}
+								&.line-dc-system-battery {
+									.line-horizontal {
+										height: 4px;
+										width: 56px;
+										top: 48px;
+										right: 310px;
+									}
 
-								&.icon-dc-system-battery {
-									top: 35px;
-									left: 116px;
-								}
+									i {
+										top: 42px;
+										right: 352px;
+									}
 
-								&.icon-solar-battery {
-									background-color: transparent;
-									top: 135px;
-									left: 280px;
-									div {
-										-webkit-transform: rotate(45deg); 
-    									-moz-transform: rotate(45deg);  
-    									filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5); /*for IE*/
+									.line-connector {
+										top: 43px;
+										right: 361px;
 									}
 								}
 							}
@@ -375,7 +423,7 @@ body {
 
 								&.info-solar-battery {
 									top: 133px;
-									left: 315px;
+									left: 370px;
 								}
 
 								&.info-multiplus-battery {
@@ -390,7 +438,7 @@ body {
 								position: absolute;
 
 								&.scroll-active {
-									outline: 2px solid #4790D0;
+									//outline: 4px solid #4790D0;
 								}
 
 								&.image-battery {
@@ -428,42 +476,6 @@ body {
 										width: 90px;
 										height: 90px;
 										background-size: 90px 90px;
-									}
-								}
-							}
-
-							.overview-meta {
-								-webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-								box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-								background-color: #fff;
-								width: 120px;
-								position: absolute;
-								top: 50px;
-								right: 0;
-								display: none;
-
-								&.active-meta {
-									display: block;
-								}
-
-								span {
-									font-size: 16px;
-									display: block;
-									color: #777;
-									margin: 0 0 5px 10px;
-
-									&.main-title {
-										background-color: #444;
-										color: #fff;
-										font-weight: bold;
-										padding: 5px 10px;
-										margin: 0 0 5px 0;
-									}
-
-									&.sub-title {
-										margin: 0 0 0 10px;
-										color: #444;
-										font-weight: bold;
 									}
 								}
 							}
@@ -757,44 +769,6 @@ body {
 	}
 }
 
-.latest-changes {
-	h3 {
-		font-size: 18px;
-	}
-
-	ul {
-		margin: 0;
-		padding: 0;
-		height: 600px;
-		overflow: scroll;
-
-		li {
-			font-size: 12px;
-			background-color: #fff;
-			list-style-type: none;
-			padding: 15px 20px;
-			margin: 10px 0 0 0;
-			-webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-			box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-
-			&:first-child {
-				margin: 0;
-			}
-
-			h5 {
-				line-height: 1.5;
-				margin-top: 0;
-				color: #444;
-				font-size: 12px;
-			}
-
-			span {
-				color: #777;
-			}
-		}
-	}
-}
-
 	.interface-toggle {
 		display: none;
 	    position: relative; 
@@ -894,8 +868,39 @@ body {
 
 	.latest-documentation {
 		input[type="text"] {
+
+			&.placeholder {
+				color: rgba(255,255,255, 0.8);
+			}
+
+			&.placeholder-off {
+				color: #fff;
+			}
+
 			width: 100%;
 			padding: 10px;
+			border: none;
+			background-color: transparent;
+			font-size: 18px;
+			border-bottom: 2px solid #fff;
+			color: #fff;
+			&::-webkit-input-placeholder {
+			   color: rgba(255,255,255, 0.8);
+			}
+
+			&:-moz-placeholder { /* Firefox 18- */
+			   color: rgba(255,255,255, 0.8);
+			   opacity: 1;
+			}
+
+			&::-moz-placeholder {  /* Firefox 19+ */
+			   color: rgba(255,255,255, 0.8);
+			   opacity: 1;
+			}
+
+			&:-ms-input-placeholder {  
+			   color: rgba(255,255,255, 0.8);
+			}
 		}
 	}
 	
@@ -907,6 +912,7 @@ body {
 		position: absolute;
 		top: 50px;
 		min-height: 50px;
+		z-index: 999;
 		left: 0;
 		cursor: default;
 		background-color: #fff;
@@ -1062,9 +1068,100 @@ body {
 		
 	}
 
+	.welcome-text {
+		font-size: 14px;
+		-webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+		background-color: #fff;
+		padding: 20px;
+		position: relative;
+		color: #777;
+
+		h1,h2,h3,h4,h5,h6 {
+			color: #444;
+		}
+
+		.keyboard-icons {
+			margin: 15px 0 0 0;
+			span {
+				display: inline-block;
+				color: #777;
+				font-weight: bold;
+				margin: 0 10px 15px 0;
+
+				i {
+					padding: 5px;
+					border: 2px solid #ddd;
+					border-radius: 5px;
+					color: #777;
+					margin: 0 5px 0 0;
+				}
+
+				span {
+					padding: 5px 8px;
+					border: 2px solid #ddd;
+					border-radius: 5px;
+					color: #777;
+
+					&.icon-number {
+						margin: 0 5px 0 0;
+						font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+					}
+				}
+
+				&:last-child {
+					margin: 0 10px 0 0;
+				}
+			}
+		}
+	}
+
+	.latest-changes {
+		margin: 20px 0 0 0;
+		font-size: 14px;
+		-webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+		background-color: #fff;
+		padding: 20px;
+		position: relative;
+		color: #777;
+
+		h1, h2, h3, h4, h5, h6 {
+			color: #444;
+		}
+	ul {
+		margin: 0;
+		padding: 0;
+		height: 300px;
+		overflow: scroll;
+
+		li {
+			background-color: #fff;
+			list-style-type: none;
+			padding: 15px 20px;
+			margin: 10px 0 0 0;
+			border-bottom: 1px solid #ddd;
+
+			&:first-child {
+				margin: 0;
+			}
+
+			h5 {
+				line-height: 1.5;
+				margin-top: 0;
+				color: #444;
+			}
+
+			span {
+				color: #777;
+			}
+		}
+	}
+}
+
 	.doc-description {
 		position: relative;
-		display: inline-block;
+		display: none;
 		-webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
 		box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
 		background-color: #fff;
