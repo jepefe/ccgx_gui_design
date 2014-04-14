@@ -114,7 +114,7 @@ body {
           body .color-control-interface .color-control-top-bar.color-control-top-bar.overview-title span.top-bar-time, body .color-control-interface .color-control-bottom-bar.color-control-top-bar.overview-title span.top-bar-time {
             color: #444; }
           body .color-control-interface .color-control-top-bar.color-control-top-bar.overview-title .color-control-top-bar-title, body .color-control-interface .color-control-bottom-bar.color-control-top-bar.overview-title .color-control-top-bar-title {
-            color: #f1f1f1; }
+            color: #fff; }
         body .color-control-interface .color-control-top-bar.color-control-top-bar .color-control-top-bar-title, body .color-control-interface .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title {
           position: relative;
           color: #fff;
@@ -164,7 +164,7 @@ body {
         width: 480px;
         height: 272px;
         margin-top: -34px;
-        background-color: #f1f1f1; }
+        background-color: #fff; }
       body .color-control-interface .interface-container .overview-content {
         display: block;
         position: relative;
@@ -176,32 +176,53 @@ body {
           overflow: hidden; }
           body .color-control-interface .interface-container .overview-content .flexslider ul li {
             padding: 10px;
-            margin: 0 0 0 27px;
+            margin: 0 0 0 20px;
             width: 100%;
             height: 100%;
             border-bottom: 0; }
-            body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info {
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage {
               position: absolute;
-              bottom: 60px;
-              left: 10px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span {
-                font-size: 16px;
+              bottom: 50px;
+              left: 0; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage span {
+                font-size: 18px;
                 display: block; }
-                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span.sub-title {
-                  color: #444;
+                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter span.sub-title, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage span.sub-title {
+                  color: #fff;
+                  padding: 3px 10px;
+                  background-color: #444;
                   font-weight: 700; }
-                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span.sub-desc {
-                  color: #444; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.ac-out {
-                left: 10px;
-                bottom: 10px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.dc-system, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.dc-system {
-                left: 10px;
+                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter span.sub-desc, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage span.sub-desc {
+                  padding: 1px 8px;
+                  background-color: #ddd;
+                  color: #000; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage.battery-info {
+                left: 140px;
+                bottom: 20px; }
+                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.battery-info span, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.battery-info span, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.battery-info span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.battery-info span, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter.battery-info span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage.battery-info span {
+                  background-color: transparent; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter.ac-in, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage.ac-in {
+                left: 0px;
                 top: 30px; }
-              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.battery-info, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.battery-info {
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter.ac-out, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage.ac-out {
                 right: 69px;
                 left: auto;
                 top: 30px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.pv-inverter, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.pv-inverter, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.pv-inverter, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.pv-inverter, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter.pv-inverter, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage.pv-inverter {
+                right: 40px;
+                left: auto;
+                bottom: 15px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.battery-percentage, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.battery-percentage, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.battery-percentage, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.battery-percentage, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter.battery-percentage, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage.battery-percentage {
+                bottom: 60px;
+                left: 155px;
+                font-size: 18px;
+                color: #fff; }
+                body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-in.battery-percentage span, body .color-control-interface .interface-container .overview-content .flexslider ul li .ac-out.battery-percentage span, body .color-control-interface .interface-container .overview-content .flexslider ul li .dc-system.battery-percentage span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-info.battery-percentage span, body .color-control-interface .interface-container .overview-content .flexslider ul li .pv-inverter.battery-percentage span, body .color-control-interface .interface-container .overview-content .flexslider ul li .battery-percentage.battery-percentage span {
+                  background-color: transparent;
+                  font-size: 22px;
+                  font-weight: bold;
+                  color: #fff;
+                  text-shadow: 2px 2px #444; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-horizontal, body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-vertical {
               position: absolute;
               background-color: #4790d0; }
@@ -231,48 +252,48 @@ body {
               right: 116px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-battery-multiplus .line-vertical {
               width: 4px;
-              height: 47px;
-              top: 125px;
-              right: 262px; }
+              height: 37px;
+              top: 129px;
+              right: 282px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-battery-multiplus i {
               top: 160px;
-              right: 256px; }
+              right: 276px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-battery-multiplus .line-connector {
               top: 165px;
-              right: 256px; }
+              right: 276px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus .line-horizontal {
               height: 4px;
-              width: 65px;
-              top: 190px;
-              right: 310px; }
+              width: 85px;
+              top: 42px;
+              right: 320px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus i {
-              top: 184px;
-              right: 353px; }
+              top: 36px;
+              right: 393px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus .line-connector {
-              top: 184px;
-              right: 361px; }
+              top: 37px;
+              right: 400px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-out-multiplus .line-horizontal {
               height: 4px;
-              width: 65px;
-              top: 237px;
-              right: 310px; }
+              width: 85px;
+              top: 42px;
+              right: 165px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-out-multiplus i {
-              top: 231px;
-              right: 305px; }
+              top: 36px;
+              right: 154px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-out-multiplus .line-connector {
-              top: 231px;
-              right: 361px; }
+              top: 37px;
+              right: 154px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery .line-horizontal {
               height: 4px;
-              width: 56px;
-              top: 48px;
-              right: 310px; }
+              width: 85px;
+              bottom: 92px;
+              right: 330px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery i {
-              top: 42px;
-              right: 352px; }
+              bottom: 85px;
+              right: 403px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery .line-connector {
-              top: 43px;
-              right: 361px; }
+              bottom: 87px;
+              right: 410px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info {
               position: absolute;
               font-weight: 700;
@@ -282,23 +303,20 @@ body {
                 left: 370px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info.info-multiplus-battery {
                 top: 136px;
-                left: 155px; }
+                left: 135px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta {
-              -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-              box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-              background-color: #fff;
               position: absolute; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-battery {
-                top: 35px;
-                left: 170px; }
+                bottom: 50px;
+                left: 150px; }
                 body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-battery .image {
-                  background: url("img/battery-160.png") no-repeat top left;
+                  background: url("img/battery-180.png") no-repeat 10px 5px;
                   width: 90px;
-                  height: 90px;
-                  background-size: 90px 90px; }
+                  height: 60px;
+                  background-size: 70px 49px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-multiplus {
-                bottom: 10px;
-                left: 170px; }
+                top: 35px;
+                left: 150px; }
                 body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-multiplus .image {
                   background: url("img/multiplus-160.png") no-repeat top left;
                   width: 90px;
@@ -306,8 +324,8 @@ body {
                   background-size: 90px 90px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-mppt {
                 top: auto;
-                bottom: 10px;
-                right: 80px; }
+                bottom: 20px;
+                right: 105px; }
                 body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-mppt .image {
                   background: url("img/solar-160.png") no-repeat top left;
                   width: 90px;

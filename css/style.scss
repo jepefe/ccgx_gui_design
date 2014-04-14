@@ -158,7 +158,7 @@ body {
 					}
 
 					.color-control-top-bar-title  {
-						color: #f1f1f1;
+						color: #fff;
 					}
 				}
 
@@ -237,7 +237,7 @@ body {
 				width: 480px;
 				height: 272px;
 				margin-top: -34px;
-				background-color: #f1f1f1;
+				background-color: #fff;
 			}
 
 			.overview-content {
@@ -254,44 +254,74 @@ body {
 						
 						li {
 							padding: 10px;
-							margin: 0 0 0 27px;
+							margin: 0 0 0 20px;
 							width: 100%;
 							height: 100%;
 							border-bottom: 0;
 							
-							.ac-in, .ac-out, .dc-system, .battery-info {
+							.ac-in, .ac-out, .dc-system, .battery-info, .pv-inverter, .battery-percentage {
 								position: absolute;
-								bottom: 60px;
-								left: 10px;
+								bottom: 50px;
+								left: 0;
 
 								span {
-									font-size: 16px;
+									font-size: 18px;
 									display: block;
 
 									&.sub-title {
-										color: #444;
+										color: #fff;
+										padding: 3px 10px;
+										background-color: #444;
 										font-weight: 700;
 									}
 
 									&.sub-desc {
-										color: #444;
+										padding: 1px 8px;
+										background-color: #ddd;
+										color: #000;	
 									}
 								}
 
-								&.ac-out {
-									left: 10px;
-									bottom: 10px;
+								&.battery-info {
+									left: 140px;
+									bottom: 20px;
+
+									span {
+										background-color: transparent;
+									}
+									
 								}
 
-								&.dc-system {
-									left: 10px;
+								&.ac-in {
+									left: 0px;
 									top: 30px;
 								}
 
-								&.battery-info {
+								&.ac-out {
 									right: 69px;
 									left: auto;
 									top: 30px;
+								}
+
+								&.pv-inverter {
+									right: 40px;
+									left: auto;
+									bottom: 15px;
+								}
+
+								&.battery-percentage {
+									bottom: 60px;
+									left: 155px;
+									font-size: 18px;
+									color: #fff;
+
+									span {
+										background-color: transparent;
+										font-size: 22px;
+										font-weight: bold;
+										color: #fff;
+										text-shadow: 2px 2px #444;
+									}
 								}
 							}
 
@@ -342,76 +372,76 @@ body {
 								&.line-battery-multiplus {
 									.line-vertical {
 										width: 4px;
-										height: 47px;
-										top: 125px;
-										right: 262px;
+										height: 37px;
+										top: 129px;
+										right: 282px;
 									}
 
 									i {
 										top: 160px;
-										right: 256px;
+										right: 276px;
 									}
 
 									.line-connector {
 										top: 165px;
-										right: 256px;
+										right: 276px;
 									}
 								}
 
 								&.line-ac-in-multiplus {
 									.line-horizontal {
 										height: 4px;
-										width: 65px;
-										top: 190px;
-										right: 310px;
+										width: 85px;
+										top: 42px;
+										right: 320px;
 									}
 
 									i {
-										top: 184px;
-										right: 353px;
+										top: 36px;
+										right: 393px;
 									}
 
 									.line-connector {
-										top: 184px;
-										right: 361px;
+										top: 37px;
+										right: 400px;
 									}
 								}
 
 								&.line-ac-out-multiplus {
 									.line-horizontal {
 										height: 4px;
-										width: 65px;
-										top: 237px;
-										right: 310px;
+										width: 85px;
+										top: 42px;
+										right: 165px;
 									}
 
 									i {
-										top: 231px;
-										right: 305px;
+										top: 36px;
+										right: 154px;
 									}
 
 									.line-connector {
-										top: 231px;
-										right: 361px;
+										top: 37px;
+										right: 154px;
 									}
 								}
 
 								&.line-dc-system-battery {
 									.line-horizontal {
 										height: 4px;
-										width: 56px;
-										top: 48px;
-										right: 310px;
+										width: 85px;
+										bottom: 92px;
+										right: 330px;
 									}
 
 									i {
-										top: 42px;
-										right: 352px;
+										bottom: 85px;
+										right: 403px;
 									}
 
 									.line-connector {
-										top: 43px;
-										right: 361px;
+										bottom: 87px;
+										right: 410px;
 									}
 								}
 							}
@@ -428,35 +458,29 @@ body {
 
 								&.info-multiplus-battery {
 									top: 136px;
-									left: 155px;
+									left: 135px;
 								}
 							}
 							.image-meta {
-								-webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-								box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-								background-color: #fff;
 								position: absolute;
 
-								&.scroll-active {
-									//outline: 4px solid #4790D0;
-								}
-
 								&.image-battery {
-									top: 35px;
-									left: 170px;
+									bottom: 50px;
+									left: 150px;
 
 									.image {
-										background: url('img/battery-160.png') no-repeat top left;
+										background: url('img/battery-180.png') no-repeat 10px 5px;
 										width: 90px;
-										height: 90px;
-										background-size: 90px 90px;
+										height: 60px;
+										background-size: 70px 49px;
 									}
 									
 								}
 
 								&.image-multiplus {
-									bottom: 10px;
-									left: 170px;
+									top: 35px;
+									left: 150px;
+									
 										
 									.image {
 										background: url('img/multiplus-160.png') no-repeat top left;
@@ -468,8 +492,8 @@ body {
 
 								&.image-mppt {
 									top: auto;
-									bottom: 10px;
-									right: 80px;
+									bottom: 20px;
+									right: 105px;
 
 									.image {
 										background: url('img/solar-160.png') no-repeat top left;
