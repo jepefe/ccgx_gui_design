@@ -226,6 +226,24 @@ body {
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-horizontal, body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-vertical {
               position: absolute;
               background-color: #4790d0; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-horizontal.line-horizontal:after, body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-vertical.line-horizontal:after {
+                content: "";
+                width: 10px;
+                height: 10px;
+                background-color: #4789d0;
+                position: absolute;
+                top: -3px;
+                left: -1px;
+                border-radius: 50%; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-horizontal.line-vertical:after, body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-vertical.line-vertical:after {
+                content: "";
+                width: 10px;
+                height: 10px;
+                background-color: #4789d0;
+                position: absolute;
+                top: -1px;
+                left: -3px;
+                border-radius: 50%; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line .line-connector {
               width: 15px;
               height: 15px;
@@ -241,15 +259,20 @@ body {
               width: 4px;
               height: 52px;
               top: 120px;
-              right: 122px; }
+              right: 172px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-solar-battery .line-vertical:after {
+                display: none; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-solar-battery .line-horizontal {
-              right: 122px;
+              right: 172px;
               top: 120px;
-              width: 98px;
+              width: 78px;
               height: 4px; }
+            body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-solar-battery .line-connector {
+              bottom: 97px;
+              right: 167px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-solar-battery i {
               top: 153px;
-              right: 116px; }
+              right: 166px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-battery-multiplus .line-vertical {
               width: 4px;
               height: 37px;
@@ -266,6 +289,9 @@ body {
               width: 85px;
               top: 42px;
               right: 320px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus .line-horizontal:after {
+                left: auto;
+                right: -1px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-ac-in-multiplus i {
               top: 36px;
               right: 393px; }
@@ -288,6 +314,9 @@ body {
               width: 85px;
               bottom: 92px;
               right: 330px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery .line-horizontal:after {
+                left: auto;
+                right: -1px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-line.line-dc-system-battery i {
               bottom: 85px;
               right: 403px; }
@@ -300,10 +329,10 @@ body {
               color: #444; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info.info-solar-battery {
                 top: 133px;
-                left: 370px; }
+                left: 260px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .overview-icon-info.info-multiplus-battery {
                 top: 136px;
-                left: 135px; }
+                left: 138px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta {
               position: absolute; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li .image-meta.image-battery {
