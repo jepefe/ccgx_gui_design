@@ -469,7 +469,7 @@ jQuery(document).ready(function () {
         }
 
         function goBackInOverview() {
-            var ulContainer = $(interfaceContainer).find('ul.slides'),
+            /*var ulContainer = $(interfaceContainer).find('ul.slides'),
                 currentActiveSlide = ulContainer.find('li.flex-active-slide'),
                 currentActiveItem = currentActiveSlide.find('.scroll-active'),
                 currentActiveItemParent = currentActiveItem.parent(),
@@ -482,7 +482,9 @@ jQuery(document).ready(function () {
                 currentActiveItem.removeClass('scroll-active');
                 currentActiveItemParent.children().last().addClass('scroll-active');
 
-            }
+            } */
+
+            $('.flexslider').flexslider('prev');
         }
 
         function goRightInTree() {
@@ -517,11 +519,13 @@ jQuery(document).ready(function () {
         }
 
         function goRightInOverview() {
+            /*
             var ulContainer = $(interfaceContainer).find('ul.slides'),
                 currentActiveSlide = ulContainer.find('li.flex-active-slide'),
                 currentActiveItem = currentActiveSlide.find('.scroll-active'),
                 currentActiveItemParent = currentActiveItem.parent(),
                 nextActiveItem = currentActiveItem.next('.overview-scrollable');
+
 
             if (nextActiveItem.length > 0) {
                 nextActiveItem.addClass('scroll-active');
@@ -530,6 +534,8 @@ jQuery(document).ready(function () {
                 currentActiveItem.removeClass('scroll-active');
                 currentActiveItemParent.children().first().addClass('scroll-active');
             }
+            */
+            $('.flexslider').flexslider('next');
         }
 
         function goDownInTree() {
@@ -583,6 +589,13 @@ jQuery(document).ready(function () {
             } else {
                 /* If in tree mode, go to the next tab */
                 goUpInTree();
+
+                /* Clear existing description */
+                clearDocumentation();
+                /* Check where we are right now and show the manual */
+                if ($('.latest-documentation').length > 0) {
+                    initManual();
+                }
             }
         }
 
@@ -594,6 +607,13 @@ jQuery(document).ready(function () {
             } else {
                 /* If in tree mode, go to the next tab */
                 goDownInTree();
+
+                /* Clear existing description */
+                clearDocumentation();
+                /* Check where we are right now and show the manual */
+                if ($('.latest-documentation').length > 0) {
+                    initManual();
+                }
             }
         }
 
@@ -605,6 +625,13 @@ jQuery(document).ready(function () {
             } else {
                 /* If in tree mode, go to the next tab */
                 goRightInTree();
+
+                /* Clear existing description */
+                clearDocumentation();
+                /* Check where we are right now and show the manual */
+                if ($('.latest-documentation').length > 0) {
+                    initManual();
+                }
             }
         }
 
@@ -616,6 +643,13 @@ jQuery(document).ready(function () {
             } else {
                 /* If in tree mode, go to the next tab */
                 goBackInTree();
+
+                /* Clear existing description */
+                clearDocumentation();
+                /* Check where we are right now and show the manual */
+                if ($('.latest-documentation').length > 0) {
+                    initManual();
+                }
             }
         }
         /* Key Functions */
@@ -659,12 +693,6 @@ jQuery(document).ready(function () {
                 e.preventDefault();
             }
             */
-            /* Clear existing description */
-            clearDocumentation();
-            /* Check where we are right now and show the manual */
-            if ($('.latest-documentation').length > 0) {
-                initManual();
-            }
 
         });
 
