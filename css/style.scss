@@ -344,10 +344,11 @@ body {
 											&:before {
 												content: '';
 												width: 5px;
-												height: 2px;
-												background-color: #999;
+												height: 5px;
+												border-radius: 50%;
+												background-color: #bbb;
 												position: absolute;
-												top: 13px;
+												top: 11px;
 												left: 10px;
 											}
 										}
@@ -487,18 +488,18 @@ body {
 
 										.line-vertical {
 											width: 4px;
-											height: 32px;
-											top: 134px;
+											height: 82px;
+											top: 90px;
 											right: 177px;
 
 											&:after {
-												top: 31px;
+												top: 76px;
 											}
 										}
 
 										.line-horizontal {
 											right: 180px;
-											top: 134px;
+											top: 90px;
 											width: 78px;
 											height: 4px;
 										}

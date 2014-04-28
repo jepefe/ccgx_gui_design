@@ -344,10 +344,11 @@ body {
                   body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-left div .sub-desc:before, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-right div .sub-desc:before, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-left div .sub-desc:before, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-right div .sub-desc:before {
                     content: '';
                     width: 5px;
-                    height: 2px;
-                    background-color: #999;
+                    height: 5px;
+                    border-radius: 50%;
+                    background-color: #bbb;
                     position: absolute;
-                    top: 13px;
+                    top: 11px;
                     left: 10px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-right, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-right {
               right: 0;
@@ -428,14 +429,14 @@ body {
               font-size: 17px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-solar-battery .line-vertical, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-solar-battery .line-vertical {
               width: 4px;
-              height: 32px;
-              top: 134px;
+              height: 82px;
+              top: 90px;
               right: 177px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-solar-battery .line-vertical:after, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-solar-battery .line-vertical:after {
-                top: 31px; }
+                top: 76px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-solar-battery .line-horizontal, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-solar-battery .line-horizontal {
               right: 180px;
-              top: 134px;
+              top: 90px;
               width: 78px;
               height: 4px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-solar-battery .line-connector, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-solar-battery .line-connector {
