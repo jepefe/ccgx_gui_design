@@ -1,10 +1,56 @@
 $main_color: #4790d0;
 
+@mixin animation($animations) {
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@include keyframes(multi-ac-out) {
+	from { right: 0; }
+	to { right: 156px; }
+}
+
+@include keyframes(ac-in-multi-and-dc) {
+	from { left: 0; }
+	to { left: 50px; }
+}
+
+
+@include keyframes(battery-multiplus) {
+	from { bottom: 0; }
+	to { top: 40px; }
+}
+
+@include keyframes(solar-multi) {
+	0% { left: -60px; }
+	70% { left: 15px; top: -1px;}
+	100% { left: 15px; top: 30px; }
+}
+
+
 body {
 	-webkit-font-smoothing: antialiased;
 	background-color: #f5f5f5;
 	font-size: 16px;
 	color: #000;
+	font-family: "proxima-nova";
 
 	header {
 		padding: 30px 0;
@@ -322,8 +368,8 @@ body {
 									left: 0;
 
 									&.battery-info {
-										left: 140px;
-										bottom: 25px;
+										left: 131px;
+										bottom: 10px;
 
 										span {
 											background-color: transparent;
@@ -334,7 +380,7 @@ body {
 									
 
 									&.battery-percentage {
-										bottom: 60px;
+										bottom: 50px;
 										left: 155px;
 										font-size: 18px;
 										color: #fff;
@@ -364,7 +410,6 @@ body {
 												position: absolute;
 												top: -3px;
 												left: -1px;
-												border-radius: 50%;
 											}
 										}
 
@@ -377,7 +422,6 @@ body {
 												position: absolute;
 												top: -1px;
 												left: -3px;
-												border-radius: 50%;
 											}
 										}
 									}
@@ -405,9 +449,9 @@ body {
 
 										.line-vertical {
 											width: 4px;
-											height: 52px;
-											top: 120px;
-											right: 172px;
+											height: 32px;
+											top: 134px;
+											right: 177px;
 
 											&:after {
 												display: none;
@@ -415,20 +459,49 @@ body {
 										}
 
 										.line-horizontal {
-											right: 172px;
-											top: 120px;
+											right: 180px;
+											top: 134px;
 											width: 78px;
 											height: 4px;
 										}
 
 										.line-connector {
-											bottom: 97px;
-											right: 167px;
+											bottom: 95px;
+											right: 172px;
 										}
 
 										i {
 											top: 153px;
 											right: 166px;
+										}
+
+										.line-loaders {
+											position: relative;
+											width: 20px;
+											height: 5px;
+											float: right;
+
+											.break{
+											  right: 0;
+											  position: absolute;
+											  background-color: $main_color;
+											  width: 6px;
+											  height: 6px; 
+											  top: -1px;
+											}
+
+											.dot1{
+												@include animation(solar-multi 2s infinite);
+											}
+
+											.dot2{
+												@include animation(solar-multi 2s 0.5s infinite);
+											}
+
+											.dot3{
+												@include animation(solar-multi 2s 1s infinite);
+											}
+
 										}
 									}
 
@@ -437,7 +510,7 @@ body {
 											width: 4px;
 											height: 37px;
 											top: 129px;
-											right: 282px;
+											right: 296px;
 										}
 
 										i {
@@ -447,16 +520,46 @@ body {
 
 										.line-connector {
 											top: 165px;
-											right: 276px;
+											right: 290px;
 										}
+
+										.line-loaders {
+											position: relative;
+											width: 5px;
+											height: 5px;
+											float: left;
+
+											.break{
+											  right: 0;
+											  position: absolute;
+											  background-color: $main_color;
+											  width: 6px;
+											  height: 6px; 
+											  top: -1px;
+											}
+
+											.dot1{
+												@include animation(battery-multiplus 2s infinite);
+											}
+
+											.dot2{
+												@include animation(battery-multiplus 2s 0.5s infinite);
+											}
+
+											.dot3{
+												@include animation(battery-multiplus 2s 1s infinite);
+											}
+
+										}
+
 									}
 
 									&.line-ac-in-multiplus {
 										.line-horizontal {
 											height: 4px;
-											width: 85px;
+											width: 55px;
 											top: 44px;
-											right: 320px;
+											right: 340px;
 
 											&:after {
 												left: auto;
@@ -466,19 +569,48 @@ body {
 
 										i {
 											top: 38px;
-											right: 363px;
+											right: 383px;
 										}
 
 										.line-connector {
 											top: 39px;
 											right: 374px;
 										}
+
+										.line-loaders {
+											position: relative;
+											width: 20px;
+											height: 5px;
+											float: left;
+
+											.break{
+											  right: 0;
+											  position: absolute;
+											  background-color: $main_color;
+											  width: 6px;
+											  height: 6px; 
+											  top: -1px;
+											}
+
+											.dot1{
+												@include animation(ac-in-multi-and-dc 2s infinite);
+											}
+
+											.dot2{
+												@include animation(ac-in-multi-and-dc 2s 0.5s infinite);
+											}
+
+											.dot3{
+												@include animation(ac-in-multi-and-dc 2s 1s infinite);
+											}
+
+										}
 									}
 
 									&.line-ac-out-multiplus {
 										.line-horizontal {
 											height: 4px;
-											width: 85px;
+											width: 162px;
 											top: 44px;
 											right: 96px;
 										}
@@ -490,16 +622,45 @@ body {
 
 										.line-connector {
 											top: 39px;
-											right: 92px;
+											right: 91px;
 										}
+										.line-loaders {
+											position: relative;
+											width: 20px;
+											height: 5px;
+											float: right;
+
+											.break{
+											  right: 0;
+											  position: absolute;
+											  background-color: $main_color;
+											  width: 6px;
+											  height: 6px; 
+											  top: -1px;
+											}
+
+											.dot1{
+												@include animation(multi-ac-out 2s infinite);
+											}
+
+											.dot2{
+												@include animation(multi-ac-out 2s 0.5s infinite);
+											}
+
+											.dot3{
+												@include animation(multi-ac-out 2s 1s infinite);
+											}
+
+										}
+										
 									}
 
 									&.line-dc-system-battery {
 										.line-horizontal {
 											height: 4px;
-											width: 85px;
+											width: 55px;
 											bottom: 101px;
-											right: 330px;
+											right: 340px;
 
 											&:after {
 												left: auto;
@@ -516,6 +677,35 @@ body {
 											bottom: 96px;
 											right: 374px;
 										}
+
+										.line-loaders {
+											position: relative;
+											width: 20px;
+											height: 5px;
+											float: left;
+
+											.break{
+											  right: 0;
+											  position: absolute;
+											  background-color: $main_color;
+											  width: 6px;
+											  height: 6px; 
+											  top: -1px;
+											}
+
+											.dot1{
+												@include animation(ac-in-multi-and-dc 2s infinite);
+											}
+
+											.dot2{
+												@include animation(ac-in-multi-and-dc 2s 0.5s infinite);
+											}
+
+											.dot3{
+												@include animation(ac-in-multi-and-dc 2s 1s infinite);
+											}
+
+										}
 									}
 								}
 
@@ -525,13 +715,13 @@ body {
 									color: #444;
 
 									&.info-solar-battery {
-										top: 133px;
-										left: 260px;
+										top: 105px;
+										left: 250px;
 									}
 
 									&.info-multiplus-battery {
-										top: 136px;
-										left: 138px;
+										top: 141px;
+										left: 190px;
 									}
 								}
 
@@ -540,8 +730,8 @@ body {
 									border: 1px solid #ddd;
 
 									&.image-battery {
-										bottom: 50px;
-										left: 150px;
+										bottom: 40px;
+										left: 135px;
 
 										.image {
 											background: url('img/battery-180.png') no-repeat 10px 5px;
@@ -553,8 +743,8 @@ body {
 									}
 
 									&.image-multiplus {
-										top: 35px;
-										left: 150px;
+										top: 45px;
+										left: 135px;
 										
 											
 										.image {
@@ -567,8 +757,8 @@ body {
 
 									&.image-mppt {
 										top: auto;
-										bottom: 20px;
-										right: 105px;
+										bottom: 10px;
+										right: 135px;
 
 										.image {
 											background: url('img/solar-160.png') no-repeat top left;
