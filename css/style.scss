@@ -35,7 +35,7 @@ $main_color: #4790d0;
 
 @include keyframes(battery-multiplus) {
 	from { bottom: 0; }
-	to { top: 40px; }
+	to { top: 36px; }
 }
 
 @include keyframes(solar-multi) {
@@ -546,9 +546,13 @@ body {
 									&.line-battery-multiplus {
 										.line-vertical {
 											width: 4px;
-											height: 37px;
-											top: 129px;
+											height: 31px;
+											top: 135px;
 											right: 296px;
+
+											&:after {
+												top: -3px;
+											}
 										}
 
 										i {
@@ -557,7 +561,7 @@ body {
 										}
 
 										.line-connector {
-											top: 165px;
+											top: 162px;
 											right: 290px;
 										}
 
@@ -601,7 +605,7 @@ body {
 
 											&:after {
 												left: auto;
-												right: -1px;
+												right: 36px;
 											}
 										}
 
@@ -612,7 +616,7 @@ body {
 
 										.line-connector {
 											top: 39px;
-											right: 374px;
+											right: 338px;
 										}
 
 										.line-loaders {
@@ -755,10 +759,11 @@ body {
 									&.info-solar-battery {
 										top: 105px;
 										left: 250px;
+										display: none;
 									}
 
 									&.info-multiplus-battery {
-										top: 141px;
+										top: 143px;
 										left: 190px;
 									}
 								}

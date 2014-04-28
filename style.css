@@ -59,28 +59,28 @@
     bottom: 0; }
 
   to {
-    top: 40px; } }
+    top: 36px; } }
 
 @-moz-keyframes battery-multiplus {
   from {
     bottom: 0; }
 
   to {
-    top: 40px; } }
+    top: 36px; } }
 
 @-o-keyframes battery-multiplus {
   from {
     bottom: 0; }
 
   to {
-    top: 40px; } }
+    top: 36px; } }
 
 @keyframes battery-multiplus {
   from {
     bottom: 0; }
 
   to {
-    top: 40px; } }
+    top: 36px; } }
 
 @-webkit-keyframes solar-multi {
   0% {
@@ -473,14 +473,16 @@ body {
                 animation: solar-multi 2s 1s infinite; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-battery-multiplus .line-vertical, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-battery-multiplus .line-vertical {
               width: 4px;
-              height: 37px;
-              top: 129px;
+              height: 31px;
+              top: 135px;
               right: 296px; }
+              body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-battery-multiplus .line-vertical:after, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-battery-multiplus .line-vertical:after {
+                top: -3px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-battery-multiplus i, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-battery-multiplus i {
               top: 160px;
               right: 276px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-battery-multiplus .line-connector, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-battery-multiplus .line-connector {
-              top: 165px;
+              top: 162px;
               right: 290px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-battery-multiplus .line-loaders, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-battery-multiplus .line-loaders {
               position: relative;
@@ -516,13 +518,13 @@ body {
               right: 340px; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-ac-in-multiplus .line-horizontal:after, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-ac-in-multiplus .line-horizontal:after {
                 left: auto;
-                right: -1px; }
+                right: 36px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-ac-in-multiplus i, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-ac-in-multiplus i {
               top: 38px;
               right: 383px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-ac-in-multiplus .line-connector, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-ac-in-multiplus .line-connector {
               top: 39px;
-              right: 374px; }
+              right: 338px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-line.line-ac-in-multiplus .line-loaders, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-line.line-ac-in-multiplus .line-loaders {
               position: relative;
               width: 20px;
@@ -635,9 +637,10 @@ body {
               color: #444; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-icon-info.info-solar-battery, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-icon-info.info-solar-battery {
                 top: 105px;
-                left: 250px; }
+                left: 250px;
+                display: none; }
               body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .overview-icon-info.info-multiplus-battery, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .overview-icon-info.info-multiplus-battery {
-                top: 141px;
+                top: 143px;
                 left: 190px; }
             body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-multiplus .image-meta, body .color-control-interface .interface-container .overview-content .flexslider ul li.overview-bmv .image-meta {
               position: absolute;
