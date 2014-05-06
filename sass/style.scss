@@ -999,10 +999,10 @@ body {
 /* OVERAL STYLE */
 
 .color-control-top-bar, .color-control-bottom-bar {
-	background-color: red;
+	background-color: #444;
 
 	&.color-control-bottom-bar {
-		background-color: red;
+		background-color: #444;
 	}
 
 	&.color-control-top-bar {
@@ -1031,8 +1031,8 @@ body {
 
 li {
 	&.selected {
-		background-color: red;
-		border-bottom-color: red;
+		background-color: $main_color;
+		border-bottom-color: $main_color;
 	}
 }
 .sub-title {

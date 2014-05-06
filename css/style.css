@@ -688,9 +688,9 @@ body {
 
 /* OVERAL STYLE */
 .color-control-top-bar, .color-control-bottom-bar {
-  background-color: red; }
+  background-color: #444; }
   .color-control-top-bar.color-control-bottom-bar, .color-control-bottom-bar.color-control-bottom-bar {
-    background-color: red; }
+    background-color: #444; }
   .color-control-top-bar.color-control-top-bar .color-control-top-bar-title, .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title {
     color: #fff; }
   .color-control-top-bar.color-control-top-bar.overview-title, .color-control-bottom-bar.color-control-top-bar.overview-title {
@@ -704,8 +704,8 @@ body {
       color: #444; }
 
 li.selected {
-  background-color: red;
-  border-bottom-color: red; }
+  background-color: #4790d0;
+  border-bottom-color: #4790d0; }
 
 .sub-title {
   background-color: #444;
