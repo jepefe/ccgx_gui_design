@@ -1,0 +1,168 @@
+$main_color: #4790d0; 
+
+@mixin animation($animations) {
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@include keyframes(bmv-multi-ac-out) {
+	from { left: -100px; }
+	to { left: 18px; }
+}
+
+@include keyframes(bmv-ac-in-multi-and-dc) {
+	from { left: 0; }
+	to { left: 100px; }
+}
+
+
+@include keyframes(bmv-battery-multiplus) {
+	from { bottom: 0; }
+	to { top: 50px; }
+}
+
+.overview-bmv {
+
+	.battery-percentage, .battery-info, .battery-info-extra {
+		position: absolute;
+		bottom: 50px;
+		left: 0;
+
+		&.battery-info {
+			left: auto;
+			right: 201px;
+			bottom: 80px;
+
+			span {
+				background-color: transparent;
+			}
+			
+		}
+
+		&.battery-info-extra {
+			left: auto;
+			right: 215px;
+			bottom: 55px;
+
+			span {
+				background-color: transparent;
+			}
+		}
+		
+
+		&.battery-percentage {
+			left: auto;
+			bottom: 115px;
+			right: 222px;
+			font-size: 18px;
+			color: #fff;
+
+			span {
+				background-color: transparent;
+				font-size: 22px;
+				font-weight: bold;
+				color: #fff;
+				text-shadow: 2px 2px #444;
+			}
+		}
+	}
+
+	.overview-line {
+
+		&.line-dc-system-battery {
+			.line-horizontal {
+				height: 4px;
+				width: 105px;
+				bottom: 151px;
+				right: 96px;
+
+				&:after {
+					left: auto;
+					right: -1px;
+				}
+			}
+
+			i {
+				bottom: 72px;
+				right: 403px;
+			}
+
+			.line-connector {
+				left: auto;
+				bottom: 146px;
+				top: auto;
+				right: 187px;
+			}
+
+			.line-loaders {
+				position: relative;
+				width: 20px;
+				height: 5px;
+				float: left;
+
+				.break{
+				  right: 0;
+				  position: absolute;
+				  background-color: $main_color;
+				  width: 6px;
+				  height: 6px; 
+				  top: -1px;
+				}
+
+				.dot1{
+					@include animation(bmv-ac-in-multi-and-dc 2s 0 infinite linear);
+				}
+
+				.dot2{
+					@include animation(bmv-ac-in-multi-and-dc 2s 1s infinite linear);
+				}
+
+				.dot3{
+					@include animation(bmv-ac-in-multi-and-dc 2s 2s infinite linear);
+				}
+
+			}
+		}
+	}
+
+	.overview-icon-info {
+		position: absolute;
+		font-weight: 700;
+		color: #444;
+	}
+
+	.image-meta {
+		position: absolute;
+
+		&.image-battery {
+			bottom: 105px;
+			right: 200px;
+
+			.image {
+				background: url('../img/battery-180.png') no-repeat 10px 5px;
+				width: 90px;
+				height: 60px;
+				background-size: 70px 49px;
+			}
+			
+		}
+
+	}
+}

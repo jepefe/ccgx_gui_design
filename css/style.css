@@ -1,0 +1,786 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: #f5f5f5;
+  font-size: 16px;
+  color: #000;
+  font-family: "proxima-nova";
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden; }
+  body header {
+    padding: 30px 0;
+    background-color: #4790d0;
+    height: 100px;
+    width: 100%;
+    display: block;
+    margin: 0 0 40px 0; }
+    body header a.logo {
+      background: url("../img/victron-energy-logo.png") no-repeat top left;
+      width: 221px;
+      height: 42px;
+      background-size: 221px 42px;
+      position: relative;
+      display: block; }
+    body header nav {
+      text-align: right; }
+      body header nav ul {
+        margin: 0;
+        padding: 0; }
+        body header nav ul li {
+          list-style-type: none;
+          display: inline-block;
+          margin: 0 20px 0 0; }
+          body header nav ul li a {
+            font-weight: bold;
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 0 0 0;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px; }
+            body header nav ul li a:hover {
+              text-decoration: none;
+              transition: 0.3s all;
+              color: #fff;
+              background-color: rgba(255, 255, 255, 0.2); }
+          body header nav ul li:last-child {
+            margin: 0; }
+  body .color-control-background {
+    background: url("../img/color-control-bg.jpg") no-repeat top left;
+    width: 583px;
+    height: 616px;
+    background-size: 583px 616px;
+    position: relative; }
+  body .color-control-interface {
+    width: 480px;
+    height: 272px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 35px;
+    left: 52px;
+    overflow: hidden; }
+    body .color-control-interface .color-control-top-bar, body .color-control-interface .color-control-bottom-bar {
+      height: 12.5%;
+      display: inline-block;
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      padding: 0 20px; }
+      body .color-control-interface .color-control-top-bar.color-control-bottom-bar, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar {
+        margin-top: -8px;
+        display: block;
+        height: 14%;
+        border-radius: 0 0 10px 10px; }
+        body .color-control-interface .color-control-top-bar.color-control-bottom-bar span, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span {
+          display: inline-block;
+          color: #fff;
+          font-weight: 700;
+          font-size: 16px;
+          height: 26px; }
+          body .color-control-interface .color-control-top-bar.color-control-bottom-bar span i, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span i {
+            font-weight: 300;
+            margin-right: 10px; }
+          body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.overview-button, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.overview-button {
+            float: left;
+            margin: 9px 0 0 50px; }
+          body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.mainmenu-button, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.mainmenu-button {
+            float: right;
+            margin: 9px 48px 0 0; }
+            body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.mainmenu-button i, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.mainmenu-button i {
+              display: block;
+              float: left;
+              margin-top: 3px; }
+            body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.mainmenu-button p, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.mainmenu-button p {
+              display: block;
+              float: left;
+              line-height: 19px; }
+          body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.scroll-down-for-more, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.scroll-down-for-more {
+            display: none;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            bottom: 2px;
+            left: 0;
+            background: transparent; }
+            body .color-control-interface .color-control-top-bar.color-control-bottom-bar span.scroll-down-for-more i, body .color-control-interface .color-control-bottom-bar.color-control-bottom-bar span.scroll-down-for-more i {
+              font-size: 20px; }
+      body .color-control-interface .color-control-top-bar.color-control-top-bar, body .color-control-interface .color-control-bottom-bar.color-control-top-bar {
+        z-index: 4; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar.overview-title, body .color-control-interface .color-control-bottom-bar.color-control-top-bar.overview-title {
+          color: #fff;
+          position: absolute;
+          width: 100%;
+          height: 34px;
+          z-index: 1; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar .color-control-top-bar-title, body .color-control-interface .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title {
+          position: relative;
+          font-weight: 700;
+          font-size: 16px;
+          margin-top: 6px;
+          display: inline-block; }
+          body .color-control-interface .color-control-top-bar.color-control-top-bar .color-control-top-bar-title.title-has-chevron, body .color-control-interface .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title.title-has-chevron {
+            margin-left: 17px; }
+          body .color-control-interface .color-control-top-bar.color-control-top-bar .color-control-top-bar-title i, body .color-control-interface .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title i {
+            position: absolute;
+            left: -12px;
+            top: 5px;
+            font-size: 11px; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar i, body .color-control-interface .color-control-bottom-bar.color-control-top-bar i {
+          position: absolute;
+          color: #fff;
+          font-size: 18px; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar i.icon-warning, body .color-control-interface .color-control-bottom-bar.color-control-top-bar i.icon-warning {
+          right: 60px;
+          top: 7px; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar i.icon-exchange, body .color-control-interface .color-control-bottom-bar.color-control-top-bar i.icon-exchange {
+          right: 87px;
+          top: 7px; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar i.icon-location, body .color-control-interface .color-control-bottom-bar.color-control-top-bar i.icon-location {
+          right: 111px;
+          top: 7px; }
+        body .color-control-interface .color-control-top-bar.color-control-top-bar span.top-bar-time, body .color-control-interface .color-control-bottom-bar.color-control-top-bar span.top-bar-time {
+          position: absolute;
+          font-weight: 700;
+          color: #fff;
+          right: 15px;
+          top: 7px; }
+    body .color-control-interface .all-html-content {
+      display: none; }
+    body .color-control-interface .overview-content {
+      display: none; }
+    body .color-control-interface .interface-container {
+      background-color: #fff;
+      height: 75%;
+      display: inline-block;
+      width: 100%;
+      overflow: hidden; }
+      body .color-control-interface .interface-container .all-html-content {
+        display: block; }
+      body .color-control-interface .interface-container.in-overview {
+        width: 480px;
+        height: 272px;
+        background-color: #fff; }
+      body .color-control-interface .interface-container .overview-content {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%; }
+        body .color-control-interface .interface-container .overview-content .flexslider ul {
+          width: 480px;
+          height: 272px;
+          overflow: hidden; }
+          body .color-control-interface .interface-container .overview-content .flexslider ul li {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            border-bottom: 0;
+            /* General Styles */ }
+      body .color-control-interface .interface-container p {
+        display: none; }
+      body .color-control-interface .interface-container ul {
+        margin: 0;
+        padding: 0;
+        width: 480px;
+        height: 204px;
+        overflow: auto; }
+        body .color-control-interface .interface-container ul li {
+          height: 34px;
+          width: 100%;
+          border-bottom: 1px solid #ddd;
+          padding: 6px 0 0 20px;
+          position: relative; }
+          body .color-control-interface .interface-container ul li.selected {
+            color: #fff;
+            transition: 0.5s all; }
+            body .color-control-interface .interface-container ul li.selected.special-span b {
+              background-color: rgba(255, 255, 255, 0.2);
+              color: #fff; }
+            body .color-control-interface .interface-container ul li.selected .select-span {
+              background-color: rgba(255, 255, 255, 0.2);
+              color: #fff; }
+            body .color-control-interface .interface-container ul li.selected.select-option:before {
+              font-family: 'icomoon';
+              content: "\e73b";
+              color: #fff; }
+            body .color-control-interface .interface-container ul li.selected:hover {
+              color: #fff; }
+          body .color-control-interface .interface-container ul li.list-item-hidden {
+            display: none; }
+          body .color-control-interface .interface-container ul li.special-span b {
+            font-weight: normal;
+            background-color: #ddd;
+            padding: 3px 10px;
+            float: right;
+            color: #777;
+            border-radius: 3px;
+            margin: -3px 20px 0 0; }
+          body .color-control-interface .interface-container ul li .select-span {
+            background-color: #ddd;
+            padding: 3px 10px;
+            display: inline-block;
+            float: right;
+            margin: -3px 20px 0 0;
+            border-radius: 3px;
+            color: #777; }
+          body .color-control-interface .interface-container ul li.select-option:before {
+            font-family: 'icomoon';
+            content: "\e73c";
+            background-color: transparent;
+            width: 20px;
+            height: 20px;
+            float: left;
+            top: 0;
+            left: 0;
+            margin: -4px 10px 0 0;
+            font-size: 20px;
+            color: #777; }
+          body .color-control-interface .interface-container ul li:hover {
+            color: #4790d0;
+            transition: 0.3s all; }
+          body .color-control-interface .interface-container ul li ul {
+            display: none; }
+            body .color-control-interface .interface-container ul li ul.active {
+              position: absolute;
+              z-index: 99;
+              left: 0;
+              top: 36px;
+              padding: 0;
+              display: block;
+              background-color: #fff;
+              overflow: auto; }
+              body .color-control-interface .interface-container ul li ul.active li {
+                list-style-type: none; }
+              body .color-control-interface .interface-container ul li ul.active ul {
+                top: 0; }
+                body .color-control-interface .interface-container ul li ul.active ul.active {
+                  height: 100%;
+                  overflow: hidden; }
+          body .color-control-interface .interface-container ul li.has-children:before {
+            float: right;
+            margin: 3px 20px 0 0;
+            font-family: 'icomoon';
+            content: '\e8ac';
+            speak: none;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased; }
+          body .color-control-interface .interface-container ul li.menu-break {
+            background-color: #ddd;
+            color: #000;
+            padding: 5px 20px;
+            font-weight: 700; }
+  body .color-control-buttons {
+    position: absolute;
+    height: 240px;
+    width: 100%;
+    top: 340px; }
+    body .color-control-buttons div {
+      background-color: transparent;
+      position: absolute; }
+      body .color-control-buttons div:hover {
+        cursor: pointer; }
+      body .color-control-buttons div.color-control-button-left, body .color-control-buttons div.color-control-button-right {
+        width: 73px;
+        height: 73px;
+        border-radius: 50%; }
+        body .color-control-buttons div.color-control-button-left.color-control-button-left, body .color-control-buttons div.color-control-button-right.color-control-button-left {
+          top: 2px;
+          left: 120px; }
+        body .color-control-buttons div.color-control-button-left.color-control-button-right, body .color-control-buttons div.color-control-button-right.color-control-button-right {
+          right: 120px;
+          top: 2px; }
+      body .color-control-buttons div i, body .color-control-buttons div .space-icon {
+        color: #fff;
+        font-size: 24px; }
+      body .color-control-buttons div .text-icon {
+        position: absolute;
+        font-size: 14px;
+        display: inline-block;
+        font-weight: 700;
+        color: #fff; }
+        body .color-control-buttons div .text-icon.space-icon {
+          top: 32%;
+          left: 15%; }
+        body .color-control-buttons div .text-icon.shift-icon {
+          top: 35%;
+          left: 20%; }
+        body .color-control-buttons div .text-icon.enter-icon {
+          top: 35%;
+          left: 20%; }
+      body .color-control-buttons div.color-control-button-nav-left {
+        height: 100px;
+        width: 55px;
+        top: 80px;
+        left: 200px;
+        border-radius: 90px 0 0 90px;
+        -moz-border-radius: 90px 0 0 90px;
+        -webkit-border-radius: 90px 0 0 90px; }
+        body .color-control-buttons div.color-control-button-nav-left i {
+          position: absolute;
+          top: 40%;
+          left: 20px; }
+      body .color-control-buttons div.color-control-button-nav-top {
+        top: 35px;
+        left: 240px;
+        height: 55px;
+        width: 100px;
+        border-radius: 90px 90px 0 0;
+        -moz-border-radius: 90px 90px 0 0;
+        -webkit-border-radius: 90px 90px 0 0; }
+        body .color-control-buttons div.color-control-button-nav-top i {
+          position: absolute;
+          top: 40%;
+          left: 35%; }
+      body .color-control-buttons div.color-control-button-nav-right {
+        height: 100px;
+        width: 55px;
+        top: 80px;
+        right: 200px;
+        border-radius: 0 90px 90px 0;
+        -moz-border-radius: 0 90px 90px 0;
+        -webkit-border-radius: 0 90px 90px 0; }
+        body .color-control-buttons div.color-control-button-nav-right i {
+          position: absolute;
+          top: 40%;
+          right: 20px; }
+      body .color-control-buttons div.color-control-button-nav-bottom {
+        top: 160px;
+        left: 240px;
+        height: 55px;
+        width: 100px;
+        border-radius: 0 0 90px 90px;
+        -moz-border-radius: 0 0 90px 90px;
+        -webkit-border-radius: 0 0 90px 90px; }
+        body .color-control-buttons div.color-control-button-nav-bottom i {
+          position: absolute;
+          bottom: 40%;
+          left: 34%; }
+      body .color-control-buttons div.color-control-button-nav-middle {
+        border-radius: 50%;
+        top: 85px;
+        left: 255px;
+        width: 73px;
+        height: 73px;
+        z-index: 99; }
+
+.interface-toggle {
+  display: none;
+  position: relative;
+  width: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; }
+  .interface-toggle .interface-toggle-checkbox {
+    display: none; }
+  .interface-toggle .interface-toggle-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 20px; }
+  .interface-toggle .interface-toggle-inner {
+    width: 200%;
+    margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s;
+    -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s;
+    transition: margin 0.3s ease-in 0s; }
+    .interface-toggle .interface-toggle-inner:before, .interface-toggle .interface-toggle-inner:after {
+      float: left;
+      width: 50%;
+      height: 25px;
+      padding: 0;
+      line-height: 25px;
+      font-size: 14px;
+      color: #fff;
+      font-family: Trebuchet, Arial, sans-serif;
+      font-weight: bold;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; }
+    .interface-toggle .interface-toggle-inner:before {
+      content: "ON";
+      padding-left: 10px;
+      background-color: #4790d0;
+      color: #fff; }
+    .interface-toggle .interface-toggle-inner:after {
+      content: "OFF";
+      padding-right: 10px;
+      background-color: #ddd;
+      color: #444;
+      text-align: right; }
+  .interface-toggle .interface-toggle-switch {
+    width: 18px;
+    height: 18px;
+    margin: 6px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 56px;
+    -moz-transition: all 0.3s ease-in 0s;
+    -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s;
+    transition: all 0.3s ease-in 0s; }
+  .interface-toggle .interface-toggle-checkbox:checked + .interface-toggle-label .interface-toggle-inner {
+    margin-left: 0; }
+  .interface-toggle .interface-toggle-checkbox:checked + .interface-toggle-label .interface-toggle-switch {
+    right: 0px; }
+
+.menu-toggle-item .interface-toggle {
+  z-index: 999;
+  display: block;
+  float: right;
+  margin-top: -5px;
+  margin-right: 10px; }
+.menu-toggle-item b {
+  display: none; }
+
+.latest-documentation input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  border-bottom: 2px solid #fff;
+  color: #fff; }
+  .latest-documentation input[type="text"].placeholder {
+    color: rgba(255, 255, 255, 0.8); }
+  .latest-documentation input[type="text"].placeholder-off {
+    color: #fff; }
+  .latest-documentation input[type="text"]::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8); }
+  .latest-documentation input[type="text"]:-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1; }
+  .latest-documentation input[type="text"]::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1; }
+  .latest-documentation input[type="text"]:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.8); }
+
+.ui-helper-hidden-accessible {
+  display: none !important; }
+
+.ui-autocomplete {
+  position: absolute;
+  top: 50px;
+  min-height: 50px;
+  z-index: 999;
+  left: 0;
+  cursor: default;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0; }
+  .ui-autocomplete li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    .ui-autocomplete li a {
+      width: 100%;
+      display: inline-block;
+      padding: 20px;
+      color: #444; }
+      .ui-autocomplete li a:hover {
+        text-decoration: none;
+        background-color: #4790d0;
+        color: #fff;
+        transition: all 0.3s;
+        cursor: pointer; }
+        .ui-autocomplete li a:hover span.autocomplete-breadcrumbs {
+          color: rgba(255, 255, 255, 0.8); }
+          .ui-autocomplete li a:hover span.autocomplete-breadcrumbs span.breadcrumb-arrow {
+            color: #fff; }
+    .ui-autocomplete li span.autocomplete-breadcrumbs {
+      display: block;
+      color: #777;
+      font-size: 12px; }
+      .ui-autocomplete li span.autocomplete-breadcrumbs span.breadcrumb-arrow {
+        color: #4790d0; }
+        .ui-autocomplete li span.autocomplete-breadcrumbs span.breadcrumb-arrow:last-child {
+          display: none; }
+    .ui-autocomplete li span.autocomplete-label {
+      font-weight: 700;
+      display: block; }
+
+.doc-tooltip, .back-tooltip {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  right: 0;
+  top: 34px;
+  z-index: 999; }
+  .doc-tooltip span, .back-tooltip span {
+    z-index: 999;
+    background-color: #444;
+    color: #fff;
+    padding: 8px 15px;
+    font-weight: 700;
+    display: inline-block; }
+    .doc-tooltip span i, .back-tooltip span i {
+      font-size: 10px;
+      display: inline-block;
+      margin: -1px 0 0 10px; }
+      .doc-tooltip span i:hover, .back-tooltip span i:hover {
+        cursor: pointer; }
+    .doc-tooltip span:after, .doc-tooltip span:before, .back-tooltip span:after, .back-tooltip span:before {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none; }
+    .doc-tooltip span:after, .back-tooltip span:after {
+      border-color: rgba(136, 183, 213, 0);
+      border-bottom-color: #444;
+      border-width: 4px;
+      margin-left: -4px; }
+    .doc-tooltip span:before, .back-tooltip span:before {
+      border-color: rgba(194, 225, 245, 0);
+      border-bottom-color: #444;
+      border-width: 4px;
+      margin-left: -4px; }
+  .doc-tooltip.tooltip-last, .back-tooltip.tooltip-last {
+    top: -34px; }
+    .doc-tooltip.tooltip-last span:after, .doc-tooltip.tooltip-last span:before, .back-tooltip.tooltip-last span:after, .back-tooltip.tooltip-last span:before {
+      top: 100%;
+      left: 50%;
+      border-top-color: #444;
+      border-bottom-color: rgba(136, 183, 213, 0); }
+  .doc-tooltip.back-tooltip, .back-tooltip.back-tooltip {
+    top: 70%;
+    right: 16%;
+    text-align: left;
+    width: auto; }
+    .doc-tooltip.back-tooltip span:after, .doc-tooltip.back-tooltip span:before, .back-tooltip.back-tooltip span:after, .back-tooltip.back-tooltip span:before {
+      top: 100%;
+      left: 92%; }
+    .doc-tooltip.back-tooltip span:after, .back-tooltip.back-tooltip span:after {
+      border-bottom-color: rgba(136, 183, 213, 0);
+      border-top-color: #444; }
+    .doc-tooltip.back-tooltip span:before, .back-tooltip.back-tooltip span:before {
+      border-bottom-color: rgba(136, 183, 213, 0);
+      border-top-color: #444; }
+
+.welcome-text {
+  font-size: 14px;
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  color: #777; }
+  .welcome-text h1, .welcome-text h2, .welcome-text h3, .welcome-text h4, .welcome-text h5, .welcome-text h6 {
+    color: #444; }
+  .welcome-text .keyboard-icons {
+    margin: 15px 0 0 0; }
+    .welcome-text .keyboard-icons span {
+      display: inline-block;
+      color: #777;
+      font-weight: bold;
+      margin: 0 10px 15px 0; }
+      .welcome-text .keyboard-icons span i {
+        padding: 5px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        color: #777;
+        margin: 0 5px 0 0; }
+      .welcome-text .keyboard-icons span span {
+        padding: 5px 8px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        color: #777; }
+        .welcome-text .keyboard-icons span span.icon-number {
+          margin: 0 5px 0 0;
+          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+      .welcome-text .keyboard-icons span:last-child {
+        margin: 0 10px 0 0; }
+
+.latest-changes {
+  margin: 20px 0 0 0;
+  font-size: 14px;
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  color: #777; }
+  .latest-changes h1, .latest-changes h2, .latest-changes h3, .latest-changes h4, .latest-changes h5, .latest-changes h6 {
+    color: #444; }
+  .latest-changes ul {
+    margin: 0;
+    padding: 0;
+    height: 300px;
+    overflow: scroll; }
+    .latest-changes ul li {
+      background-color: #fff;
+      list-style-type: none;
+      padding: 15px 20px;
+      margin: 10px 0 0 0;
+      border-bottom: 1px solid #ddd; }
+      .latest-changes ul li:first-child {
+        margin: 0; }
+      .latest-changes ul li h5 {
+        line-height: 1.5;
+        margin-top: 0;
+        color: #444; }
+      .latest-changes ul li span {
+        color: #777; }
+
+.overview-left, .overview-right {
+  height: 238px;
+  width: 100px;
+  position: absolute;
+  left: 0;
+  top: 34px;
+  background-color: transparent; }
+  .overview-left div, .overview-right div {
+    height: 119px;
+    background-color: #fff;
+    border-right: 1px solid #ddd; }
+    .overview-left div.only-dc, .overview-right div.only-dc {
+      height: 88px; }
+    .overview-left div.has-dc, .overview-right div.has-dc {
+      height: 150px; }
+    .overview-left div.no-child, .overview-right div.no-child {
+      border-bottom: 1px solid #ddd; }
+    .overview-left div.only-dc, .overview-right div.only-dc {
+      margin-top: 70px;
+      height: auto; }
+    .overview-left div .sub-title, .overview-right div .sub-title {
+      display: block;
+      padding: 4px 10px;
+      margin-right: -1px;
+      margin-left: -1px; }
+    .overview-left div .sub-desc, .overview-right div .sub-desc {
+      font-size: 16px;
+      padding: 3px 10px 4px 20px;
+      display: block;
+      color: rgba(0, 0, 0, 0.8);
+      position: relative; }
+      .overview-left div .sub-desc:before, .overview-right div .sub-desc:before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: #bbb;
+        position: absolute;
+        top: 11px;
+        left: 10px; }
+
+.overview-right {
+  right: 0;
+  left: auto; }
+  .overview-right div {
+    border-left: 1px solid #ddd;
+    border-right: 0; }
+
+/* OVERAL STYLE */
+.color-control-top-bar, .color-control-bottom-bar {
+  background-color: red; }
+  .color-control-top-bar.color-control-bottom-bar, .color-control-bottom-bar.color-control-bottom-bar {
+    background-color: red; }
+  .color-control-top-bar.color-control-top-bar .color-control-top-bar-title, .color-control-bottom-bar.color-control-top-bar .color-control-top-bar-title {
+    color: #fff; }
+  .color-control-top-bar.color-control-top-bar.overview-title, .color-control-bottom-bar.color-control-top-bar.overview-title {
+    background-color: #444;
+    color: #fff; }
+    .color-control-top-bar.color-control-top-bar.overview-title i, .color-control-bottom-bar.color-control-top-bar.overview-title i {
+      color: #fff; }
+    .color-control-top-bar.color-control-top-bar.overview-title span.top-bar-time, .color-control-bottom-bar.color-control-top-bar.overview-title span.top-bar-time {
+      color: #fff; }
+    .color-control-top-bar.color-control-top-bar.overview-title .color-control-top-bar-title, .color-control-bottom-bar.color-control-top-bar.overview-title .color-control-top-bar-title {
+      color: #444; }
+
+li.selected {
+  background-color: red;
+  border-bottom-color: red; }
+
+.sub-title {
+  background-color: #444;
+  color: #fff; }
+
+.sub-desc:before {
+  background-color: #444; }
+
+.overview-left div, .overview-right div {
+  background-color: transparent;
+  border-color: transparent !important; }
+
+.overview-line.inactive .line-horizontal, .overview-line.inactive .line-vertical {
+  background-color: #A3C8E8; }
+  .overview-line.inactive .line-horizontal.line-horizontal:after, .overview-line.inactive .line-vertical.line-horizontal:after {
+    background-color: #A3C8E8; }
+  .overview-line.inactive .line-horizontal.line-vertical:after, .overview-line.inactive .line-vertical.line-vertical:after {
+    background-color: #A3C8E8; }
+.overview-line.inactive .break {
+  display: none; }
+.overview-line.inactive .line-connector {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #a3c8e8 !important;
+  border: none !important;
+  left: 94px;
+  top: 164px; }
+.overview-line .line-horizontal, .overview-line .line-vertical {
+  position: absolute;
+  background-color: #4790d0; }
+  .overview-line .line-horizontal.line-horizontal:after, .overview-line .line-vertical.line-horizontal:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #4789d0;
+    position: absolute;
+    top: -3px;
+    left: -1px; }
+  .overview-line .line-horizontal.line-vertical:after, .overview-line .line-vertical.line-vertical:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #4789d0;
+    position: absolute;
+    top: -1px;
+    left: -3px; }
+.overview-line .line-connector {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #fff;
+  border: 4px solid #4790d0; }
+  .overview-line .line-connector.green {
+    border-color: #95c26e; }
+.overview-line i {
+  position: absolute;
+  color: #4790d0;
+  font-size: 17px; }
+
+.doc-description {
+  position: relative;
+  display: none;
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 100%;
+  margin: 40px 0 0 0;
+  padding: 20px; }
+  .doc-description .doc-description-text {
+    color: #777; }
+  .doc-description .doc-description-title {
+    font-weight: 700;
+    color: #444; }

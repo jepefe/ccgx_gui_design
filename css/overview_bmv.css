@@ -1,0 +1,169 @@
+@-webkit-keyframes bmv-multi-ac-out {
+  from {
+    left: -100px; }
+
+  to {
+    left: 18px; } }
+
+@-moz-keyframes bmv-multi-ac-out {
+  from {
+    left: -100px; }
+
+  to {
+    left: 18px; } }
+
+@-o-keyframes bmv-multi-ac-out {
+  from {
+    left: -100px; }
+
+  to {
+    left: 18px; } }
+
+@keyframes bmv-multi-ac-out {
+  from {
+    left: -100px; }
+
+  to {
+    left: 18px; } }
+
+@-webkit-keyframes bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 100px; } }
+
+@-moz-keyframes bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 100px; } }
+
+@-o-keyframes bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 100px; } }
+
+@keyframes bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 100px; } }
+
+@-webkit-keyframes bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 50px; } }
+
+@-moz-keyframes bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 50px; } }
+
+@-o-keyframes bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 50px; } }
+
+@keyframes bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 50px; } }
+
+.overview-bmv .battery-percentage, .overview-bmv .battery-info, .overview-bmv .battery-info-extra {
+  position: absolute;
+  bottom: 50px;
+  left: 0; }
+  .overview-bmv .battery-percentage.battery-info, .overview-bmv .battery-info.battery-info, .overview-bmv .battery-info-extra.battery-info {
+    left: auto;
+    right: 201px;
+    bottom: 80px; }
+    .overview-bmv .battery-percentage.battery-info span, .overview-bmv .battery-info.battery-info span, .overview-bmv .battery-info-extra.battery-info span {
+      background-color: transparent; }
+  .overview-bmv .battery-percentage.battery-info-extra, .overview-bmv .battery-info.battery-info-extra, .overview-bmv .battery-info-extra.battery-info-extra {
+    left: auto;
+    right: 215px;
+    bottom: 55px; }
+    .overview-bmv .battery-percentage.battery-info-extra span, .overview-bmv .battery-info.battery-info-extra span, .overview-bmv .battery-info-extra.battery-info-extra span {
+      background-color: transparent; }
+  .overview-bmv .battery-percentage.battery-percentage, .overview-bmv .battery-info.battery-percentage, .overview-bmv .battery-info-extra.battery-percentage {
+    left: auto;
+    bottom: 115px;
+    right: 222px;
+    font-size: 18px;
+    color: #fff; }
+    .overview-bmv .battery-percentage.battery-percentage span, .overview-bmv .battery-info.battery-percentage span, .overview-bmv .battery-info-extra.battery-percentage span {
+      background-color: transparent;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px #444; }
+.overview-bmv .overview-line.line-dc-system-battery .line-horizontal {
+  height: 4px;
+  width: 105px;
+  bottom: 151px;
+  right: 96px; }
+  .overview-bmv .overview-line.line-dc-system-battery .line-horizontal:after {
+    left: auto;
+    right: -1px; }
+.overview-bmv .overview-line.line-dc-system-battery i {
+  bottom: 72px;
+  right: 403px; }
+.overview-bmv .overview-line.line-dc-system-battery .line-connector {
+  left: auto;
+  bottom: 146px;
+  top: auto;
+  right: 187px; }
+.overview-bmv .overview-line.line-dc-system-battery .line-loaders {
+  position: relative;
+  width: 20px;
+  height: 5px;
+  float: left; }
+  .overview-bmv .overview-line.line-dc-system-battery .line-loaders .break {
+    right: 0;
+    position: absolute;
+    background-color: #4790d0;
+    width: 6px;
+    height: 6px;
+    top: -1px; }
+  .overview-bmv .overview-line.line-dc-system-battery .line-loaders .dot1 {
+    -webkit-animation: bmv-ac-in-multi-and-dc 2s 0 infinite linear;
+    -moz-animation: bmv-ac-in-multi-and-dc 2s 0 infinite linear;
+    -o-animation: bmv-ac-in-multi-and-dc 2s 0 infinite linear;
+    animation: bmv-ac-in-multi-and-dc 2s 0 infinite linear; }
+  .overview-bmv .overview-line.line-dc-system-battery .line-loaders .dot2 {
+    -webkit-animation: bmv-ac-in-multi-and-dc 2s 1s infinite linear;
+    -moz-animation: bmv-ac-in-multi-and-dc 2s 1s infinite linear;
+    -o-animation: bmv-ac-in-multi-and-dc 2s 1s infinite linear;
+    animation: bmv-ac-in-multi-and-dc 2s 1s infinite linear; }
+  .overview-bmv .overview-line.line-dc-system-battery .line-loaders .dot3 {
+    -webkit-animation: bmv-ac-in-multi-and-dc 2s 2s infinite linear;
+    -moz-animation: bmv-ac-in-multi-and-dc 2s 2s infinite linear;
+    -o-animation: bmv-ac-in-multi-and-dc 2s 2s infinite linear;
+    animation: bmv-ac-in-multi-and-dc 2s 2s infinite linear; }
+.overview-bmv .overview-icon-info {
+  position: absolute;
+  font-weight: 700;
+  color: #444; }
+.overview-bmv .image-meta {
+  position: absolute; }
+  .overview-bmv .image-meta.image-battery {
+    bottom: 105px;
+    right: 200px; }
+    .overview-bmv .image-meta.image-battery .image {
+      background: url("../img/battery-180.png") no-repeat 10px 5px;
+      width: 90px;
+      height: 60px;
+      background-size: 70px 49px; }

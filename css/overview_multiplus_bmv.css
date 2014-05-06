@@ -1,0 +1,302 @@
+@-webkit-keyframes multi-bmv-multi-ac-out {
+  from {
+    left: -90px; }
+
+  to {
+    left: 18px; } }
+
+@-moz-keyframes multi-bmv-multi-ac-out {
+  from {
+    left: -90px; }
+
+  to {
+    left: 18px; } }
+
+@-o-keyframes multi-bmv-multi-ac-out {
+  from {
+    left: -90px; }
+
+  to {
+    left: 18px; } }
+
+@keyframes multi-bmv-multi-ac-out {
+  from {
+    left: -90px; }
+
+  to {
+    left: 18px; } }
+
+@-webkit-keyframes multi-bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 90px; } }
+
+@-moz-keyframes multi-bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 90px; } }
+
+@-o-keyframes multi-bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 90px; } }
+
+@keyframes multi-bmv-ac-in-multi-and-dc {
+  from {
+    left: 0; }
+
+  to {
+    left: 90px; } }
+
+@-webkit-keyframes multi-bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 30px; } }
+
+@-moz-keyframes multi-bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 30px; } }
+
+@-o-keyframes multi-bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 30px; } }
+
+@keyframes multi-bmv-battery-multiplus {
+  from {
+    bottom: 0; }
+
+  to {
+    top: 30px; } }
+
+.overview-multiplus-bmv .battery-percentage, .overview-multiplus-bmv .battery-info {
+  position: absolute;
+  bottom: 50px;
+  left: 0; }
+  .overview-multiplus-bmv .battery-percentage.battery-info, .overview-multiplus-bmv .battery-info.battery-info {
+    left: auto;
+    right: 201px;
+    bottom: 10px; }
+    .overview-multiplus-bmv .battery-percentage.battery-info span, .overview-multiplus-bmv .battery-info.battery-info span {
+      background-color: transparent; }
+  .overview-multiplus-bmv .battery-percentage.battery-percentage, .overview-multiplus-bmv .battery-info.battery-percentage {
+    left: auto;
+    bottom: 43px;
+    right: 222px;
+    font-size: 18px;
+    color: #fff; }
+    .overview-multiplus-bmv .battery-percentage.battery-percentage span, .overview-multiplus-bmv .battery-info.battery-percentage span {
+      background-color: transparent;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px #444; }
+.overview-multiplus-bmv .overview-line.line-battery-multiplus .line-vertical {
+  width: 4px;
+  height: 41px;
+  top: 140px;
+  right: 243px; }
+  .overview-multiplus-bmv .overview-line.line-battery-multiplus .line-vertical:after {
+    top: -3px; }
+.overview-multiplus-bmv .overview-line.line-battery-multiplus i {
+  top: 160px;
+  right: 276px; }
+.overview-multiplus-bmv .overview-line.line-battery-multiplus .line-connector {
+  top: 168px;
+  right: 237px; }
+.overview-multiplus-bmv .overview-line.line-battery-multiplus .line-loaders {
+  position: relative;
+  width: 5px;
+  height: 5px;
+  float: left; }
+  .overview-multiplus-bmv .overview-line.line-battery-multiplus .line-loaders .break {
+    right: 0;
+    position: absolute;
+    background-color: #4790d0;
+    width: 6px;
+    height: 6px;
+    top: -1px; }
+  .overview-multiplus-bmv .overview-line.line-battery-multiplus .line-loaders .dot1 {
+    -webkit-animation: multi-bmv-battery-multiplus 2s 0 infinite linear;
+    -moz-animation: multi-bmv-battery-multiplus 2s 0 infinite linear;
+    -o-animation: multi-bmv-battery-multiplus 2s 0 infinite linear;
+    animation: multi-bmv-battery-multiplus 2s 0 infinite linear; }
+  .overview-multiplus-bmv .overview-line.line-battery-multiplus .line-loaders .dot2 {
+    -webkit-animation: multi-bmv-battery-multiplus 2s 1s infinite linear;
+    -moz-animation: multi-bmv-battery-multiplus 2s 1s infinite linear;
+    -o-animation: multi-bmv-battery-multiplus 2s 1s infinite linear;
+    animation: multi-bmv-battery-multiplus 2s 1s infinite linear; }
+  .overview-multiplus-bmv .overview-line.line-battery-multiplus .line-loaders .dot3 {
+    -webkit-animation: multi-bmv-battery-multiplus 2s 2s infinite linear;
+    -moz-animation: multi-bmv-battery-multiplus 2s 2s infinite linear;
+    -o-animation: multi-bmv-battery-multiplus 2s 2s infinite linear;
+    animation: multi-bmv-battery-multiplus 2s 2s infinite linear; }
+.overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-horizontal {
+  height: 4px;
+  width: 97px;
+  top: 44px;
+  right: 283px; }
+  .overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-horizontal:after {
+    left: -5px;
+    right: auto; }
+.overview-multiplus-bmv .overview-line.line-ac-in-multiplus i {
+  top: 38px;
+  right: 383px; }
+.overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-connector {
+  top: 39px;
+  right: 279px; }
+.overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-loaders {
+  position: relative;
+  width: 20px;
+  height: 5px;
+  float: left;
+  -webkit-backface-visibility: hidden; }
+  .overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-loaders .break {
+    right: 0;
+    position: absolute;
+    background-color: #4790d0;
+    width: 6px;
+    height: 6px;
+    top: -1px;
+    -webkit-backface-visibility: hidden; }
+  .overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-loaders .dot1 {
+    -webkit-animation: multi-bmv-ac-in-multi-and-dc 2s infinite linear;
+    -moz-animation: multi-bmv-ac-in-multi-and-dc 2s infinite linear;
+    -o-animation: multi-bmv-ac-in-multi-and-dc 2s infinite linear;
+    animation: multi-bmv-ac-in-multi-and-dc 2s infinite linear; }
+  .overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-loaders .dot2 {
+    -webkit-animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite linear;
+    -moz-animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite linear;
+    -o-animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite linear;
+    animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite linear; }
+  .overview-multiplus-bmv .overview-line.line-ac-in-multiplus .line-loaders .dot3 {
+    -webkit-animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite linear;
+    -moz-animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite linear;
+    -o-animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite linear;
+    animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite linear; }
+.overview-multiplus-bmv .overview-line.line-ac-out-multiplus .line-horizontal {
+  height: 4px;
+  width: 112px;
+  top: 44px;
+  right: 96px; }
+.overview-multiplus-bmv .overview-line.line-ac-out-multiplus i {
+  top: 38px;
+  right: 96px; }
+.overview-multiplus-bmv .overview-line.line-ac-out-multiplus .line-connector {
+  top: 39px;
+  right: 91px; }
+.overview-multiplus-bmv .overview-line.line-ac-out-multiplus .line-loaders {
+  position: relative;
+  width: 20px;
+  height: 5px;
+  float: right; }
+  .overview-multiplus-bmv .overview-line.line-ac-out-multiplus .line-loaders .break {
+    right: 0;
+    position: absolute;
+    background-color: #4790d0;
+    width: 6px;
+    height: 6px;
+    top: -1px; }
+  .overview-multiplus-bmv .overview-line.line-ac-out-multiplus .line-loaders .dot1 {
+    -webkit-animation: multi-bmv-multi-ac-out 2s 0 infinite linear;
+    -moz-animation: multi-bmv-multi-ac-out 2s 0 infinite linear;
+    -o-animation: multi-bmv-multi-ac-out 2s 0 infinite linear;
+    animation: multi-bmv-multi-ac-out 2s 0 infinite linear; }
+  .overview-multiplus-bmv .overview-line.line-ac-out-multiplus .line-loaders .dot2 {
+    -webkit-animation: multi-bmv-multi-ac-out 2s 1s infinite linear;
+    -moz-animation: multi-bmv-multi-ac-out 2s 1s infinite linear;
+    -o-animation: multi-bmv-multi-ac-out 2s 1s infinite linear;
+    animation: multi-bmv-multi-ac-out 2s 1s infinite linear; }
+  .overview-multiplus-bmv .overview-line.line-ac-out-multiplus .line-loaders .dot3 {
+    -webkit-animation: multi-bmv-multi-ac-out 2s 2s infinite linear;
+    -moz-animation: multi-bmv-multi-ac-out 2s 2s infinite linear;
+    -o-animation: multi-bmv-multi-ac-out 2s 2s infinite linear;
+    animation: multi-bmv-multi-ac-out 2s 2s infinite linear; }
+.overview-multiplus-bmv .overview-line.line-dc-system-battery .line-horizontal {
+  height: 4px;
+  width: 102px;
+  bottom: 72px;
+  right: 96px; }
+  .overview-multiplus-bmv .overview-line.line-dc-system-battery .line-horizontal:after {
+    left: auto;
+    right: -1px; }
+.overview-multiplus-bmv .overview-line.line-dc-system-battery i {
+  bottom: 72px;
+  right: 403px; }
+.overview-multiplus-bmv .overview-line.line-dc-system-battery .line-connector {
+  left: auto;
+  bottom: 69px;
+  top: auto;
+  right: 190px; }
+.overview-multiplus-bmv .overview-line.line-dc-system-battery .line-loaders {
+  position: relative;
+  width: 20px;
+  height: 5px;
+  float: left; }
+  .overview-multiplus-bmv .overview-line.line-dc-system-battery .line-loaders .break {
+    right: 0;
+    position: absolute;
+    background-color: #4790d0;
+    width: 6px;
+    height: 6px;
+    top: -1px; }
+  .overview-multiplus-bmv .overview-line.line-dc-system-battery .line-loaders .dot1 {
+    -webkit-animation: multi-bmv-ac-in-multi-and-dc 2s 0 infinite;
+    -moz-animation: multi-bmv-ac-in-multi-and-dc 2s 0 infinite;
+    -o-animation: multi-bmv-ac-in-multi-and-dc 2s 0 infinite;
+    animation: multi-bmv-ac-in-multi-and-dc 2s 0 infinite; }
+  .overview-multiplus-bmv .overview-line.line-dc-system-battery .line-loaders .dot2 {
+    -webkit-animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite;
+    -moz-animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite;
+    -o-animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite;
+    animation: multi-bmv-ac-in-multi-and-dc 2s 1s infinite; }
+  .overview-multiplus-bmv .overview-line.line-dc-system-battery .line-loaders .dot3 {
+    -webkit-animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite;
+    -moz-animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite;
+    -o-animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite;
+    animation: multi-bmv-ac-in-multi-and-dc 2s 2s infinite; }
+.overview-multiplus-bmv .overview-icon-info {
+  position: absolute;
+  font-weight: 700;
+  color: #444; }
+  .overview-multiplus-bmv .overview-icon-info.info-solar-battery {
+    top: 105px;
+    left: 250px;
+    display: none; }
+  .overview-multiplus-bmv .overview-icon-info.info-multiplus-battery {
+    top: 147px;
+    left: 245px; }
+  .overview-multiplus-bmv .overview-icon-info.info-mppt {
+    top: 175px;
+    left: 200px; }
+.overview-multiplus-bmv .image-meta {
+  position: absolute; }
+  .overview-multiplus-bmv .image-meta.image-battery {
+    bottom: 30px;
+    right: 200px; }
+    .overview-multiplus-bmv .image-meta.image-battery .image {
+      background: url("../img/battery-180.png") no-repeat 10px 5px;
+      width: 90px;
+      height: 60px;
+      background-size: 70px 49px; }
+  .overview-multiplus-bmv .image-meta.image-multiplus {
+    top: 45px;
+    right: 200px; }
+    .overview-multiplus-bmv .image-meta.image-multiplus .image {
+      background: url("../img/multiplus-160.png") no-repeat top left;
+      width: 90px;
+      height: 90px;
+      background-size: 90px 90px; }

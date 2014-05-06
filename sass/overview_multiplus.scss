@@ -1,0 +1,423 @@
+$main_color: #4790d0; 
+
+@mixin animation($animations) {
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@include keyframes(multiplus-multi-ac-out) {
+	from { left: -25px; }
+	to { left: 18px; }
+}
+
+@include keyframes(multiplus-ac-in-multi-and-dc) {
+	from { left: 0; }
+	to { left: 155px; }
+}
+
+
+@include keyframes(multiplus-battery-multiplus) {
+	from { bottom: 0; }
+	to { top: 36px; }
+}
+
+@include keyframes(multiplus-solar-multi) {
+	0% { left: -60px; }
+	70% { left: 15px; top: -1px;}
+	100% { left: 15px; top: 30px; }
+}
+
+.overview-multiplus {
+
+	.battery-percentage, .battery-info {
+		position: absolute;
+		bottom: 50px;
+		left: 0;
+
+		&.battery-info {
+			left: auto;
+			right: 138px;
+			bottom: 10px;
+
+			span {
+				background-color: transparent;
+			}
+			
+		}
+
+		
+
+		&.battery-percentage {
+			left: auto;
+			bottom: 53px;
+			right: 158px;
+			font-size: 18px;
+			color: #fff;
+
+			span {
+				background-color: transparent;
+				font-size: 22px;
+				font-weight: bold;
+				color: #fff;
+				text-shadow: 2px 2px #444;
+			}
+		}
+	}
+
+	.overview-line {
+
+		&.line-solar-battery {
+
+			.line-vertical {
+				width: 4px;
+				height: 72px;
+				top: 90px;
+				right: 187px;
+
+				&:after {
+					top: 76px;
+				}
+			}
+
+			.line-horizontal {
+				right: 225px;
+				bottom: 82px;
+				width: 68px;
+				height: 4px;
+			}
+
+			.line-connector {
+				bottom: 79px;
+				right: 223px;
+				left: auto;
+				top: auto;
+			}
+
+			i {
+				top: 153px;
+				right: 166px;
+			}
+
+			.line-loaders {
+				position: relative;
+				width: 20px;
+				height: 5px;
+				float: right;
+
+				.break{
+				  right: 0;
+				  position: absolute;
+				  background-color: $main_color;
+				  width: 6px;
+				  height: 6px; 
+				  top: -1px;
+				}
+
+				.dot1{
+					@include animation(multiplus-solar-multi 2s 0 infinite linear);
+				}
+
+				.dot2{
+					@include animation(multiplus-solar-multi 2s 1s infinite linear);
+				}
+
+				.dot3{
+					@include animation(multiplus-solar-multi 2s 2s infinite linear);
+				}
+
+			}
+		}
+
+		&.line-battery-multiplus {
+			.line-vertical {
+				width: 4px;
+				height: 31px;
+				top: 135px;
+				right: 177px;
+
+				&:after {
+					top: -3px;
+				}
+			}
+
+			i {
+				top: 160px;
+				right: 276px;
+			}
+
+			.line-connector {
+				top: 162px;
+				right: 172px;
+			}
+
+			.line-loaders {
+				position: relative;
+				width: 5px;
+				height: 5px;
+				float: left;
+
+				.break{
+				  right: 0;
+				  position: absolute;
+				  background-color: $main_color;
+				  width: 6px;
+				  height: 6px; 
+				  top: -1px;
+				}
+
+				.dot1{
+					@include animation(multiplus-battery-multiplus 2s 0 infinite linear);
+				}
+
+				.dot2{
+					@include animation(multiplus-battery-multiplus 2s 1s infinite linear);
+				}
+
+				.dot3{
+					@include animation(multiplus-battery-multiplus 2s 2s infinite linear);
+				}
+
+			}
+
+		}
+
+		&.line-ac-in-multiplus {
+			.line-horizontal {
+				height: 4px;
+				width: 162px;
+				top: 44px;
+				right: 218px;
+
+				&:after {
+					left: -5px;
+					right: auto;
+				}
+			}
+
+			i {
+				top: 38px;
+				right: 383px;
+			}
+
+			.line-connector {
+				top: 39px;
+				right: 218px;
+			}
+
+			.line-loaders {
+				position: relative;
+				width: 20px;
+				height: 5px;
+				float: left;
+				-webkit-backface-visibility: hidden;
+				.break{
+				  right: 0;
+				  position: absolute;
+				  background-color: $main_color;
+				  width: 6px;
+				  height: 6px; 
+				  top: -1px;
+				  -webkit-backface-visibility: hidden;
+				}
+
+				.dot1{
+					@include animation(multiplus-ac-in-multi-and-dc 2s infinite linear);
+				}
+
+				.dot2{
+					@include animation(multiplus-ac-in-multi-and-dc 2s 1s infinite linear);
+				}
+
+				.dot3{
+					@include animation(multiplus-ac-in-multi-and-dc 2s 2s infinite linear);
+				}
+
+			}
+		}
+
+		&.line-ac-out-multiplus {
+			.line-horizontal {
+				height: 4px;
+				width: 44px;
+				top: 44px;
+				right: 96px;
+			}
+
+			i {
+				top: 38px;
+				right: 96px;
+			}
+
+			.line-connector {
+				top: 39px;
+				right: 91px;
+			}
+			.line-loaders {
+				position: relative;
+				width: 20px;
+				height: 5px;
+				float: right;
+
+				.break{
+				  right: 0;
+				  position: absolute;
+				  background-color: $main_color;
+				  width: 6px;
+				  height: 6px; 
+				  top: -1px;
+				}
+
+				.dot1{
+					@include animation(multiplus-multi-ac-out 2s 0 infinite linear);
+				}
+
+				.dot2{
+					@include animation(multiplus-multi-ac-out 2s 1s infinite linear);
+				}
+
+				.dot3{
+					@include animation(multiplus-multi-ac-out 2s 2s infinite linear);
+				}
+
+			}
+			
+		}
+
+		&.line-dc-system-battery {
+			.line-horizontal {
+				height: 4px;
+				width: 44px;
+				bottom: 101px;
+				right: 96px;
+
+				&:after {
+					left: auto;
+					right: -1px;
+				}
+			}
+
+			i {
+				bottom: 85px;
+				right: 403px;
+			}
+
+			.line-connector {
+				left: auto;
+				bottom: 96px;
+				right: 133px;
+			}
+
+			.line-loaders {
+				position: relative;
+				width: 20px;
+				height: 5px;
+				float: left;
+
+				.break{
+				  right: 0;
+				  position: absolute;
+				  background-color: $main_color;
+				  width: 6px;
+				  height: 6px; 
+				  top: -1px;
+				}
+
+				.dot1{
+					@include animation(multiplus-ac-in-multi-and-dc 2s 0 infinite);
+				}
+
+				.dot2{
+					@include animation(multiplus-ac-in-multi-and-dc 2s 1s infinite);
+				}
+
+				.dot3{
+					@include animation(multiplus-ac-in-multi-and-dc 2s 2s infinite);
+				}
+
+			}
+		}
+	}
+
+	.overview-icon-info {
+		position: absolute;
+		font-weight: 700;
+		color: #444;
+
+		&.info-solar-battery {
+			top: 105px;
+			left: 250px;
+			display: none;
+		}
+
+		&.info-multiplus-battery {
+			top: 143px;
+			left: 245px;
+		}
+
+		&.info-mppt {
+			top: 195px;
+			left: 196px;
+		}
+	}
+
+	.image-meta {
+		position: absolute;
+
+		&.image-battery {
+			bottom: 40px;
+			right: 135px;
+
+			.image {
+				background: url('../img/battery-180.png') no-repeat 10px 5px;
+				width: 90px;
+				height: 60px;
+				background-size: 70px 49px;
+			}
+			
+		}
+
+		&.image-multiplus {
+			top: 45px;
+			right: 135px;
+			
+				
+			.image {
+				background: url('../img/multiplus-160.png') no-repeat top left;
+				width: 90px;
+				height: 90px;
+				background-size: 90px 90px;
+			}
+		}
+
+		&.image-mppt {
+			top: auto;
+			bottom: 20px;
+			left: 105px;
+
+			.image {
+				background: url('../img/solar-160.png') no-repeat top left;
+				width: 90px;
+				height: 90px;
+				background-size: 90px 90px;
+			}
+		}
+	}
+
+}
